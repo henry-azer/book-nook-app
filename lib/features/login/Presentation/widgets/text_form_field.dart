@@ -2,8 +2,6 @@ import 'package:book_nook_app/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class Textform extends StatefulWidget {
-  const Textform({Key? key}) : super(key: key);
-
   @override
   State<Textform> createState() => _TextformState();
 }
@@ -17,18 +15,27 @@ class _TextformState extends State<Textform> {
     return Form(
       key: _Formkey,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
             width: 330,
             height: 37,
-            decoration: BoxDecoration(borderRadius: BorderRadiusDirectional.circular(20)),
             child: TextFormField(
+              style: TextStyle(
+                color: AppColors.white,
+              ),
               decoration: InputDecoration(
                 hintText: "Email",
+                hintStyle: TextStyle(
+                  color: AppColors.white,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w300,
+                  fontFamily: 'Barlow-Black.ttf',
+                ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20),
                   borderSide: BorderSide(
-                      color: AppColors.textFormBorder,
+                    color: AppColors.textFormBorder,
                   ),
                 ),
               ),
@@ -45,7 +52,6 @@ class _TextformState extends State<Textform> {
               },
               keyboardType: TextInputType.emailAddress,
               textInputAction: TextInputAction.next,
-              minLines: 1,
               controller: emailcontroller,
             ),
           ),
