@@ -18,7 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 92, right: 92, top: 60),
+            padding: const EdgeInsets.only(left: 92, right: 92, top: 48),
             child: Image.asset(
               'assets/images/Appbadge.png',
               height: 192,
@@ -36,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           const SizedBox(
-            height: 60,
+            height: 40,
           ),
           Textform(),
           const SizedBox(

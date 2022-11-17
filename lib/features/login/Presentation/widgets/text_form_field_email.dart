@@ -16,13 +16,11 @@ class _TextformState extends State<Textform> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          const SizedBox(height: 91),
           Container(
             width: 330,
             height: 37,
             child: TextFormField(
-              style: TextStyle(
-                color: AppColors.white,
-              ),
               decoration: InputDecoration(
                 hintText: "Email",
                 hintStyle: TextStyle(
@@ -38,6 +36,12 @@ class _TextformState extends State<Textform> {
                   ),
                 ),
               ),
+              style: TextStyle(
+                color: AppColors.white,
+              ),
+              keyboardType: TextInputType.emailAddress,
+              textInputAction: TextInputAction.next,
+              controller: emailcontroller,
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return "Please Enter your Email";
@@ -49,9 +53,6 @@ class _TextformState extends State<Textform> {
                   return null;
                 }
               },
-              keyboardType: TextInputType.emailAddress,
-              textInputAction: TextInputAction.next,
-              controller: emailcontroller,
             ),
           ),
         ],
