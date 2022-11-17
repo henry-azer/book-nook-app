@@ -1,5 +1,6 @@
 import 'package:book_nook_app/core/utils/app_colors.dart';
 import 'package:book_nook_app/features/login/Presentation/widgets/Signin_Button.dart';
+import 'package:book_nook_app/features/login/Presentation/widgets/text_button.dart';
 import 'package:book_nook_app/features/login/Presentation/widgets/text_form_field_email.dart';
 import 'package:book_nook_app/features/login/Presentation/widgets/text_form_field_password.dart';
 import 'package:flutter/material.dart';
@@ -48,6 +49,10 @@ class _LoginScreenState extends State<LoginScreen> {
             height: 90,
           ),
           Signinbutton(),
+          const SizedBox(
+            height: 40,
+          ),
+          TexButton(),
         ],
       ),
     );
