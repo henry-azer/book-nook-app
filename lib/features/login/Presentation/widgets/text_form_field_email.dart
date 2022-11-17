@@ -8,11 +8,11 @@ class Textform extends StatefulWidget {
 
 class _TextformState extends State<Textform> {
   final TextEditingController emailcontroller = TextEditingController();
-  final GlobalKey<FormState> _Formkey = GlobalKey<FormState>();
+  GlobalKey<FormState> Formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: _Formkey,
+      key: Formkey,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
