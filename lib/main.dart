@@ -6,13 +6,10 @@ import 'bloc_observer.dart';
 import 'injection_container.dart' as di;
 
 Future<void> main() async {
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await di.init();
-  BlocOverrides.runZoned(
-    () {
-      runApp(MyApp());
-    },
-  );
+  WidgetsFlutterBinding.ensureInitialized();
+  await di.init();
+  Bloc.observer = AppBlocObserver();
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
