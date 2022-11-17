@@ -1,6 +1,6 @@
 class AppStrings {
   static const String appName = 'Book Nook';
-  static const String fontFamily = 'Tajawal';
+  static const String fontFamily = 'Comfortaa';
   static const String noRouteFound = 'No Route Found';
   static const String contentType = 'Content-Type';
   static const String cachedRandomQuote = 'CACHED_RANDOM_QUOTE';
