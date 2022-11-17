@@ -1,5 +1,6 @@
 import 'package:book_nook_app/core/utils/app_colors.dart';
-import 'package:book_nook_app/features/login/Presentation/widgets/text_form_field.dart';
+import 'package:book_nook_app/features/login/Presentation/widgets/text_form_field_email.dart';
+import 'package:book_nook_app/features/login/Presentation/widgets/text_form_field_password.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -18,12 +19,10 @@ class _LoginScreenState extends State<LoginScreen> {
         children: [
           Padding(
             padding: const EdgeInsets.only(left: 92, right: 92, top: 60),
-            child: Container(
-              child: Image.asset(
-                'assets/images/Appbadge.png',
-                height: 192,
-                width: 192,
-              ),
+            child: Image.asset(
+              'assets/images/Appbadge.png',
+              height: 192,
+              width: 192,
             ),
           ),
           Text(
@@ -36,10 +35,14 @@ class _LoginScreenState extends State<LoginScreen> {
               fontFamily: 'Comfortaa-VariableFont_wght.ttf',
             ),
           ),
-          SizedBox(
-            height: 40,
+          const SizedBox(
+            height: 60,
           ),
           Textform(),
+          const SizedBox(
+            height: 40,
+          ),
+          const Passtextform(),
         ],
       ),
     );

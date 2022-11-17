@@ -8,7 +8,6 @@ class Textform extends StatefulWidget {
 
 class _TextformState extends State<Textform> {
   final TextEditingController emailcontroller = TextEditingController();
-  final TextEditingController passcontroller = TextEditingController();
   final GlobalKey<FormState> _Formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
