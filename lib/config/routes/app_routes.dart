@@ -1,3 +1,4 @@
+import 'package:book_nook_app/features/authentication/presentation/screens/signin_screen.dart';
 import 'package:book_nook_app/injection_container.dart' as di;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,6 +10,7 @@ import '../../features/splash/presentation/screens/splash_screen.dart';
 
 class Routes {
   static const String initialRoute = '/';
+  static const String signinRoute = '/signin';
   static const String randomQuoteRoute = '/randomQuote';
 }
 
@@ -18,6 +20,11 @@ class AppRoutes {
       case Routes.initialRoute:
         return MaterialPageRoute(builder: (context) {
           return const SplashScreen();
+        });
+
+      case Routes.signinRoute:
+        return MaterialPageRoute(builder: (context) {
+          return const SigninScreen();
         });
 
       case Routes.randomQuoteRoute:
