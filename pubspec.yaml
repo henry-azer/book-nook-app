@@ -37,7 +37,7 @@ flutter:
   assets:
     - lang/ar.json
     - lang/en.json
-    - assets/images/
+    - assets/images/Subtract.png
 
   fonts:
     - family: Tajawal
