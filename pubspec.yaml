@@ -32,13 +32,11 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
-
   uses-material-design: true
 
   assets:
     - lang/ar.json
     - lang/en.json
-    - assets/images/quote.png
     - assets/images/logo.png
     - assets/images/bookmark-icon.png
 
@@ -55,3 +53,16 @@ flutter:
           weight: 400
         - asset: assets/fonts/Comfortaa-Light.ttf
           weight: 200
+
+    - family: Barlow
+        fonts:
+            - asset: assets/fonts/Barlow-Bold.ttf
+              weight: 800
+                - asset: assets/fonts/Barlow-SemiBold.ttf
+                  weight: 700
+                - asset: assets/fonts/Barlow-Medium.ttf
+                  weight: 500
+                - asset: assets/fonts/Barlow-Regular.ttf
+                  weight: 400
+                - asset: assets/fonts/Barlow-Light.ttf
+                  weight: 200
