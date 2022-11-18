@@ -10,7 +10,6 @@ ThemeData appTheme() {
       hintColor: AppColors.hint,
       brightness: Brightness.light,
       scaffoldBackgroundColor: AppColors.background,
-      fontFamily: AppStrings.fontFamily,
       appBarTheme: const AppBarTheme(
           centerTitle: true,
           color: Colors.transparent,
@@ -18,17 +17,11 @@ ThemeData appTheme() {
           titleTextStyle: TextStyle(
               fontWeight: FontWeight.w500, color: Colors.black, fontSize: 20)),
       textTheme: TextTheme(
-        bodyLarge: TextStyle(
+        titleMedium: TextStyle(
           height: 1.3,
           fontSize: 45,
           color: AppColors.fontPrimary,
-          fontFamily: AppStrings.fontFamily,
-        ),
-        bodyMedium: TextStyle(
-          height: 1.3,
-          fontSize: 22,
-          color: AppColors.fontPrimary,
-          fontFamily: AppStrings.fontFamily,
+          fontFamily: AppStrings.fontFamilyComfortaa,
         ),
       ));
 }
