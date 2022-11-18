@@ -38,6 +38,7 @@ flutter:
     - lang/ar.json
     - lang/en.json
     - assets/images/Subtract.png
+    - assets/images/Appbadge.png
 
   fonts:
     - family: Tajawal

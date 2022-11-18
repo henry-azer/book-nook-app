@@ -6,9 +6,10 @@ class Textform extends StatefulWidget {
   State<Textform> createState() => _TextformState();
 }
 
+final TextEditingController emailcontroller = TextEditingController();
+GlobalKey<FormState> Formkey = GlobalKey<FormState>();
+
 class _TextformState extends State<Textform> {
-  final TextEditingController emailcontroller = TextEditingController();
-  GlobalKey<FormState> Formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -19,7 +20,7 @@ class _TextformState extends State<Textform> {
           const SizedBox(height: 91),
           Container(
             width: 330,
-            height: 37,
+            height: 50,
             child: TextFormField(
               decoration: InputDecoration(
                 hintText: "Email",

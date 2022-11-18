@@ -8,9 +8,10 @@ class Passtextform extends StatefulWidget {
   State<Passtextform> createState() => _PasstextformState();
 }
 
+final TextEditingController passcontroller = TextEditingController();
+final GlobalKey<FormState> _Formkey = GlobalKey<FormState>();
+
 class _PasstextformState extends State<Passtextform> {
-  final TextEditingController passcontroller = TextEditingController();
-  final GlobalKey<FormState> _Formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -20,7 +21,7 @@ class _PasstextformState extends State<Passtextform> {
         children: [
           Container(
             width: 330,
-            height: 37,
+            height: 50,
             child: TextFormField(
               keyboardType: TextInputType.emailAddress,
               style: TextStyle(

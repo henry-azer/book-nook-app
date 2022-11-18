@@ -1,5 +1,6 @@
 import 'package:book_nook_app/core/utils/app_colors.dart';
 import 'package:book_nook_app/core/utils/assets_manager.dart';
+import 'package:book_nook_app/features/login/Presentation/widgets/text_form_field_email.dart';
 import 'package:book_nook_app/features/login/Presentation/widgets/text_form_field_password.dart';
 import 'package:flutter/material.dart';
 
@@ -28,7 +29,14 @@ class _SigninbuttonState extends State<Signinbutton> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(29),
                       )),
-                  onPressed: () {},
+                  onPressed: () {
+                    if (Formkey.currentState!.validate()) {
+                      print(emailcontroller);
+                      print(passcontroller);
+                    } else {
+                      return null;
+                    }
+                  },
                   child: Text(
                     "Sign in",
                     style: TextStyle(

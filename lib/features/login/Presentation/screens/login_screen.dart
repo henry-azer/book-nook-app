@@ -41,15 +41,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               const SizedBox(
-                height: 40,
+                height: 30,
               ),
               Textform(),
               const SizedBox(
-                height: 40,
+                height: 30,
               ),
               const Passtextform(),
               const SizedBox(
-                height: 90,
+                height: 80,
               ),
               Signinbutton(),
               const SizedBox(
