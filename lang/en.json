@@ -10,5 +10,12 @@
   "reload_screen": "Reload Screen",
   "want_to_logout": "Do you want to logout ?",
   "logout": "Logout",
-  "signin": "Sign in"
+
+  "signin": "Sign in",
+  "email": "Email",
+  "password": "Password",
+  "create_new_account": "Create a new account?",
+  "required": " * Required",
+  "invalid_email": " * Invalid email",
+  "at_least_8_chars": " * At least 8 characters"
 }
