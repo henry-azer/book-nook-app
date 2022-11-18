@@ -1,9 +1,9 @@
 import 'package:book_nook_app/core/utils/app_colors.dart';
 import 'package:book_nook_app/core/utils/assets_manager.dart';
-import 'package:book_nook_app/features/login/Presentation/widgets/Signin_Button.dart';
+import 'package:book_nook_app/core/widgets/buttons/button_form.dart';
+import 'package:book_nook_app/core/widgets/text_form/Textfield.dart';
 import 'package:book_nook_app/features/login/Presentation/widgets/text_button.dart';
-import 'package:book_nook_app/features/login/Presentation/widgets/text_form_field_email.dart';
-import 'package:book_nook_app/features/login/Presentation/widgets/text_form_field_password.dart';
+
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -41,19 +41,26 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               const SizedBox(
-                height: 30,
+                height: 60,
               ),
-              Textform(),
+              TextFieldForm(
+                label: 'Email',
+                keyboardType: TextInputType.emailAddress,
+              ),
               const SizedBox(
                 height: 30,
-
-
               ),
-              const Passtextform(),
+              TextFieldForm(
+                label: 'Password',
+                keyboardType: TextInputType.visiblePassword,
+              ),
               const SizedBox(
                 height: 80,
               ),
-              Signinbutton(),
+              Padding(
+                padding: const EdgeInsets.only(left: 15),
+                child: const ButtonForm(),
+              ),
               const SizedBox(
                 height: 40,
               ),
