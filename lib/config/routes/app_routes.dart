@@ -4,36 +4,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/utils/app_strings.dart';
-import '../../features/random_quote/presentation/cubit/random_quote_cubit.dart';
-import '../../features/random_quote/presentation/screens/quote_screen.dart';
 import '../../features/splash/presentation/screens/splash_screen.dart';
 
 class Routes {
-  static const String initialRoute = '/';
-  static const String signinRoute = '/signin';
-  static const String randomQuoteRoute = '/randomQuote';
+  static const String initial = '/';
+  static const String signin = '/signin';
 }
 
 class AppRoutes {
   static Route? onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
-      case Routes.initialRoute:
+      case Routes.initial:
         return MaterialPageRoute(builder: (context) {
           return const SplashScreen();
         });
 
-      case Routes.signinRoute:
+      case Routes.signin:
         return MaterialPageRoute(builder: (context) {
           return const SigninScreen();
         });
 
-      case Routes.randomQuoteRoute:
-        return MaterialPageRoute(builder: ((context) {
-          return BlocProvider(
-            create: ((context) => di.sl<RandomQuoteCubit>()),
-            child: const QuoteScreen(),
-          );
-        }));
       default:
         return undefinedRoute();
     }
