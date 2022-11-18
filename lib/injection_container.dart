@@ -5,13 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'core/api/api_consumer.dart';
 import 'core/api/app_interceptors.dart';
 import 'core/api/dio_consumer.dart';
-import 'core/network/netwok_info.dart';
-import 'features/random_quote/data/datasources/random_quote_local_data_source.dart';
-import 'features/random_quote/data/datasources/random_quote_remote_data_source.dart';
-import 'features/random_quote/data/repositories/quote_repository_impl.dart';
-import 'features/random_quote/domain/repositories/quote_repository.dart';
-import 'features/random_quote/domain/usecases/get_random_quote.dart';
-import 'features/random_quote/presentation/cubit/random_quote_cubit.dart';
+import 'core/network/network_info.dart';
 import 'features/splash/data/datasources/lang_local_data_source.dart';
 import 'features/splash/data/repositories/lang_repository_impl.dart';
 import 'features/splash/domain/repositories/lang_repository.dart';
@@ -25,38 +19,20 @@ Future<void> init() async {
   //! Features
 
   // Blocs
-  sl.registerFactory<RandomQuoteCubit>(
-      () => RandomQuoteCubit(getRandomQuoteUseCase: sl()));
-  sl.registerFactory<LocaleCubit>(
-      () => LocaleCubit(getSavedLangUseCase: sl(), changeLangUseCase: sl()));
+  sl.registerFactory<LocaleCubit>(() => LocaleCubit(getSavedLangUseCase: sl(), changeLangUseCase: sl()));
 
   // Use cases
-  sl.registerLazySingleton<GetRandomQuote>(
-      () => GetRandomQuote(quoteRepository: sl()));
-  sl.registerLazySingleton<GetSavedLangUseCase>(
-      () => GetSavedLangUseCase(langRepository: sl()));
-  sl.registerLazySingleton<ChangeLangUseCase>(
-      () => ChangeLangUseCase(langRepository: sl()));
+  sl.registerLazySingleton<GetSavedLangUseCase>(() => GetSavedLangUseCase(langRepository: sl()));
+  sl.registerLazySingleton<ChangeLangUseCase>(() => ChangeLangUseCase(langRepository: sl()));
 
   // Repository
-  sl.registerLazySingleton<QuoteRepository>(() => QuoteRepositoryImpl(
-      networkInfo: sl(),
-      randomQuoteRemoteDataSource: sl(),
-      randomQuoteLocalDataSource: sl()));
-  sl.registerLazySingleton<LangRepository>(
-      () => LangRepositoryImpl(langLocalDataSource: sl()));
+  sl.registerLazySingleton<LangRepository>(() => LangRepositoryImpl(langLocalDataSource: sl()));
 
   // Data Sources
-  sl.registerLazySingleton<RandomQuoteLocalDataSource>(
-      () => RandomQuoteLocalDataSourceImpl(sharedPreferences: sl()));
-  sl.registerLazySingleton<RandomQuoteRemoteDataSource>(
-      () => RandomQuoteRemoteDataSourceImpl(apiConsumer: sl()));
-  sl.registerLazySingleton<LangLocalDataSource>(
-      () => LangLocalDataSourceImpl(sharedPreferences: sl()));
+  sl.registerLazySingleton<LangLocalDataSource>(() => LangLocalDataSourceImpl(sharedPreferences: sl()));
 
   //! Core
-  sl.registerLazySingleton<NetworkInfo>(
-      () => NetworkInfoImpl(connectionChecker: sl()));
+  sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(connectionChecker: sl()));
   sl.registerLazySingleton<ApiConsumer>(() => DioConsumer(client: sl()));
 
   //! External
