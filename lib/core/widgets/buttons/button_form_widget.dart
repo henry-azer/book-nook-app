@@ -1,10 +1,18 @@
 import 'package:book_nook_app/core/utils/assets_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../config/locale/app_localizations.dart';
+import '../../../features/splash/presentation/cubit/locale_cubit.dart';
 import '../../utils/app_colors.dart';
 
 class ButtonFormWidget extends StatefulWidget {
-  const ButtonFormWidget({Key? key}) : super(key: key);
+  final String text;
+  final TextStyle? textStyle;
+
+  const ButtonFormWidget(
+      {Key? key, required this.text, required this.textStyle})
+      : super(key: key);
 
   @override
   State<ButtonFormWidget> createState() => _ButtonFormWidgetState();
@@ -16,14 +24,21 @@ class _ButtonFormWidgetState extends State<ButtonFormWidget> {
     return SizedBox(
       height: 80,
       child: Stack(
+        alignment: Alignment.center,
         children: [
           Positioned(
             top: 3,
             child: SizedBox(
-              height: 48,
+              height: 49,
               width: 355,
               child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    if (AppLocalizations.of(context)!.isEnLocale) {
+                      BlocProvider.of<LocaleCubit>(context).toArabic();
+                    } else if (AppLocalizations.of(context)!.isArLocale) {
+                      BlocProvider.of<LocaleCubit>(context).toEnglish();
+                    }
+                  },
                   style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all(AppColors.button),
@@ -32,23 +47,32 @@ class _ButtonFormWidgetState extends State<ButtonFormWidget> {
                         borderRadius: BorderRadius.circular(25.0),
                       ))),
                   child: Text(
-                    "Sign in",
-                    style: Theme.of(context).textTheme.bodyMedium,
+                    widget.text,
+                    style: widget.textStyle,
                   )),
             ),
           ),
-          Positioned(
-            top: -30,
-            right: 15,
-            child: AnimatedContainer(
-              duration: const Duration(milliseconds: 500),
+          if (AppLocalizations.of(context)!.isEnLocale) ...[
+            Positioned(
+              top: -30,
+              right: 15,
               child: Image.asset(
                 ImgAssets.bookmarkIcon,
                 width: 100,
                 height: 105,
               ),
             ),
-          ),
+          ] else if (AppLocalizations.of(context)!.isArLocale) ...[
+            Positioned(
+              top: -30,
+              left: 40,
+              child: Image.asset(
+                ImgAssets.bookmarkIcon,
+                width: 100,
+                height: 105,
+              ),
+            ),
+          ],
         ],
       ),
     );
