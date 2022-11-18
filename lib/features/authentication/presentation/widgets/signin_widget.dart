@@ -1,5 +1,7 @@
+import 'package:book_nook_app/config/locale/app_localizations.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/utils/app_text_style.dart';
 import '../../../../core/widgets/logo_widget.dart';
 
 class SigninWidget extends StatefulWidget {
@@ -21,8 +23,8 @@ class _SigninWidgetState extends State<SigninWidget> {
               children: [
                 const LogoWidget(width: 220, height: 220),
                 Text(
-                  "Sign in",
-                  style: Theme.of(context).textTheme.bodyLarge,
+                  AppLocalizations.of(context)!.translate('signin')!,
+                  style: AppTextStyle.title,
                 ),
               ],
             ),

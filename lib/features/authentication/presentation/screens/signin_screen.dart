@@ -13,9 +13,8 @@ class SigninScreen extends StatefulWidget {
 class _SigninScreenState extends State<SigninScreen> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        theme: Theme.of(context),
-        home: Scaffold(
+    return Material(
+        child: Scaffold(
           body: SingleChildScrollView(
             child: Column(
               children: const [SigninWidget(), SigninFormWidget()],
