@@ -4,7 +4,6 @@ import 'dart:ui';
 import 'package:book_nook_app/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_animations/animation_builder/custom_animation_builder.dart';
-import 'package:simple_animations/animation_builder/loop_animation_builder.dart';
 import 'package:simple_animations/animation_builder/play_animation_builder.dart';
 import 'package:simple_animations/movie_tween/movie_tween.dart';
 
