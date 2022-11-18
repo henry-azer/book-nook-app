@@ -56,10 +56,6 @@ class _SplashScreenState extends State<SplashScreen> {
               begin: const Duration(seconds: 1),
               duration: const Duration(seconds: 5))
           .tween('height', Tween(begin: 0.0, end: 240.0));
-    // ..scene(
-    //         begin: const Duration(milliseconds: 0),
-    //         duration: const Duration(milliseconds: 3000))
-    //     .tween('color', ColorTween(begin: Colors.red, end: Colors.blue));
     return Scaffold(
       backgroundColor: AppColors.appBackgroundColor,
       body: Center(
@@ -70,10 +66,6 @@ class _SplashScreenState extends State<SplashScreen> {
               tween: Tween(begin: 170.0, end: 280.0),
               duration: const Duration(seconds: 2),
               startPosition: 0,
-              // control: Control.mirror,
-              // tween: Tween(begin: 130.0, end: 230.0),
-              // duration: const Duration(seconds: 2),
-              // startPosition: 0,
               builder: (context, value, child) {
                 return Positioned(
                   top: -value / 3,
@@ -95,8 +87,6 @@ class _SplashScreenState extends State<SplashScreen> {
                   ),
                 );
               },
-              // duration: const Duration(seconds: 20),
-              // startPosition: 0,
             ),
             PlayAnimationBuilder<Movie>(
               tween: tween1,
@@ -147,9 +137,6 @@ class _SplashScreenState extends State<SplashScreen> {
                   ),
                 );
               },
-              // duration: const Duration(seconds: 5),
-              // tween: Tween(begin: 100.0, end: 200.0),
-              // startPosition: 0,
             ),
             CustomAnimationBuilder<double>(
               control: Control.mirror,
@@ -182,9 +169,6 @@ class _SplashScreenState extends State<SplashScreen> {
                   ),
                 );
               },
-              // duration: const Duration(seconds: 9),
-              // tween: Tween(begin: 100.0, end: 200.0),
-              // startPosition: 0,
             ),
             CustomAnimationBuilder<double>(
               control: Control.mirror,
@@ -215,6 +199,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             CustomAnimationBuilder<double>(
               control: Control.mirror,
+              tween: Tween(begin: 100.0, end: 250.0),
               duration: const Duration(seconds: 2),
               startPosition: 0,
               builder: (BuildContext context, value, Widget? child) {
@@ -237,8 +222,6 @@ class _SplashScreenState extends State<SplashScreen> {
                   ),
                 );
               },
-              tween: Tween(begin: 100.0, end: 250.0),
-              // startPosition: 0,
             ),
             CustomAnimationBuilder<double>(
               control: Control.mirror,
