@@ -22,6 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
         children: [
           Column(
             children: [
+
               Padding(
                 padding: const EdgeInsets.only(left: 92, right: 92, top: 48),
                 child: Image.asset(
