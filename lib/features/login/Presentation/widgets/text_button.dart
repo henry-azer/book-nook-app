@@ -19,8 +19,8 @@ class _TexButtonState extends State<TexButton> {
               color: AppColors.white,
               fontFamily: 'Barlow-Black.ttf',
               fontWeight: FontWeight.normal,
-              fontSize: 15 ,
-          decoration: TextDecoration.underline),
+              fontSize: 15,
+              decoration: TextDecoration.underline),
         ));
   }
 }
