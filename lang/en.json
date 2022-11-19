@@ -9,5 +9,14 @@
   "something_went_wrong": "Something Went Wrong",
   "reload_screen": "Reload Screen",
   "want_to_logout": "Do you want to logout ?",
-  "logout": "Logout"
+  "logout": "Logout",
+
+  "signin": "Sign in",
+  "email": "Email",
+  "password": "Password",
+  "rememberme": "Remember me",
+  "create_new_account": "Create a new account?",
+  "required": " * Required",
+  "invalid_email": " * Invalid email",
+  "at_least_8_chars": " * At least 8 characters"
 }

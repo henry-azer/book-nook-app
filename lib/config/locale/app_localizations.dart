@@ -1,8 +1,6 @@
-import 'dart:convert' show json;
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import 'dart:convert' show json;
 import 'app_localizations_delegate.dart';
 
 class AppLocalizations {
@@ -28,6 +26,8 @@ class AppLocalizations {
   }
 
   String? translate(String key) => _localizedStrings[key];
+
+  bool get isArLocale => locale.languageCode == 'ar';
 
   bool get isEnLocale => locale.languageCode == 'en';
 }

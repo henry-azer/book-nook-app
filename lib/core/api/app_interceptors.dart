@@ -1,12 +1,21 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import '../utils/app_strings.dart';
+import 'app_authentication.dart';
 
-class AppIntercepters extends Interceptor {
+class AppInterceptors extends Interceptor {
+  final AppAuthentication appAuthentication;
+
+  AppInterceptors(this.appAuthentication);
+
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     debugPrint('REQUEST[${options.method}] => PATH: ${options.path}');
     options.headers[AppStrings.contentType] = AppStrings.applicationJson;
+    if (appAuthentication.isUserAuthenticated()) {
+      options.headers[AppStrings.authorization] =
+          'Bearer ${appAuthentication.getBearerToken()}';
+    }
     super.onRequest(options, handler);
   }
 
