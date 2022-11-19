@@ -9,6 +9,8 @@ environment:
   sdk: '>=2.18.2 <3.0.0'
 
 dependencies:
+  im_animations: ^0.1.2
+  circular_reveal_animation: ^2.0.1
   simple_animations: ^5.0.0+2
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
@@ -30,6 +32,8 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
+dependency_overrides:
+  firebase_messaging_platform_interface: 3.1.6
 
 flutter:
 

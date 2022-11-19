@@ -29,6 +29,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.1"
+  circular_reveal_animation:
+    dependency: "direct main"
+    description:
+      name: circular_reveal_animation
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.1"
   clock:
     dependency: transitive
     description:
@@ -92,6 +99,34 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.1.4"
+  firebase_core:
+    dependency: transitive
+    description:
+      name: firebase_core
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.24.0"
+  firebase_core_platform_interface:
+    dependency: transitive
+    description:
+      name: firebase_core_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.5.2"
+  firebase_core_web:
+    dependency: transitive
+    description:
+      name: firebase_core_web
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.7.3"
+  firebase_messaging_platform_interface:
+    dependency: "direct overridden"
+    description:
+      name: firebase_messaging_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.1.6"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -161,6 +196,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.2"
+  im_animations:
+    dependency: "direct main"
+    description:
+      name: im_animations
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.2"
   internet_connection_checker:
     dependency: "direct main"
     description:
