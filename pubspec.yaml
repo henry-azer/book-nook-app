@@ -24,7 +24,7 @@ dependencies:
   http: ^0.13.4
   internet_connection_checker: ^0.0.1+4
   shared_preferences: ^2.0.15
-  form_field_validator: ^1.1.0
+  loading_animation_widget: ^1.2.0+3
 
 dev_dependencies:
   flutter_lints: ^2.0.0
