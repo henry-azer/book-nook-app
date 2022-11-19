@@ -1,17 +1,14 @@
-import 'package:book_nook_app/core/utils/assets_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../config/locale/app_localizations.dart';
-import '../../../features/splash/presentation/cubit/locale_cubit.dart';
 import '../../utils/app_colors.dart';
+import '../../utils/assets_manager.dart';
 
 class ButtonFormWidget extends StatefulWidget {
-  final String text;
-  final TextStyle? textStyle;
+  final Widget? child;
+  final Function onPress;
 
-  const ButtonFormWidget(
-      {Key? key, required this.text, required this.textStyle})
+  const ButtonFormWidget({Key? key, required this.child, required this.onPress})
       : super(key: key);
 
   @override
@@ -32,24 +29,18 @@ class _ButtonFormWidgetState extends State<ButtonFormWidget> {
               height: 49,
               width: 355,
               child: ElevatedButton(
-                  onPressed: () {
-                    if (AppLocalizations.of(context)!.isEnLocale) {
-                      BlocProvider.of<LocaleCubit>(context).toArabic();
-                    } else if (AppLocalizations.of(context)!.isArLocale) {
-                      BlocProvider.of<LocaleCubit>(context).toEnglish();
-                    }
-                  },
-                  style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(AppColors.button),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25.0),
-                      ))),
-                  child: Text(
-                    widget.text,
-                    style: widget.textStyle,
-                  )),
+                onPressed: () {
+                  widget.onPress.call();
+                },
+                style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all(AppColors.button),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25.0),
+                    ))),
+                child: widget.child,
+              ),
             ),
           ),
           if (AppLocalizations.of(context)!.isEnLocale) ...[

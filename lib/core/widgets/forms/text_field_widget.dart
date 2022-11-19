@@ -14,6 +14,7 @@ class TextFieldWidget extends StatefulWidget {
   final bool secureText;
   final String validateType;
   final TextInputType keyboardType;
+  final FormFieldSetter onSave;
 
   const TextFieldWidget(
       {Key? key,
@@ -25,7 +26,8 @@ class TextFieldWidget extends StatefulWidget {
       required this.errorBorderColor,
       required this.secureText,
       required this.validateType,
-      required this.keyboardType})
+      required this.keyboardType,
+      required this.onSave})
       : super(key: key);
 
   @override
@@ -44,6 +46,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
       autocorrect: false,
       enableSuggestions: false,
       style: widget.labelStyle,
+      onSaved: widget.onSave,
       decoration: InputDecoration(
           labelText: widget.label,
           floatingLabelStyle: TextStyle(color: AppColors.fontPrimary),
@@ -81,7 +84,9 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
         validation = ValidateTextFiled.validate(value, widget.validateType)!;
       },
       validator: (value) {
-        return validation == "" ? null : AppLocalizations.of(context)!.translate(validation)!;
+        return validation == ""
+            ? null
+            : AppLocalizations.of(context)!.translate(validation)!;
       },
     );
   }
