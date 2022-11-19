@@ -1,3 +1,4 @@
+import 'package:book_nook_app/features/authentication/presentation/cubit/signin_cubit.dart';
 import 'package:book_nook_app/features/authentication/presentation/screens/signin_screen.dart';
 import 'package:book_nook_app/injection_container.dart' as di;
 import 'package:flutter/material.dart';
@@ -21,7 +22,10 @@ class AppRoutes {
 
       case Routes.signin:
         return MaterialPageRoute(builder: (context) {
-          return const SigninScreen();
+          return BlocProvider(
+            create: ((context) => di.sl<SigninCubit>()),
+            child: const SigninScreen(),
+          );
         });
 
       default:

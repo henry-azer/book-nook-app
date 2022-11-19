@@ -18,7 +18,7 @@ class _SigninWidgetState extends State<SigninWidget> {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 65, horizontal: 0),
+            padding: const EdgeInsets.only(top: 65, bottom: 40),
             child: Column(
               children: [
                 const LogoWidget(width: 220, height: 220),
