@@ -16,7 +16,6 @@ class ValidateTextFiled {
         {
           return _validateSigninPassword(value!);
         }
-
       default:
         return null;
     }
@@ -24,26 +23,27 @@ class ValidateTextFiled {
 }
 
 String? _validateEmail(String value) {
-  if (!_isValidEmail(value)) {
-    return "invalid_email";
-  } else if (value.trim() == "") {
+  if (value.trim() == "") {
     return "required";
+  } else if (!_isValidEmail(value)) {
+    return "invalid_email";
   } else {
     return "";
   }
 }
 
 String? _validateSigninPassword(String value) {
-  if (value.length < 8) {
-    return "at_least_8_chars";
-  } else if (value.trim() == "") {
+  if (value.trim() == "") {
     return "required";
+  } else if (value.length < 8) {
+    return "at_least_8_chars";
   } else {
     return "";
   }
 }
 
 bool _isValidEmail(String value) {
-  return RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+  return RegExp(
+          r"^[a-zA-Z0-9.a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
       .hasMatch(value);
 }
