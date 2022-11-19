@@ -7,9 +7,10 @@ ThemeData appTheme() {
   return ThemeData(
       backgroundColor: AppColors.background,
       primaryColor: AppColors.background,
-      hintColor: AppColors.hint,
+      hintColor: AppColors.white,
       brightness: Brightness.light,
       scaffoldBackgroundColor: AppColors.background,
+      unselectedWidgetColor: AppColors.white,
       appBarTheme: const AppBarTheme(
           centerTitle: true,
           color: Colors.transparent,
