@@ -14,6 +14,7 @@
   "signin": "تسجيل الدخول",
   "email": "البريد الالكتروني",
   "password": "الرقم السري",
+  "rememberme": "تذكرني",
   "create_new_account": "انشاء مستخدم جديد؟",
   "required": " * مطلوب",
   "invalid_email": " * بريد إلكتروني خاطئ",
