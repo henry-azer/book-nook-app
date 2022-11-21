@@ -5,20 +5,26 @@ import 'package:book_nook_app/core/utils/app_colors.dart';
 import 'package:book_nook_app/core/widgets/circles_with_anitmation_widget.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../config/routes/app_routes.dart';
+
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashScreenState extends State<SplashScreen>
+    with SingleTickerProviderStateMixin<SplashScreen> {
   late Timer _timer;
 
-  _goNext() => {};
+  _goNext() =>
+      Navigator.pushReplacementNamed(context, Routes.welcomeQuoteRoute);
 
   _startDelay() {
-    _timer = Timer(const Duration(milliseconds: 2000), () => _goNext());
+    _timer = Timer(const Duration(milliseconds: 7000), () => _goNext());
   }
 
   @override
@@ -46,6 +52,7 @@ class _SplashScreenState extends State<SplashScreen> {
               width: 150,
               topPostion: -50,
               leftPostion: -50,
+              beatsPerMinute: 5,
             ),
             CirclesWithAnimation(
               color: AppColors.appLightBlueColor,
@@ -53,6 +60,7 @@ class _SplashScreenState extends State<SplashScreen> {
               height: 280,
               topPostion: 150,
               leftPostion: -70,
+              beatsPerMinute: 4,
             ),
             CirclesWithAnimation(
               color: AppColors.appBeigeColor,
@@ -60,6 +68,7 @@ class _SplashScreenState extends State<SplashScreen> {
               height: 90,
               topPostion: 265,
               leftPostion: -10,
+              beatsPerMinute: 7,
             ),
             CirclesWithAnimation(
               color: AppColors.appBeigeColor,
@@ -67,6 +76,7 @@ class _SplashScreenState extends State<SplashScreen> {
               height: 200,
               topPostion: 550,
               leftPostion: -30,
+              beatsPerMinute: 10,
             ),
             CirclesWithAnimation(
               color: AppColors.appBeigeColor,
@@ -74,6 +84,7 @@ class _SplashScreenState extends State<SplashScreen> {
               height: 150,
               topPostion: 100,
               leftPostion: 280,
+              beatsPerMinute: 3,
             ),
             CirclesWithAnimation(
               color: AppColors.appLightBlueColor,
@@ -81,6 +92,7 @@ class _SplashScreenState extends State<SplashScreen> {
               height: 170,
               topPostion: 400,
               leftPostion: 160,
+              beatsPerMinute: 9,
             ),
             CirclesWithAnimation(
               color: AppColors.appLightBlueColor,
@@ -88,6 +100,7 @@ class _SplashScreenState extends State<SplashScreen> {
               height: 50,
               topPostion: 600,
               leftPostion: 300,
+              beatsPerMinute: 6,
             ),
             BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),

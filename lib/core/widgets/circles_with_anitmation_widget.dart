@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:im_animations/im_animations.dart';
 
-class CirclesWithAnimation extends StatelessWidget {
+class CirclesWithAnimation extends StatefulWidget {
   final Color color;
   final double width;
   final double height;
   final double topPostion;
   final double leftPostion;
+  final int beatsPerMinute;
 
   const CirclesWithAnimation({
     super.key,
@@ -15,26 +16,34 @@ class CirclesWithAnimation extends StatelessWidget {
     required this.height,
     required this.topPostion,
     required this.leftPostion,
+    required this.beatsPerMinute,
   });
 
   @override
+  State<CirclesWithAnimation> createState() => _CirclesWithAnimationState();
+}
+
+class _CirclesWithAnimationState extends State<CirclesWithAnimation>
+    with SingleTickerProviderStateMixin {
+  @override
   Widget build(BuildContext context) {
     return Positioned(
-      top: topPostion,
-      left: leftPostion,
+      top: widget.topPostion,
+      left: widget.leftPostion,
       child: HeartBeat(
-        beatsPerMinute: 10,
+        beatsPerMinute: widget.beatsPerMinute,
         child: Container(
-          width: width,
-          height: height,
+          width: widget.width,
+          height: widget.height,
           decoration: BoxDecoration(
-            color: color,
+            color: widget.color,
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(
-                  blurRadius: 6,
-                  offset: const Offset(2, 7),
-                  color: color.withOpacity(0.3))
+                blurRadius: 6,
+                offset: const Offset(2, 7),
+                color: widget.color.withOpacity(0.3),
+              )
             ],
           ),
         ),
