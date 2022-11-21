@@ -8,4 +8,5 @@ class AppColors {
   static Color appBackgroundColor = HexColor('#000020');
   static Color appBeigeColor = HexColor('#E8C39E');
   static Color appLightBlueColor = HexColor('#2F2C79');
+  static Color white = HexColor('#FFFFFF');
 }
