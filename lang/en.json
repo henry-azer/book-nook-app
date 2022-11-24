@@ -11,6 +11,11 @@
   "want_to_logout": "Do you want to logout ?",
   "logout": "Logout",
 
+  "welcome_title" : "Enjoy Watching \nthe whole world\n",
+  "welcome_description" : "Enjoy the best recommendations, books collection,\nbooks authors’ and all books information.",
+  "welcome_span" : "Discover the whole world",
+  "welcome_start" : "Let's start",
+
   "signin": "Sign in",
   "email": "Email",
   "password": "Password",

@@ -47,4 +47,26 @@ class AppTextStyle with Diagnosticable {
     color: AppColors.fontPrimary,
     fontFamily: AppStrings.fontFamilyBarlow,
   );
+
+  static TextStyle? welcomeTitle = TextStyle(
+    fontSize: 35,
+    fontWeight: FontWeight.w700,
+    color: AppColors.fontSecondary,
+    fontFamily: AppStrings.fontFamilyComfortaa,
+  );
+
+  static TextStyle? welcomeTitleDescription = TextStyle(
+    fontSize: 15,
+    fontWeight: FontWeight.w400,
+    color: AppColors.fontPrimary,
+    fontFamily: AppStrings.fontFamilyBarlow,
+  );
+
+  static TextStyle? welcomeTitleSpan = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w400,
+    color: AppColors.fontPrimary,
+    fontFamily: AppStrings.fontFamilyBarlow,
+  );
+
 }
