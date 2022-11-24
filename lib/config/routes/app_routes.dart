@@ -6,9 +6,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/utils/app_strings.dart';
 import '../../features/splash/presentation/screens/splash_screen.dart';
+import '../../features/splash/presentation/screens/welcome_screen.dart';
 
 class Routes {
   static const String initial = '/';
+  static const String welcome = '/welcome';
   static const String signin = '/signin';
 }
 
@@ -18,6 +20,11 @@ class AppRoutes {
       case Routes.initial:
         return MaterialPageRoute(builder: (context) {
           return const SplashScreen();
+        });
+
+      case Routes.welcome:
+        return MaterialPageRoute(builder: (context) {
+          return const WelcomeScreen();
         });
 
       case Routes.signin:
