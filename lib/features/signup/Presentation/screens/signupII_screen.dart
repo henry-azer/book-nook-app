@@ -14,6 +14,7 @@ import '../../../../config/routes/app_routes.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/constants.dart';
 import '../../../../core/widgets/buttons/button_form_widget.dart';
+
 class SignupIIScreen extends StatefulWidget {
   const SignupIIScreen({Key? key}) : super(key: key);
 
@@ -26,14 +27,11 @@ class _SignupIIScreenState extends State<SignupIIScreen> {
   Widget build(BuildContext context) {
     return Material(
         child: Scaffold(
-          body: SingleChildScrollView(
-            child: Column(
-              children: const [
-                SignupWidget(),
-                SignupIIFormWidget()
-              ],
-            ),
-          ),
-        ));
+      body: SingleChildScrollView(
+        child: Column(
+          children: const [SignupWidget(), SignupIIFormWidget()],
+        ),
+      ),
+    ));
   }
 }

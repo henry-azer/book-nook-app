@@ -124,9 +124,11 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
                     }),
                     listener: ((context, state) {
                       if (state is SigninError) {
-                        Constants.showErrorDialog(context: context, message: state.message);
+                        Constants.showErrorDialog(
+                            context: context, message: state.message);
                       } else if (state is SigninSuccess) {
-                        Constants.showErrorDialog(context: context, message: "signin success");
+                        Constants.showErrorDialog(
+                            context: context, message: "signin success");
                       }
                     }),
                   ),
@@ -145,7 +147,8 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
                             message: AppStrings.emptyPasswordError);
                         return;
                       }
-                      BlocProvider.of<SigninCubit>(context).signin(email, password, rememberme);
+                      BlocProvider.of<SigninCubit>(context)
+                          .signin(email, password, rememberme);
                     }
                   },
                 )),
