@@ -1,47 +1,51 @@
 import 'package:equatable/equatable.dart';
 
-class ServerException extends Equatable implements Exception {
-  final String? message;
+import '../utils/app_strings.dart';
 
-  const ServerException([this.message]);
+class GenericException extends Equatable implements Exception {
+  final String message;
+
+  const GenericException({required this.message});
 
   @override
   List<Object?> get props => [message];
-
-  @override
-  String toString() {
-    return '$message';
-  }
 }
 
-class FetchDataException extends ServerException {
-  const FetchDataException([message]) : super("Error During Communication");
+class FetchDataException extends GenericException {
+  const FetchDataException([message])
+      : super(message: AppStrings.fetchDataException);
 }
 
-class BadRequestException extends ServerException {
-  const BadRequestException([message]) : super("Bad Request");
+class BadRequestException extends GenericException {
+  const BadRequestException([message])
+      : super(message: AppStrings.badRequestException);
 }
 
-class UnauthorizedException extends ServerException {
-  const UnauthorizedException([message]) : super("Unauthorized");
+class UnauthorizedException extends GenericException {
+  const UnauthorizedException([message])
+      : super(message: AppStrings.unauthorizedException);
 }
 
-class NotFoundException extends ServerException {
-  const NotFoundException([message]) : super("Requested Info Not Found");
+class NotFoundException extends GenericException {
+  const NotFoundException([message])
+      : super(message: AppStrings.notFoundException);
 }
 
-class ConflictException extends ServerException {
-  const ConflictException([message]) : super("Conflict Occurred");
+class ConflictException extends GenericException {
+  const ConflictException([message])
+      : super(message: AppStrings.conflictException);
 }
 
-class InternalServerErrorException extends ServerException {
+class InternalServerErrorException extends GenericException {
   const InternalServerErrorException([message])
-      : super("Internal Server Error");
+      : super(message: AppStrings.internalServerErrorException);
 }
 
-class NoInternetConnectionException extends ServerException {
+class NoInternetConnectionException extends GenericException {
   const NoInternetConnectionException([message])
-      : super("No Internet Connection");
+      : super(message: AppStrings.noNetworkConnectionException);
 }
 
-class CacheException implements Exception {}
+class CacheException extends GenericException {
+  const CacheException([message]) : super(message: AppStrings.cacheException);
+}

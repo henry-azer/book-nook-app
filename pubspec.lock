@@ -161,6 +161,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.2"
+  im_animations:
+    dependency: "direct main"
+    description:
+      name: im_animations
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.2"
   internet_connection_checker:
     dependency: "direct main"
     description:
@@ -189,6 +196,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
+  loading_animation_widget:
+    dependency: "direct main"
+    description:
+      name: loading_animation_widget
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.2.0+3"
   matcher:
     dependency: transitive
     description:

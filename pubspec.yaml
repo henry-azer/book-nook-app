@@ -24,6 +24,8 @@ dependencies:
   http: ^0.13.4
   internet_connection_checker: ^0.0.1+4
   shared_preferences: ^2.0.15
+  loading_animation_widget: ^1.2.0+3
+  im_animations: ^0.1.2
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -31,28 +33,37 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
-
   uses-material-design: true
 
   assets:
     - lang/ar.json
     - lang/en.json
-    - assets/images/quote.png
+    - assets/images/logo.png
+    - assets/images/bookmark-icon.png
 
   fonts:
-    - family: Tajawal
+    - family: Comfortaa
       fonts:
-        - asset: assets/fonts/Tajawal-Black.ttf
-          weight: 900
-        - asset: assets/fonts/Tajawal-ExtraBold.ttf
+        - asset: assets/fonts/Comfortaa-Bold.ttf
           weight: 800
-        - asset: assets/fonts/Tajawal-Bold.ttf
+        - asset: assets/fonts/Comfortaa-SemiBold.ttf
           weight: 700
-        - asset: assets/fonts/Tajawal-Medium.ttf
+        - asset: assets/fonts/Comfortaa-Medium.ttf
           weight: 500
-        - asset: assets/fonts/Tajawal-Regular.ttf
+        - asset: assets/fonts/Comfortaa-Regular.ttf
           weight: 400
-        - asset: assets/fonts/Tajawal-Light.ttf
-          weight: 300
-        - asset: assets/fonts/Tajawal-ExtraLight.ttf
+        - asset: assets/fonts/Comfortaa-Light.ttf
+          weight: 200
+
+    - family: Barlow
+      fonts:
+        - asset: assets/fonts/Barlow-Bold.ttf
+          weight: 800
+        - asset: assets/fonts/Barlow-SemiBold.ttf
+          weight: 700
+        - asset: assets/fonts/Barlow-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Barlow-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Barlow-Light.ttf
           weight: 200

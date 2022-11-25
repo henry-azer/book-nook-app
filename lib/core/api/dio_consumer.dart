@@ -30,7 +30,7 @@ class DioConsumer implements ApiConsumer {
       ..validateStatus = (status) {
         return status! < StatusCode.internalServerError;
       };
-    client.interceptors.add(di.sl<AppIntercepters>());
+    client.interceptors.add(di.sl<AppInterceptors>());
     if (kDebugMode) {
       client.interceptors.add(di.sl<LogInterceptor>());
     }
