@@ -2,7 +2,7 @@ import 'package:book_nook_app/features/authentication/presentation/widgets/signi
 import 'package:book_nook_app/features/signup/Presentation/widgets/signup_form_widget.dart';
 import 'package:flutter/material.dart';
 
-import '../widgets/signin_widget.dart';
+import '../widgets/signup_widget.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
