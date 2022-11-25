@@ -16,14 +16,14 @@ class _SignupScreenState extends State<SignupScreen> {
   Widget build(BuildContext context) {
     return Material(
         child: Scaffold(
-          body: SingleChildScrollView(
-            child: Column(
-              children: const [
-                SignupWidget(),
-                SignupFormWidget(),
-              ],
-            ),
-          ),
-        ));
+      body: SingleChildScrollView(
+        child: Column(
+          children: const [
+            SignupWidget(),
+            SignupFormWidget(),
+          ],
+        ),
+      ),
+    ));
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/utils/app_text_style.dart';
 import '../../../../core/widgets/logo_widget.dart';
+
 class SignupWidget extends StatefulWidget {
   const SignupWidget({Key? key}) : super(key: key);
 
