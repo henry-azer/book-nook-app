@@ -23,7 +23,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                 const LogoWidget(width: 220, height: 220),
                 Text(
                   //AppLocalizations.of(context)!.translate('signup')!,
-                  "Signup",
+                  "Sign up",
                   style: AppTextStyle.title,
                 ),
               ],

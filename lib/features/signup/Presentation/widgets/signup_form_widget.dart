@@ -30,7 +30,7 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
   late String phonenumber;
   Text signinTextWidget() {
     return Text(
-      AppLocalizations.of(context)!.translate('signup')!,
+      "sign up",
       style: AppTextStyle.button,
     );
   }
