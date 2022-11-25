@@ -7,7 +7,6 @@ import 'package:book_nook_app/features/authentication/presentation/cubit/signin_
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-
 import '../../../../config/locale/app_localizations.dart';
 import '../../../../config/routes/app_routes.dart';
 import '../../../../core/utils/app_strings.dart';
@@ -171,6 +170,15 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
                     onSave: (value) {
                       phonenumber = value;
                     })),
+            Center(
+              child: TextButton(
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, Routes.initial);
+                },
+                child: Text("Have already account ?",
+                    style: AppTextStyle.textDecoration),
+              ),
+            ),
           ],
         ),
       ),
