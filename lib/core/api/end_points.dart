@@ -5,4 +5,5 @@ class EndPoints {
   // auth
   static const String signin = '$baseUrl/auth/log-in';
   static const String refreshToken = '$baseUrl/auth/refresh-token';
+  static const String currentUser = '$baseUrl/auth/current';
 }

@@ -1,5 +1,7 @@
 import 'package:book_nook_app/features/authentication/presentation/cubit/signin_cubit.dart';
 import 'package:book_nook_app/features/authentication/presentation/screens/signin_screen.dart';
+import 'package:book_nook_app/features/profile/presentation/cubit/profile_cubit.dart';
+import 'package:book_nook_app/features/profile/presentation/screens/profile_screen.dart';
 import 'package:book_nook_app/injection_container.dart' as di;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,6 +14,7 @@ class Routes {
   static const String initial = '/';
   static const String welcome = '/welcome';
   static const String signin = '/signin';
+  static const String profile = '/profile';
 }
 
 class AppRoutes {
@@ -21,7 +24,6 @@ class AppRoutes {
         return MaterialPageRoute(builder: (context) {
           return const SplashScreen();
         });
-
       case Routes.welcome:
         return MaterialPageRoute(builder: (context) {
           return const WelcomeScreen();
@@ -32,6 +34,14 @@ class AppRoutes {
           return BlocProvider(
             create: ((context) => di.sl<SigninCubit>()),
             child: const SigninScreen(),
+          );
+        });
+
+      case Routes.profile:
+        return MaterialPageRoute(builder: (context) {
+          return BlocProvider(
+            create: ((context) => di.sl<ProfileCubit>()),
+            child: const ProfileScreen(),
           );
         });
 

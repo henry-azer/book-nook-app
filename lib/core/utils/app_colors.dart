@@ -21,4 +21,8 @@ class AppColors {
 
   static Color black = HexColor('#000000');
   static Color white = HexColor('#FFFFFF');
+
+  static Color underlinePrimary = HexColor('#2F2C79');
+
+  static Color profileBarPrimary = HexColor('#2F2C79');
 }

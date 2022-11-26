@@ -4,6 +4,12 @@ import 'package:book_nook_app/features/authentication/data/datasources/signin_re
 import 'package:book_nook_app/features/authentication/domain/repositories/signin_repository.dart';
 import 'package:book_nook_app/features/authentication/domain/usecases/signin_usecase.dart';
 import 'package:book_nook_app/features/authentication/presentation/cubit/signin_cubit.dart';
+import 'package:book_nook_app/features/profile/data/datasources/profile_local_datasource.dart';
+import 'package:book_nook_app/features/profile/data/datasources/profile_remote_datasource.dart';
+import 'package:book_nook_app/features/profile/data/repositories/profile_repository_impl.dart';
+import 'package:book_nook_app/features/profile/domain/repositories/profile_repository.dart';
+import 'package:book_nook_app/features/profile/domain/usecases/profile_usecase.dart';
+import 'package:book_nook_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -27,18 +33,16 @@ Future<void> init() async {
 
   // Blocs
   sl.registerFactory<SigninCubit>(() => SigninCubit(signinUseCase: sl()));
+  sl.registerFactory<ProfileCubit>(() => ProfileCubit(profileUserCase: sl()));
 
-  sl.registerFactory<LocaleCubit>(
-      () => LocaleCubit(getSavedLangUseCase: sl(), changeLangUseCase: sl()));
+  sl.registerFactory<LocaleCubit>(() => LocaleCubit(getSavedLangUseCase: sl(), changeLangUseCase: sl()));
 
   // Use cases
-  sl.registerLazySingleton<SigninUseCase>(
-      () => SigninUseCase(signinRepository: sl()));
+  sl.registerLazySingleton<SigninUseCase>(() => SigninUseCase(signinRepository: sl()));
+  sl.registerLazySingleton<ProfileUseCase>(() => ProfileUseCase(profileRepository: sl()));
 
-  sl.registerLazySingleton<GetSavedLangUseCase>(
-      () => GetSavedLangUseCase(langRepository: sl()));
-  sl.registerLazySingleton<ChangeLangUseCase>(
-      () => ChangeLangUseCase(langRepository: sl()));
+  sl.registerLazySingleton<GetSavedLangUseCase>(() => GetSavedLangUseCase(langRepository: sl()));
+  sl.registerLazySingleton<ChangeLangUseCase>(() => ChangeLangUseCase(langRepository: sl()));
 
   // Repository
   sl.registerLazySingleton<SigninRepository>(() => SigninRepositoryImpl(
@@ -46,24 +50,25 @@ Future<void> init() async {
         signinLocalDataSource: sl(),
         signinRemoteDataSource: sl(),
       ));
+  sl.registerLazySingleton<ProfileRepository>(() => ProfileRepositoryImpl(
+    networkInfo: sl(),
+    profileLocalDataSource: sl(),
+    profileRemoteDataSource: sl(),
+  ));
 
-  sl.registerLazySingleton<LangRepository>(
-      () => LangRepositoryImpl(langLocalDataSource: sl()));
+  sl.registerLazySingleton<LangRepository>(() => LangRepositoryImpl(langLocalDataSource: sl()));
 
   // Data Sources
-  sl.registerLazySingleton<SigninLocalDataSource>(
-      () => SigninLocalDataSourceImpl(sharedPreferences: sl()));
-  sl.registerLazySingleton<SigninRemoteDataSource>(
-      () => SigninRemoteDataSourceImpl(apiConsumer: sl()));
+  sl.registerLazySingleton<SigninLocalDataSource>(() => SigninLocalDataSourceImpl(sharedPreferences: sl()));
+  sl.registerLazySingleton<SigninRemoteDataSource>(() => SigninRemoteDataSourceImpl(apiConsumer: sl()));
+  sl.registerLazySingleton<ProfileLocalDataSource>(() => ProfileLocalDataSourceImpl(sharedPreferences: sl()));
+  sl.registerLazySingleton<ProfileRemoteDataSource>(() => ProfileRemoteDataSourceImpl(apiConsumer: sl()));
 
-  sl.registerLazySingleton<LangLocalDataSource>(
-      () => LangLocalDataSourceImpl(sharedPreferences: sl()));
+  sl.registerLazySingleton<LangLocalDataSource>(() => LangLocalDataSourceImpl(sharedPreferences: sl()));
 
   //! Core
-  sl.registerLazySingleton<AppAuthentication>(
-      () => AppAuthenticationImpl(sharedPreferences: sl()));
-  sl.registerLazySingleton<NetworkInfo>(
-      () => NetworkInfoImpl(connectionChecker: sl()));
+  sl.registerLazySingleton<AppAuthentication>(() => AppAuthenticationImpl(sharedPreferences: sl()));
+  sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(connectionChecker: sl()));
   sl.registerLazySingleton<ApiConsumer>(() => DioConsumer(client: sl()));
 
   //! External

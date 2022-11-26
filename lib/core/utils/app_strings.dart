@@ -22,7 +22,8 @@ class AppStrings {
   static const String cachedRememberMe = "CACHED_REMEMBER_ME";
   static const String cachedSigninClaims = "CACHED_SIGNIN_CLAIMS";
   static const String cachedIsAuthenticated = "CACHED_IS_AUTHENTICATED";
-  static const String cachedAccessTokenExpireTime = "CACHED_ACCESS_TOKEN_EXPIRE_TIME";
+  static const String cachedIsUserLogging = "CACHED_IS_USER_LOGGING";
+  static const String cachedCurrentUser = "CACHED_CURRENT_USER";
 
   static const String boolTrue = "true";
   static const String boolFalse = "false";
@@ -42,4 +43,5 @@ class AppStrings {
   static const String fetchDataException = "Fetch Date Error";
   static const String internalServerErrorException = "Internal Server Error";
   static const String noNetworkConnectionException = "No Internet Connection";
+
 }
