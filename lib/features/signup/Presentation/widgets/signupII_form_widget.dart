@@ -58,7 +58,7 @@ class _SignupFormIIWidgetState extends State<SignupFormIIWidget> {
                       email = value;
                     })),
             SizedBox(
-              height: 40,
+              height: 20,
             ),
             Padding(
                 padding: const EdgeInsets.fromLTRB(22, 20, 22, 0),
@@ -76,7 +76,7 @@ class _SignupFormIIWidgetState extends State<SignupFormIIWidget> {
                       password = value;
                     })),
             SizedBox(
-              height: 40,
+              height: 20,
             ),
             Padding(
                 padding: const EdgeInsets.fromLTRB(22, 20, 22, 0),
@@ -93,7 +93,42 @@ class _SignupFormIIWidgetState extends State<SignupFormIIWidget> {
                     onSave: (value) {
                       confirmpassword = value;
                     })),
-
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ButtonFormWidget(
+                  child: Text(
+                    "Sign up",
+                    style: AppTextStyle.button,
+                  ),
+                  onPress: () {
+                    if (_formkey.currentState!.validate()) {
+                      _formkey.currentState?.save();
+                      if (email.isEmpty) {
+                        Constants.showErrorDialog(
+                            context: context,
+                            message: AppStrings.emptyEmailError);
+                        return;
+                      }
+                      if (password.isEmpty) {
+                        Constants.showErrorDialog(
+                            context: context,
+                            message: AppStrings.emptyPasswordError);
+                        return;
+                      }
+                      if (confirmpassword.isEmpty) {
+                        Constants.showErrorDialog(
+                            context: context, message: AppStrings.required);
+                        return;
+                      }
+                      print(email);
+                      print(password);
+                      print(confirmpassword);
+                    }
+                  }),
+            ),
           ],
         ),
       ),

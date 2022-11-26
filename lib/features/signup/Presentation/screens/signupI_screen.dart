@@ -18,7 +18,7 @@ class _SignupScreenState extends State<SignupScreen> {
         child: Scaffold(
       body: SingleChildScrollView(
         child: Column(
-          children: const [
+          children: const <Widget>[
             SignupWidget(),
             SignupFormIWidget(),
           ],

@@ -194,20 +194,17 @@ class _SignupFormIWidgetState extends State<SignupFormIWidget> {
                       }
                       if (birthdatdd.isEmpty) {
                         Constants.showErrorDialog(
-                            context: context,
-                            message: AppStrings.required);
+                            context: context, message: AppStrings.required);
                         return;
                       }
                       if (birthdatemm.isEmpty) {
                         Constants.showErrorDialog(
-                            context: context,
-                            message: AppStrings.required);
+                            context: context, message: AppStrings.required);
                         return;
                       }
                       if (birthdateyyyy.isEmpty) {
                         Constants.showErrorDialog(
-                            context: context,
-                            message: AppStrings.required);
+                            context: context, message: AppStrings.required);
                         return;
                       }
                       if (phonenumber.isEmpty) {
