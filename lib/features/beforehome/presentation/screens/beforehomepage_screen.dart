@@ -14,11 +14,14 @@ class _BeforeHomePageScreenState extends State<BeforeHomePageScreen> {
   Widget build(BuildContext context) {
     return Material(
         child: Scaffold(
-          body: SingleChildScrollView(
-            child: Column(
-              children: const [BeforeHomeWidget(), BeforeWidget()],
-            ),
-          ),
-        ));
+      body: SingleChildScrollView(
+        child: Column(
+          children: const [
+            BeforeHomeWidget(),
+            BeforeWidget(),
+          ],
+        ),
+      ),
+    ));
   }
 }

@@ -29,7 +29,10 @@ class _BeforeWidgetState extends State<BeforeWidget> {
       child: Column(
         //mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text("Hello," , style: AppTextStyle.title,),
+          Text(
+            "Hello,",
+            style: AppTextStyle.title,
+          ),
           Text(
             "We choose our books specially for you \n                  with all our careness",
             style: AppTextStyle.fieldLabel,
