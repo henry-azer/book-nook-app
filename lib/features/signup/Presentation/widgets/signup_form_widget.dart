@@ -13,20 +13,20 @@ import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/constants.dart';
 import '../../../../core/widgets/buttons/button_form_widget.dart';
 
-class SignupFormWidget extends StatefulWidget {
-  const SignupFormWidget({Key? key}) : super(key: key);
+class SignupFormIWidget extends StatefulWidget {
+  const SignupFormIWidget({Key? key}) : super(key: key);
 
   @override
-  State<SignupFormWidget> createState() => _SignupFormWidgetState();
+  State<SignupFormIWidget> createState() => _SignupFormIWidgetState();
 }
 
-class _SignupFormWidgetState extends State<SignupFormWidget> {
+class _SignupFormIWidgetState extends State<SignupFormIWidget> {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   late String firstname;
   late String lastname;
-  late String birthdate_dd;
-  late String birthdate_mm;
-  late String birthdate_yyyy;
+  late String birthdatdd;
+  late String birthdatemm;
+  late String birthdateyyyy;
   late String phonenumber;
   Text signinTextWidget() {
     return Text(
@@ -55,14 +55,11 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
                     borderWidth: AppConstValues.borderWidth,
                     borderColor: AppColors.border,
                     errorBorderColor: AppColors.error,
-                    validateType: ValidationTypes.signupFname,
+                    validateType: ValidationTypes.signupFirstName,
                     secureText: false,
                     onSave: (value) {
                       firstname = value;
                     })),
-            SizedBox(
-              height: 10,
-            ),
             Padding(
                 padding: const EdgeInsets.fromLTRB(22, 20, 22, 0),
                 child: TextFieldWidget(
@@ -73,14 +70,11 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
                     borderWidth: AppConstValues.borderWidth,
                     borderColor: AppColors.border,
                     errorBorderColor: AppColors.error,
-                    validateType: ValidationTypes.signupLname,
+                    validateType: ValidationTypes.signupLastName,
                     secureText: false,
                     onSave: (value) {
                       lastname = value;
                     })),
-            SizedBox(
-              height: 10,
-            ),
             Padding(
               padding: const EdgeInsets.fromLTRB(22, 20, 22, 0),
               child: Text(
@@ -103,10 +97,11 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
                         borderWidth: AppConstValues.borderWidth,
                         borderColor: AppColors.border,
                         errorBorderColor: AppColors.error,
-                        validateType: ValidationTypes.signupLname,
+                        validateType: ValidationTypes.signupDayBirtday,
                         secureText: false,
+                        textAlign: TextAlign.center,
                         onSave: (value) {
-                          birthdate_dd = value;
+                          birthdatdd = value;
                         }),
                   ),
                   SizedBox(
@@ -123,10 +118,11 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
                         borderWidth: AppConstValues.borderWidth,
                         borderColor: AppColors.border,
                         errorBorderColor: AppColors.error,
-                        validateType: ValidationTypes.signupLname,
+                        validateType: ValidationTypes.signupMonthBirtday,
                         secureText: false,
+                        textAlign: TextAlign.center,
                         onSave: (value) {
-                          birthdate_mm = value;
+                          birthdatemm = value;
                         }),
                   ),
                   SizedBox(
@@ -138,22 +134,20 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
                     child: TextFieldWidget(
                         label: "YYYY",
                         keyboardType: TextInputType.number,
+                        textAlign: TextAlign.center,
                         labelStyle: AppTextStyle.fieldLabel,
                         errorStyle: AppTextStyle.fieldError,
                         borderWidth: AppConstValues.borderWidth,
                         borderColor: AppColors.border,
                         errorBorderColor: AppColors.error,
-                        validateType: ValidationTypes.signupLname,
+                        validateType: ValidationTypes.signupYearBirtday,
                         secureText: false,
                         onSave: (value) {
-                          birthdate_yyyy = value;
+                          birthdateyyyy = value;
                         }),
                   ),
                 ],
               ),
-            ),
-            SizedBox(
-              height: 10,
             ),
             Padding(
                 padding: const EdgeInsets.fromLTRB(22, 20, 22, 0),
@@ -165,15 +159,74 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
                     borderWidth: AppConstValues.borderWidth,
                     borderColor: AppColors.border,
                     errorBorderColor: AppColors.error,
-                    validateType: ValidationTypes.signupFname,
+                    validateType: ValidationTypes.signupPhoneNumber,
                     secureText: false,
                     onSave: (value) {
                       phonenumber = value;
                     })),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ButtonFormWidget(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        "Next",
+                        style: AppTextStyle.button,
+                      ),
+                      const Icon(Icons.arrow_forward_outlined),
+                    ],
+                  ),
+                  onPress: () {
+                    if (_formkey.currentState!.validate()) {
+                      _formkey.currentState?.save();
+                      if (firstname.isEmpty) {
+                        Constants.showErrorDialog(
+                            context: context,
+                            message: AppStrings.emptyFirstName);
+                        return;
+                      }
+                      if (lastname.isEmpty) {
+                        Constants.showErrorDialog(
+                            context: context,
+                            message: AppStrings.emptyLastName);
+                        return;
+                      }
+                      if (birthdatdd.isEmpty) {
+                        Constants.showErrorDialog(
+                            context: context,
+                            message: AppStrings.required);
+                        return;
+                      }
+                      if (birthdatemm.isEmpty) {
+                        Constants.showErrorDialog(
+                            context: context,
+                            message: AppStrings.required);
+                        return;
+                      }
+                      if (birthdateyyyy.isEmpty) {
+                        Constants.showErrorDialog(
+                            context: context,
+                            message: AppStrings.required);
+                        return;
+                      }
+                      if (phonenumber.isEmpty) {
+                        Constants.showErrorDialog(
+                            context: context,
+                            message: AppStrings.emptyPhoneNumber);
+                        return;
+                      }
+                      print(firstname);
+                      print(lastname);
+                      print(phonenumber);
+                      Navigator.pushReplacementNamed(context, Routes.signup2);
+                    }
+                  }),
+            ),
             Center(
               child: TextButton(
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, Routes.initial);
+                  Navigator.pushReplacementNamed(context, Routes.signin);
                 },
                 child: Text("Have already account ?",
                     style: AppTextStyle.textDecoration),

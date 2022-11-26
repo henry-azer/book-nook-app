@@ -16,24 +16,33 @@ class ValidateTextFiled {
         {
           return _validateSigninPassword(value!);
         }
+      case (ValidationTypes.signupFirstName):
+        {
+          return _validateSignupFirstName(value!);
+        }
+      case (ValidationTypes.signupLastName):
+        {
+          return _validateSignupLastName(value!);
+        }
+      case (ValidationTypes.signupPhoneNumber):
+      {
+        return _validateSignupPhoneNumber(value!);
+      }
+      case (ValidationTypes.signupDayBirtday):
+        {
+          return _validateSignupDayBirthday(value!);
+        }
+      case (ValidationTypes.signupMonthBirtday):
+        {
+          return _validateSignupMonthBirthday(value!);
+        }
+      case (ValidationTypes.signupYearBirtday):
+        {
+          return _validateSignupYearBirthday(value!);
+        }
       default:
         return null;
     }
-  }
-}
-
-String? validatesignup(String? value, label) {
-  switch (label) {
-    case (ValidationTypes.signupFname):
-      {
-        return _validateSignupFirstName(value!);
-      }
-    case (ValidationTypes.signupLname):
-      {
-        return _validateSignupLastName(value!);
-      }
-    default:
-      return null;
   }
 }
 
@@ -58,7 +67,7 @@ String? _validateSigninPassword(String value) {
 }
 
 String? _validateSignupFirstName(String value) {
-  if (value.trim() == "") {
+  if (value.trim() == "" || value.isEmpty) {
     return "required";
   } else if (value.length < 2) {
     return "at_least_3_chars";
@@ -68,10 +77,48 @@ String? _validateSignupFirstName(String value) {
 }
 
 String? _validateSignupLastName(String value) {
-  if (value.trim() == "") {
+  if (value.trim() == ""|| value.isEmpty) {
     return "required";
   } else if (value.length < 2) {
     return "at_least_3_chars";
+  } else {
+    return "";
+  }
+}
+
+String? _validateSignupPhoneNumber(String value) {
+  if (value.trim() == ""|| value.isEmpty) {
+    return "required";
+  } else if (value.length < 10) {
+    return "at_least_11_chars";
+  } else {
+    return "";
+  }
+}
+
+String? _validateSignupDayBirthday(String value) {
+  if (value.trim() == ""|| value.isEmpty) {
+    return "required";
+  } else if (value.length > 31 ) {
+    return "at_least_31_Day";
+  } else {
+    return "";
+  }
+}
+
+String? _validateSignupMonthBirthday(String value) {
+  if (value.trim() == ""|| value.isEmpty) {
+    return "required";
+  } else if (value.length > 12 ) {
+    return "at_least_12_Month";
+  } else {
+    return "";
+  }
+}
+
+String? _validateSignupYearBirthday(String value) {
+  if (value.trim() == ""|| value.isEmpty) {
+    return "required";
   } else {
     return "";
   }

@@ -13,18 +13,18 @@ import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/constants.dart';
 import '../../../../core/widgets/buttons/button_form_widget.dart';
 
-class SignupIIFormWidget extends StatefulWidget {
-  const SignupIIFormWidget({Key? key}) : super(key: key);
+class SignupFormIIWidget extends StatefulWidget {
+  const SignupFormIIWidget({Key? key}) : super(key: key);
 
   @override
-  State<SignupIIFormWidget> createState() => _SignupIIFormWidgetState();
+  State<SignupFormIIWidget> createState() => _SignupFormIIWidgetState();
 }
 
-class _SignupIIFormWidgetState extends State<SignupIIFormWidget> {
+class _SignupFormIIWidgetState extends State<SignupFormIIWidget> {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   late String email;
   late String password;
-  late String confirm_password;
+  late String confirmpassword;
 
   Text signinTextWidget() {
     return Text(
@@ -91,8 +91,9 @@ class _SignupIIFormWidgetState extends State<SignupIIFormWidget> {
                     validateType: ValidationTypes.signinPassword,
                     secureText: true,
                     onSave: (value) {
-                      confirm_password = value;
+                      confirmpassword = value;
                     })),
+
           ],
         ),
       ),

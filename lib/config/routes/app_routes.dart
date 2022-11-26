@@ -2,6 +2,7 @@ import 'package:book_nook_app/features/authentication/presentation/cubit/signin_
 import 'package:book_nook_app/features/authentication/presentation/screens/signin_screen.dart';
 import 'package:book_nook_app/features/signup/Presentation/screens/signupII_screen.dart';
 import 'package:book_nook_app/features/signup/Presentation/screens/signupI_screen.dart';
+import 'package:book_nook_app/features/signup/Presentation/widgets/signupII_form_widget.dart';
 import 'package:book_nook_app/injection_container.dart' as di;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,7 +24,7 @@ class AppRoutes {
     switch (routeSettings.name) {
       case Routes.initial:
         return MaterialPageRoute(builder: (context) {
-          return const SplashScreen();
+          return const SignupFormIIWidget();
         });
 
       case Routes.welcome:
