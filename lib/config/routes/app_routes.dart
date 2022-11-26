@@ -24,7 +24,7 @@ class AppRoutes {
     switch (routeSettings.name) {
       case Routes.initial:
         return MaterialPageRoute(builder: (context) {
-          return const SignupFormIIWidget();
+          return const SplashScreen();
         });
 
       case Routes.welcome:
