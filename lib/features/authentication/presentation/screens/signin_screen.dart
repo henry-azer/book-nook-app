@@ -1,6 +1,9 @@
 import 'package:book_nook_app/features/authentication/presentation/widgets/signin_form_widget.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../config/locale/app_localizations.dart';
+import '../../../../config/routes/app_routes.dart';
+import '../../../../core/utils/app_text_style.dart';
 import '../widgets/signin_widget.dart';
 
 class SigninScreen extends StatefulWidget {
@@ -15,11 +18,25 @@ class _SigninScreenState extends State<SigninScreen> {
   Widget build(BuildContext context) {
     return Material(
         child: Scaffold(
-          body: SingleChildScrollView(
-            child: Column(
-              children: const [SigninWidget(), SigninFormWidget()],
-            ),
-          ),
-        ));
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const SigninWidget(),
+            const SigninFormWidget(),
+            Padding(
+                padding: const EdgeInsets.only(top: 30),
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(context, Routes.initial);
+                  },
+                  child: Text(
+                      AppLocalizations.of(context)!
+                          .translate('create_new_account')!,
+                      style: AppTextStyle.textDecoration),
+                )),
+          ],
+        ),
+      ),
+    ));
   }
 }

@@ -9,7 +9,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 import '../../../../config/locale/app_localizations.dart';
-import '../../../../config/routes/app_routes.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/constants.dart';
 import '../../../../core/widgets/buttons/button_form_widget.dart';
@@ -148,17 +147,6 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
                       BlocProvider.of<SigninCubit>(context).signin(email, password, rememberme);
                     }
                   },
-                )),
-            Padding(
-                padding: const EdgeInsets.only(top: 30),
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(context, Routes.initial);
-                  },
-                  child: Text(
-                      AppLocalizations.of(context)!
-                          .translate('create_new_account')!,
-                      style: AppTextStyle.textDecoration),
                 )),
           ],
         ),

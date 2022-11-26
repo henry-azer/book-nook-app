@@ -22,10 +22,9 @@ class SigninRepositoryImpl implements SigninRepository {
   Future<Either<GenericException, SigninClaims>> signin(Signin signin) async {
     if (await networkInfo.isConnected) {
       try {
+        signinLocalDataSource.cacheIsUserLogging();
         final signinClaims = await signinRemoteDataSource.signin(signin);
-        if (signin.rememberme) {
-          signinLocalDataSource.cacheSigninClaims(signin, signinClaims);
-        }
+        signinLocalDataSource.cacheSigninClaims(signin, signinClaims);
         return Right(signinClaims);
       } on GenericException catch (exception) {
         return Left(exception);
@@ -34,6 +33,4 @@ class SigninRepositoryImpl implements SigninRepository {
       return const Left(CacheException());
     }
   }
-
-
 }

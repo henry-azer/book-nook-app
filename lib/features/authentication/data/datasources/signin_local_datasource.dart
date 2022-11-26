@@ -8,6 +8,8 @@ import '../../domain/entities/signin_claims.dart';
 
 abstract class SigninLocalDataSource {
   Future<void> cacheSigninClaims(Signin signin, SigninClaims signinClaims);
+
+  Future<void> cacheIsUserLogging();
 }
 
 class SigninLocalDataSourceImpl implements SigninLocalDataSource {
@@ -21,13 +23,12 @@ class SigninLocalDataSourceImpl implements SigninLocalDataSource {
     sharedPreferences.setBool(AppStrings.cachedIsAuthenticated, true);
     sharedPreferences.setBool(AppStrings.cachedRememberMe, signin.rememberme);
     sharedPreferences.setString(AppStrings.cachedSignin, json.encode(signin));
-    sharedPreferences.setString(
-        AppStrings.cachedSigninClaims, json.encode(signinClaims));
-    sharedPreferences.setString(AppStrings.cachedAccessTokenExpireTime,
-        _getAccessTokenExpireDate(signinClaims.accessTokenExpireDate));
+    sharedPreferences.setString(AppStrings.cachedSigninClaims, json.encode(signinClaims));
+    sharedPreferences.setBool(AppStrings.cachedIsUserLogging, false);
   }
 
-  String _getAccessTokenExpireDate(int expireTime) {
-    return DateTime.now().add(Duration(milliseconds: expireTime)).toString();
+  @override
+  Future<void> cacheIsUserLogging() async {
+    sharedPreferences.setBool(AppStrings.cachedIsUserLogging, true);
   }
 }
