@@ -5,10 +5,17 @@ import 'app_colors.dart';
 import 'app_strings.dart';
 
 class AppTextStyle with Diagnosticable {
+
   static TextStyle? title = TextStyle(
     fontSize: 45,
     fontWeight: FontWeight.w500,
     color: AppColors.fontPrimary,
+    fontFamily: AppStrings.fontFamilyComfortaa,
+  );
+  static TextStyle? title2 = TextStyle(
+    fontSize: 45,
+    fontWeight: FontWeight.w500,
+    color: AppColors.fontSecondary,
     fontFamily: AppStrings.fontFamilyComfortaa,
   );
 
@@ -32,6 +39,15 @@ class AppTextStyle with Diagnosticable {
     color: AppColors.fontPrimary,
     fontFamily: AppStrings.fontFamilyBarlow,
   );
+
+
+  static TextStyle? selectButton = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    color: AppColors.white,
+    fontFamily: AppStrings.fontFamilyBarlow,
+  );
+
 
   static TextStyle? textDecoration = TextStyle(
     fontSize: 16,

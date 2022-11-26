@@ -18,6 +18,8 @@ class AppColors {
   static Color border = HexColor('#2F2C79');
 
   static Color button = HexColor('#2F2C79');
+  static Color buttonBackground = Colors.transparent;
+
 
   static Color black = HexColor('#000000');
   static Color white = HexColor('#FFFFFF');
