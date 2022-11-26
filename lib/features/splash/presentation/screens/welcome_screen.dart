@@ -92,8 +92,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   ButtonFormWidget(
                       onPress: _navigateToSigninRoute,
                       child: Text(
-                          AppLocalizations.of(context)!
-                              .translate('welcome_start')!,
+                          'Next',
                           style: AppTextStyle.button)),
                 ],
               ),
