@@ -156,7 +156,7 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
                 padding: const EdgeInsets.only(top: 30),
                 child: TextButton(
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, Routes.initial);
+                    Navigator.pushReplacementNamed(context, Routes.signup1);
                   },
                   child: Text(
                       AppLocalizations.of(context)!
