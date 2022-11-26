@@ -126,6 +126,8 @@ class _SignupFormIIWidgetState extends State<SignupFormIIWidget> {
                       print(email);
                       print(password);
                       print(confirmpassword);
+                      Navigator.pushReplacementNamed(context, Routes.beforehomepage);
+
                     }
                   }),
             ),

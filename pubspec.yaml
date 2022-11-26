@@ -39,6 +39,7 @@ flutter:
     - lang/ar.json
     - lang/en.json
     - assets/images/logo.png
+    - assets/images/shape.png
     - assets/images/bookmark-icon.png
 
   fonts:

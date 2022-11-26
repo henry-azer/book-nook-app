@@ -1,5 +1,6 @@
 import 'package:book_nook_app/features/authentication/presentation/cubit/signin_cubit.dart';
 import 'package:book_nook_app/features/authentication/presentation/screens/signin_screen.dart';
+import 'package:book_nook_app/features/beforehome/presentation/screens/beforehomepage_screen.dart';
 import 'package:book_nook_app/features/signup/Presentation/screens/signupII_screen.dart';
 import 'package:book_nook_app/features/signup/Presentation/screens/signupI_screen.dart';
 import 'package:book_nook_app/features/signup/Presentation/widgets/signupII_form_widget.dart';
@@ -17,6 +18,7 @@ class Routes {
   static const String signin = '/signin';
   static const String signup1 = '/signup1';
   static const String signup2 = '/signup2';
+  static const String beforehomepage = '/beforehomepage';
 }
 
 class AppRoutes {
@@ -24,7 +26,7 @@ class AppRoutes {
     switch (routeSettings.name) {
       case Routes.initial:
         return MaterialPageRoute(builder: (context) {
-          return const SplashScreen();
+          return const BeforeHomePageScreen();
         });
 
       case Routes.welcome:
@@ -53,6 +55,14 @@ class AppRoutes {
           return BlocProvider(
             create: ((context) => di.sl<SigninCubit>()),
             child: const SignupIIScreen(),
+          );
+        });
+
+      case Routes.beforehomepage:
+        return MaterialPageRoute(builder: (context) {
+          return BlocProvider(
+            create: ((context) => di.sl<SigninCubit>()),
+            child: const BeforeHomePageScreen(),
           );
         });
 
