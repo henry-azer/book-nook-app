@@ -4,6 +4,7 @@ import 'package:book_nook_app/core/utils/app_values.dart';
 import 'package:book_nook_app/core/validation/validation_types.dart';
 import 'package:book_nook_app/core/widgets/forms/text_field_widget.dart';
 import 'package:book_nook_app/features/authentication/presentation/cubit/signin_cubit.dart';
+import 'package:book_nook_app/features/signup/Presentation/widgets/signupII_form_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
@@ -216,7 +217,16 @@ class _SignupFormIWidgetState extends State<SignupFormIWidget> {
                       print(firstname);
                       print(lastname);
                       print(phonenumber);
-                      Navigator.pushReplacementNamed(context, Routes.signup2);
+                      //Navigator.pushReplacementNamed(context, Routes.signup2);
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => SignupFormIIWidget(
+                                firstname,
+                                lastname,
+                                birthdatdd,
+                                birthdatemm,
+                                birthdateyyyy,
+                                phonenumber,
+                              )));
                     }
                   }),
             ),

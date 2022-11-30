@@ -14,8 +14,21 @@ import '../../../../core/utils/constants.dart';
 import '../../../../core/widgets/buttons/button_form_widget.dart';
 
 class SignupFormIIWidget extends StatefulWidget {
-  const SignupFormIIWidget({Key? key}) : super(key: key);
+  String? firstName;
+  String? secondName;
+  String? birthdayDd;
+  String? birthdayMm;
+  String? birthdayYyyy;
+  String? phoneNumber;
 
+  SignupFormIIWidget([
+    this.firstName,
+    this.secondName,
+    this.birthdayDd,
+    this.birthdayMm,
+    this.birthdayYyyy,
+    this.phoneNumber,
+  ]);
   @override
   State<SignupFormIIWidget> createState() => _SignupFormIIWidgetState();
 }
@@ -126,8 +139,8 @@ class _SignupFormIIWidgetState extends State<SignupFormIIWidget> {
                       print(email);
                       print(password);
                       print(confirmpassword);
-                      Navigator.pushReplacementNamed(context, Routes.beforehomepage);
-
+                      Navigator.pushReplacementNamed(
+                          context, Routes.beforehomepage);
                     }
                   }),
             ),
