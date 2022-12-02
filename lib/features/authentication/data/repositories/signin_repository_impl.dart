@@ -34,6 +34,4 @@ class SigninRepositoryImpl implements SigninRepository {
       return const Left(CacheException());
     }
   }
-
-
 }

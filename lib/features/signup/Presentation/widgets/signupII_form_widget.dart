@@ -7,35 +7,34 @@ import 'package:book_nook_app/features/authentication/presentation/cubit/signin_
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-
 import '../../../../config/locale/app_localizations.dart';
 import '../../../../config/routes/app_routes.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/constants.dart';
 import '../../../../core/widgets/buttons/button_form_widget.dart';
 
-class SigninFormWidget extends StatefulWidget {
-  const SigninFormWidget({Key? key}) : super(key: key);
-
+class SignupFormIIWidget extends StatefulWidget {
   @override
-  State<SigninFormWidget> createState() => _SigninFormWidgetState();
+  State<SignupFormIIWidget> createState() => _SignupFormIIWidgetState();
 }
 
-class _SigninFormWidgetState extends State<SigninFormWidget> {
+class _SignupFormIIWidgetState extends State<SignupFormIIWidget> {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   late String email;
   late String password;
-  late bool rememberme = false;
+  late String confirmpassword;
 
   Text signinTextWidget() {
     return Text(
-      AppLocalizations.of(context)!.translate('signin')!,
+      "sign up",
       style: AppTextStyle.button,
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    final info = ModalRoute.of(context)!.settings.arguments as Map;
+
     return Material(
       color: Colors.transparent,
       child: Form(
@@ -58,6 +57,9 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
                     onSave: (value) {
                       email = value;
                     })),
+            SizedBox(
+              height: 20,
+            ),
             Padding(
                 padding: const EdgeInsets.fromLTRB(22, 20, 22, 0),
                 child: TextFieldWidget(
@@ -73,64 +75,33 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
                     onSave: (value) {
                       password = value;
                     })),
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 25, right: 25, top: 10, bottom: 30),
-              child: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    rememberme = !rememberme;
-                  });
-                },
-                child: Row(
-                  children: [
-                    Checkbox(
-                      checkColor: AppColors.primary,
-                      activeColor: AppColors.fontPrimary,
-                      autofocus: false,
-                      value: rememberme,
-                      onChanged: (value) {
-                        setState(() {
-                          rememberme = value!;
-                        });
-                      },
-                    ),
-                    Text(AppLocalizations.of(context)!.translate('rememberme')!,
-                        style: AppTextStyle.rememberme)
-                  ],
-                ),
-              ),
+            SizedBox(
+              height: 20,
             ),
             Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: ButtonFormWidget(
-                  child: BlocConsumer<SigninCubit, SigninState>(
-                    builder: ((context, state) {
-                      if (state is SigninLoading) {
-                        return Padding(
-                          padding: const EdgeInsets.only(top: 5),
-                          child: LoadingAnimationWidget.staggeredDotsWave(
-                            color: Colors.white,
-                            size: 40,
-                          ),
-                        );
-                      } else if (state is SigninError) {
-                        return signinTextWidget();
-                      } else if (state is SigninSuccess) {
-                        return signinTextWidget();
-                      } else {
-                        return signinTextWidget();
-                      }
-                    }),
-                    listener: ((context, state) {
-                      if (state is SigninError) {
-                        Constants.showErrorDialog(
-                            context: context, message: state.message);
-                      } else if (state is SigninSuccess) {
-                        Constants.showErrorDialog(
-                            context: context, message: "signin success");
-                      }
-                    }),
+                padding: const EdgeInsets.fromLTRB(22, 20, 22, 0),
+                child: TextFieldWidget(
+                    label: "Confirm Password",
+                    keyboardType: TextInputType.visiblePassword,
+                    labelStyle: AppTextStyle.fieldLabel,
+                    errorStyle: AppTextStyle.fieldError,
+                    borderWidth: AppConstValues.borderWidth,
+                    borderColor: AppColors.border,
+                    errorBorderColor: AppColors.error,
+                    validateType: ValidationTypes.signinPassword,
+                    secureText: true,
+                    onSave: (value) {
+                      confirmpassword = value;
+                    })),
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ButtonFormWidget(
+                  child: Text(
+                    "Sign up",
+                    style: AppTextStyle.button,
                   ),
                   onPress: () {
                     if (_formkey.currentState!.validate()) {
@@ -147,22 +118,20 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
                             message: AppStrings.emptyPasswordError);
                         return;
                       }
-                      BlocProvider.of<SigninCubit>(context)
-                          .signin(email, password, rememberme);
+                      if (confirmpassword.isEmpty) {
+                        Constants.showErrorDialog(
+                            context: context, message: AppStrings.required);
+                        return;
+                      }
+                      print(email);
+                      print(password);
+                      print(confirmpassword);
+                      print(info);
+                      Navigator.pushReplacementNamed(
+                          context, Routes.beforehomepage);
                     }
-                  },
-                )),
-            Padding(
-                padding: const EdgeInsets.only(top: 30),
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(context, Routes.signup1);
-                  },
-                  child: Text(
-                      AppLocalizations.of(context)!
-                          .translate('create_new_account')!,
-                      style: AppTextStyle.textDecoration),
-                )),
+                  }),
+            ),
           ],
         ),
       ),

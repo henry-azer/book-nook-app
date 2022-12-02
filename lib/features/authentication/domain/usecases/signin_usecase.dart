@@ -12,5 +12,6 @@ class SigninUseCase implements UseCase<SigninClaims, Signin> {
   SigninUseCase({required this.signinRepository});
 
   @override
-  Future<Either<GenericException, SigninClaims>> call(Signin signin) => signinRepository.signin(signin);
+  Future<Either<GenericException, SigninClaims>> call(Signin signin) =>
+      signinRepository.signin(signin);
 }

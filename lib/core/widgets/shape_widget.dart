@@ -2,21 +2,21 @@ import 'package:flutter/cupertino.dart';
 
 import '../utils/assets_manager.dart';
 
-class LogoWidget extends StatefulWidget {
+class ShapeWidget extends StatefulWidget {
   final double width;
   final double height;
-
-  const LogoWidget({super.key, required this.width, required this.height});
+  const ShapeWidget({Key? key, required this.width, required this.height})
+      : super(key: key);
 
   @override
-  State<LogoWidget> createState() => _LogoWidgetState();
+  State<ShapeWidget> createState() => _ShapeWidgetState();
 }
 
-class _LogoWidgetState extends State<LogoWidget> {
+class _ShapeWidgetState extends State<ShapeWidget> {
   @override
   Widget build(BuildContext context) {
     return Image.asset(
-      ImgAssets.logo,
+      ImgAssets.shape,
       width: widget.width,
       height: widget.height,
     );
