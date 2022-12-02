@@ -6,7 +6,7 @@
   "welcome": "Welcome",
   "ok": "Ok",
   "cancel": "Cancel",
-  "something_went_wrong": "Something Went Wrong",
+  "something_wrong": "Something wrong happened!",
   "reload_screen": "Reload Screen",
   "want_to_logout": "Do you want to logout ?",
   "logout": "Logout",
