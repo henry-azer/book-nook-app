@@ -18,9 +18,12 @@ class AppColors {
   static Color border = HexColor('#2F2C79');
 
   static Color button = HexColor('#2F2C79');
+  static Color snackbar = HexColor('#2F2C79');
+  static Color navigator = HexColor('#000020');
 
   static Color black = HexColor('#000000');
   static Color white = HexColor('#FFFFFF');
+  static Color grey = HexColor('#808080');
 
   static Color underlinePrimary = HexColor('#2F2C79');
 

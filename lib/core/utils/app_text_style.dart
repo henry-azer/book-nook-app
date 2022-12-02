@@ -89,4 +89,11 @@ class AppTextStyle with Diagnosticable {
     color: AppColors.fontPrimary,
     fontFamily: AppStrings.fontFamilyBarlow,
   );
+
+  static TextStyle? snackbar = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: AppColors.fontPrimary,
+    fontFamily: AppStrings.fontFamilyComfortaa,
+  );
 }
