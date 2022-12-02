@@ -34,9 +34,13 @@ class AppStrings {
   static const String status = "status";
   static const String success = "success";
   static const String message = "message";
+  static const String required = "required";
 
   static const String emptyEmailError = "Email can't be empty";
   static const String emptyPasswordError = "Password can't be empty";
+  static const String emptyFirstName = "First Name can't be empty";
+  static const String emptyLastName = "Last Name can't be empty";
+  static const String emptyPhoneNumber = "Phone Number can't be empty";
 
   static const String cacheException = "Cache Error";
   static const String notFoundException = "Not Found";
