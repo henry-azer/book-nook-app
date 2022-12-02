@@ -13,8 +13,9 @@ class ProfileLoading extends ProfileState {}
 
 class ProfileSuccess extends ProfileState {
   final User user;
+  final ResponseModel<User> userResponse;
 
-  const ProfileSuccess({required this.user});
+  const ProfileSuccess({required this.user, required this.userResponse});
 
   @override
   List<Object> get props => [user];

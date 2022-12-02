@@ -4,21 +4,22 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../../../core/error/exceptions.dart';
+import '../../../../core/models/response_model.dart';
 import '../../domain/entities/user.dart';
-import '../../domain/usecases/profile_usecase.dart';
+import '../../domain/usecases/current_user_usecase.dart';
 
 part 'profile_state.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
-  final ProfileUseCase profileUserCase;
+  final CurrentUserUseCase profileUserCase;
 
   ProfileCubit({required this.profileUserCase}) : super(ProfileInitial());
 
   Future<void> findCurrentUser() async {
     emit(ProfileInitial());
     emit(ProfileLoading());
-    Either<GenericException, User> response = await profileUserCase(NoParams());
+    Either<GenericException, ResponseModel<User>> response = await profileUserCase(NoParams());
     emit(response.fold((exception) => ProfileError(message: exception.message),
-        (user) => ProfileSuccess(user: user)));
+        (userResponse) => ProfileSuccess(user: userResponse.model, userResponse: userResponse)));
   }
 }

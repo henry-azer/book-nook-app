@@ -30,7 +30,7 @@ class _ProfileFormState extends State<ProfileForm> {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 15.0),
+                padding: const EdgeInsets.only(top: 20.0),
                 child: ProfileTextField(
                     enabled: false,
                     value: widget.user.email,
@@ -56,7 +56,7 @@ class _ProfileFormState extends State<ProfileForm> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 15.0),
+                padding: const EdgeInsets.only(top: 20.0),
                 child: ProfileTextField(
                     enabled: false,
                     value: widget.user.password.substring(0, 20),
@@ -82,7 +82,7 @@ class _ProfileFormState extends State<ProfileForm> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 15.0),
+                padding: const EdgeInsets.only(top: 20.0),
                 child: ProfileTextField(
                     enabled: false,
                     value: widget.user.firstName,
@@ -109,7 +109,7 @@ class _ProfileFormState extends State<ProfileForm> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 15.0),
+                padding: const EdgeInsets.only(top: 20.0),
                 child: ProfileTextField(
                     enabled: false,
                     value: widget.user.lastName,
@@ -136,7 +136,7 @@ class _ProfileFormState extends State<ProfileForm> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 15.0),
+                padding: const EdgeInsets.only(top: 20.0),
                 child: ProfileTextField(
                     enabled: false,
                     value: widget.user.birthdate,
@@ -163,7 +163,7 @@ class _ProfileFormState extends State<ProfileForm> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 15.0),
+                padding: const EdgeInsets.only(top: 20.0),
                 child: ProfileTextField(
                     enabled: false,
                     value: widget.user.phoneNumber,

@@ -1,4 +1,5 @@
 import 'package:book_nook_app/core/widgets/buttons/button_form_widget.dart';
+import 'package:book_nook_app/core/widgets/navigation_bar_widget.dart';
 import 'package:book_nook_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:book_nook_app/features/profile/presentation/widgets/profile_bar.dart';
 import 'package:flutter/material.dart';
@@ -31,64 +32,75 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Material(
       child: Scaffold(
+        extendBody: true,
+        resizeToAvoidBottomInset: true,
+        bottomNavigationBar: const NavigationBarWidget(),
         body: SingleChildScrollView(
-          child: BlocConsumer<ProfileCubit, ProfileState>(
-            builder: ((context, state) {
-              if (state is ProfileLoading) {
-                return Column(
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.only(top: 50),
-                      child: ProfileBar(
-                        user: null,
-                        loading: true,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20.0, bottom: 30.0),
-                      child: SizedBox(
-                        height: 419,
-                        child: LoadingAnimationWidget.threeArchedCircle(
-                          color: Colors.white,
-                          size: 80,
+          child: Column(
+            children: [
+              BlocConsumer<ProfileCubit, ProfileState>(
+                builder: ((context, state) {
+                  if (state is ProfileLoading) {
+                    return Column(
+                      children: [
+                        const Padding(
+                          padding: EdgeInsets.only(top: 50),
+                          child: ProfileBar(
+                            user: null,
+                            loading: true,
+                          ),
                         ),
-                      ),
-                    ),
-                  ],
-                );
-              } else if (state is ProfileSuccess) {
-                return Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 50),
-                      child: ProfileBar(user: state.user, loading: false),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20.0, bottom: 30.0),
-                      child: ProfileForm(user: state.user),
-                    ),
-                    ButtonFormWidget(
-                        child: Text(
-                          AppLocalizations.of(context)!.translate('logout')!,
-                          style: AppTextStyle.button,
+                        Padding(
+                          padding:
+                              const EdgeInsets.only(top: 20.0, bottom: 30.0),
+                          child: SizedBox(
+                            height: 419,
+                            child: LoadingAnimationWidget.threeArchedCircle(
+                              color: Colors.white,
+                              size: 80,
+                            ),
+                          ),
                         ),
-                        onPress: () {
-                          Navigator.pushReplacementNamed(
-                              context, Routes.signin);
-                        }),
-                  ],
-                );
-              } else {
-                return Container();
-              }
-            }),
-            listener: ((context, state) {
-              if (state is ProfileError) {
-                Constants.showErrorDialog(
-                    context: context, message: state.message);
-                Navigator.pushReplacementNamed(context, Routes.signin);
-              }
-            }),
+                      ],
+                    );
+                  } else if (state is ProfileSuccess) {
+                    return Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 50),
+                          child: ProfileBar(user: state.user, loading: false),
+                        ),
+                        Padding(
+                          padding:
+                              const EdgeInsets.only(bottom: 30.0),
+                          child: ProfileForm(user: state.user),
+                        ),
+                        ButtonFormWidget(
+                            child: Text(
+                              AppLocalizations.of(context)!.translate('logout')!,
+                              style: AppTextStyle.button,
+                            ),
+                            onPress: () {
+                              Constants.showSnackBar(context: context, message: state.userResponse.message);
+                              Navigator.pushReplacementNamed(context, Routes.signin);
+                            }),
+                      ],
+                    );
+                  } else {
+                    return Container();
+                  }
+                }),
+                listener: ((context, state) {
+                  if (state is ProfileError) {
+                    Constants.showSnackBar(
+                        context: context,
+                        message: AppLocalizations.of(context)!
+                            .translate('something_wrong')!);
+                    Navigator.pushReplacementNamed(context, Routes.signin);
+                  }
+                }),
+              ),
+            ],
           ),
         ),
       ),
