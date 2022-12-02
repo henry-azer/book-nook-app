@@ -8,7 +8,6 @@ import 'package:book_nook_app/features/profile/data/datasources/profile_local_da
 import 'package:book_nook_app/features/profile/data/datasources/profile_remote_datasource.dart';
 import 'package:book_nook_app/features/profile/data/repositories/profile_repository_impl.dart';
 import 'package:book_nook_app/features/profile/domain/repositories/profile_repository.dart';
-import 'package:book_nook_app/features/profile/domain/usecases/profile_usecase.dart';
 import 'package:book_nook_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
@@ -19,6 +18,7 @@ import 'core/api/app_interceptors.dart';
 import 'core/api/dio_consumer.dart';
 import 'core/network/network_info.dart';
 import 'features/authentication/data/repositories/signin_repository_impl.dart';
+import 'features/profile/domain/usecases/current_user_usecase.dart';
 import 'features/splash/data/datasources/lang_local_data_source.dart';
 import 'features/splash/data/repositories/lang_repository_impl.dart';
 import 'features/splash/domain/repositories/lang_repository.dart';
@@ -39,7 +39,7 @@ Future<void> init() async {
 
   // Use cases
   sl.registerLazySingleton<SigninUseCase>(() => SigninUseCase(signinRepository: sl()));
-  sl.registerLazySingleton<ProfileUseCase>(() => ProfileUseCase(profileRepository: sl()));
+  sl.registerLazySingleton<CurrentUserUseCase>(() => CurrentUserUseCase(profileRepository: sl()));
 
   sl.registerLazySingleton<GetSavedLangUseCase>(() => GetSavedLangUseCase(langRepository: sl()));
   sl.registerLazySingleton<ChangeLangUseCase>(() => ChangeLangUseCase(langRepository: sl()));

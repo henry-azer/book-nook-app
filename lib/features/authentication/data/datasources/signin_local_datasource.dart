@@ -18,8 +18,8 @@ class SigninLocalDataSourceImpl implements SigninLocalDataSource {
   SigninLocalDataSourceImpl({required this.sharedPreferences});
 
   @override
-  Future<void> cacheSigninClaims(
-      Signin signin, SigninClaims signinClaims) async {
+  Future<void> cacheSigninClaims(Signin signin, SigninClaims signinClaims) async {
+    sharedPreferences.clear();
     sharedPreferences.setBool(AppStrings.cachedIsAuthenticated, true);
     sharedPreferences.setBool(AppStrings.cachedRememberMe, signin.rememberme);
     sharedPreferences.setString(AppStrings.cachedSignin, json.encode(signin));

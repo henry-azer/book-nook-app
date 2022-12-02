@@ -9,6 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 import '../../../../config/locale/app_localizations.dart';
+import '../../../../config/routes/app_routes.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/constants.dart';
 import '../../../../core/widgets/buttons/button_form_widget.dart';
@@ -25,13 +26,6 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
   late String email;
   late String password;
   late bool rememberme = false;
-
-  Text signinTextWidget() {
-    return Text(
-      AppLocalizations.of(context)!.translate('signin')!,
-      style: AppTextStyle.button,
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -101,53 +95,59 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
               ),
             ),
             Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: ButtonFormWidget(
-                  child: BlocConsumer<SigninCubit, SigninState>(
-                    builder: ((context, state) {
-                      if (state is SigninLoading) {
-                        return Padding(
-                          padding: const EdgeInsets.only(top: 5),
-                          child: LoadingAnimationWidget.staggeredDotsWave(
-                            color: Colors.white,
-                            size: 40,
-                          ),
-                        );
-                      } else if (state is SigninError) {
-                        return signinTextWidget();
-                      } else if (state is SigninSuccess) {
-                        return signinTextWidget();
-                      } else {
-                        return signinTextWidget();
-                      }
-                    }),
-                    listener: ((context, state) {
-                      if (state is SigninError) {
-                        Constants.showErrorDialog(context: context, message: state.message);
-                      } else if (state is SigninSuccess) {
-                        Constants.showErrorDialog(context: context, message: "signin success");
-                      }
-                    }),
-                  ),
-                  onPress: () {
-                    if (_formkey.currentState!.validate()) {
-                      _formkey.currentState?.save();
-                      if (email.isEmpty) {
-                        Constants.showErrorDialog(
-                            context: context,
-                            message: AppStrings.emptyEmailError);
-                        return;
-                      }
-                      if (password.isEmpty) {
-                        Constants.showErrorDialog(
-                            context: context,
-                            message: AppStrings.emptyPasswordError);
-                        return;
-                      }
-                      BlocProvider.of<SigninCubit>(context).signin(email, password, rememberme);
-                    }
-                  },
-                )),
+              padding: const EdgeInsets.only(top: 20),
+              child: BlocConsumer<SigninCubit, SigninState>(
+                builder: ((context, state) {
+                  if (state is SigninLoading) {
+                    return ButtonFormWidget(
+                      onPress: () {},
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 5),
+                        child: LoadingAnimationWidget.staggeredDotsWave(
+                          color: Colors.white,
+                          size: 40,
+                        ),
+                      ),
+                    );
+                  } else {
+                    return ButtonFormWidget(
+                      onPress: () {
+                        if (_formkey.currentState!.validate()) {
+                          _formkey.currentState?.save();
+                          if (email.isEmpty) {
+                            Constants.showErrorDialog(
+                                context: context,
+                                message: AppStrings.emptyEmailError);
+                            return;
+                          }
+                          if (password.isEmpty) {
+                            Constants.showErrorDialog(
+                                context: context,
+                                message: AppStrings.emptyPasswordError);
+                            return;
+                          }
+                          BlocProvider.of<SigninCubit>(context)
+                              .signin(email, password, rememberme);
+                        }
+                      },
+                      child: Text(
+                        AppLocalizations.of(context)!.translate('signin')!,
+                        style: AppTextStyle.button,
+                      ),
+                    );
+                  }
+                }),
+                listener: ((context, state) {
+                  if (state is SigninError) {
+                    Constants.showErrorDialog(
+                        context: context, message: state.message);
+                  } else if (state is SigninSuccess) {
+                    Constants.showSnackBar(context: context, message: state.signinClaimsResponse.message);
+                    Navigator.pushReplacementNamed(context, Routes.profile);
+                  }
+                }),
+              ),
+            ),
           ],
         ),
       ),

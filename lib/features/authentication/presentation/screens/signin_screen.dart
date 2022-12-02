@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../../config/locale/app_localizations.dart';
 import '../../../../config/routes/app_routes.dart';
 import '../../../../core/utils/app_text_style.dart';
-import '../widgets/signin_widget.dart';
+import '../../../../core/widgets/logo_widget.dart';
 
 class SigninScreen extends StatefulWidget {
   const SigninScreen({Key? key}) : super(key: key);
@@ -21,7 +21,24 @@ class _SigninScreenState extends State<SigninScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const SigninWidget(),
+            Center(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 65, bottom: 40),
+                    child: Column(
+                      children: [
+                        const LogoWidget(width: 220, height: 220),
+                        Text(
+                          AppLocalizations.of(context)!.translate('signin')!,
+                          style: AppTextStyle.title,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
             const SigninFormWidget(),
             Padding(
                 padding: const EdgeInsets.only(top: 30),
@@ -30,8 +47,7 @@ class _SigninScreenState extends State<SigninScreen> {
                     Navigator.pushReplacementNamed(context, Routes.initial);
                   },
                   child: Text(
-                      AppLocalizations.of(context)!
-                          .translate('create_new_account')!,
+                      AppLocalizations.of(context)!.translate('create_new_account')!,
                       style: AppTextStyle.textDecoration),
                 )),
           ],

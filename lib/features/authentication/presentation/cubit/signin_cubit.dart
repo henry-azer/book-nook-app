@@ -4,6 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../../../core/error/exceptions.dart';
+import '../../../../core/models/response_model.dart';
 import '../../domain/entities/signin.dart';
 import '../../domain/usecases/signin_usecase.dart';
 
@@ -17,9 +18,12 @@ class SigninCubit extends Cubit<SigninState> {
   Future<void> signin(String email, String password, bool rememberme) async {
     emit(SigninInitial());
     emit(SigninLoading());
-    Either<GenericException, SigninClaims> response = await signinUseCase(
-        Signin(email: email, password: password, rememberme: rememberme));
-    emit(response.fold((exception) => SigninError(message: exception.message),
-        (signinClaims) => SigninSuccess(signinClaims: signinClaims)));
+    Either<GenericException, ResponseModel<SigninClaims>> response =
+        await signinUseCase(Signin(email: email, password: password, rememberme: rememberme));
+    emit(response.fold(
+        (exception) => SigninError(message: exception.message),
+        (signinClaimsResponse) => SigninSuccess(
+            signinClaims: signinClaimsResponse.model,
+            signinClaimsResponse: signinClaimsResponse)));
   }
 }

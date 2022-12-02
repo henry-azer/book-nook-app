@@ -13,8 +13,9 @@ class SigninLoading extends SigninState {}
 
 class SigninSuccess extends SigninState {
   final SigninClaims signinClaims;
+  final ResponseModel<SigninClaims> signinClaimsResponse;
 
-  const SigninSuccess({required this.signinClaims});
+  const SigninSuccess({required this.signinClaims, required this.signinClaimsResponse});
 
   @override
   List<Object> get props => [signinClaims];
