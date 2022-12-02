@@ -14,21 +14,6 @@ import '../../../../core/utils/constants.dart';
 import '../../../../core/widgets/buttons/button_form_widget.dart';
 
 class SignupFormIIWidget extends StatefulWidget {
-  String? firstName;
-  String? secondName;
-  String? birthdayDd;
-  String? birthdayMm;
-  String? birthdayYyyy;
-  String? phoneNumber;
-
-  SignupFormIIWidget([
-    this.firstName,
-    this.secondName,
-    this.birthdayDd,
-    this.birthdayMm,
-    this.birthdayYyyy,
-    this.phoneNumber,
-  ]);
   @override
   State<SignupFormIIWidget> createState() => _SignupFormIIWidgetState();
 }
@@ -48,6 +33,8 @@ class _SignupFormIIWidgetState extends State<SignupFormIIWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final info = ModalRoute.of(context)!.settings.arguments as Map;
+
     return Material(
       color: Colors.transparent,
       child: Form(
@@ -139,6 +126,7 @@ class _SignupFormIIWidgetState extends State<SignupFormIIWidget> {
                       print(email);
                       print(password);
                       print(confirmpassword);
+                      print(info);
                       Navigator.pushReplacementNamed(
                           context, Routes.beforehomepage);
                     }

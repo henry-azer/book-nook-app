@@ -1,9 +1,5 @@
-import 'package:book_nook_app/config/locale/app_localizations.dart';
 import 'package:book_nook_app/core/widgets/shape_widget.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../core/utils/app_text_style.dart';
-
 class BeforeHomeWidget extends StatefulWidget {
   const BeforeHomeWidget({Key? key}) : super(key: key);
 
