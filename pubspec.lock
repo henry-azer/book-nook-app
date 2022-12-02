@@ -116,6 +116,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_snake_navigationbar:
+    dependency: "direct main"
+    description:
+      name: flutter_snake_navigationbar
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.6.1"
   flutter_spinkit:
     dependency: "direct main"
     description:
@@ -174,7 +181,7 @@ packages:
       name: internet_connection_checker
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.0+1"
+    version: "0.0.1+4"
   intl:
     dependency: transitive
     description:
@@ -410,7 +417,7 @@ packages:
       name: win32
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.1.2"
+    version: "3.1.1"
   xdg_directories:
     dependency: transitive
     description:
