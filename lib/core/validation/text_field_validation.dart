@@ -25,18 +25,18 @@ class ValidateTextFiled {
           return _validateSignupLastName(value!);
         }
       case (ValidationTypes.signupPhoneNumber):
-      {
-        return _validateSignupPhoneNumber(value!);
-      }
-      case (ValidationTypes.signupDayBirtday):
+        {
+          return _validateSignupPhoneNumber(value!);
+        }
+      case (ValidationTypes.signupBirthDay):
         {
           return _validateSignupDayBirthday(value!);
         }
-      case (ValidationTypes.signupMonthBirtday):
+      case (ValidationTypes.signupBirthMonth):
         {
           return _validateSignupMonthBirthday(value!);
         }
-      case (ValidationTypes.signupYearBirtday):
+      case (ValidationTypes.signupBirthYear):
         {
           return _validateSignupYearBirthday(value!);
         }
@@ -47,7 +47,7 @@ class ValidateTextFiled {
 }
 
 String? _validateEmail(String value) {
-  if (value.trim() == "") {
+  if (value.isEmpty) {
     return "required";
   } else if (!_isValidEmail(value)) {
     return "invalid_email";
@@ -57,7 +57,7 @@ String? _validateEmail(String value) {
 }
 
 String? _validateSigninPassword(String value) {
-  if (value.trim() == "") {
+  if (value.isEmpty) {
     return "required";
   } else if (value.length < 8) {
     return "at_least_8_chars";
@@ -67,7 +67,7 @@ String? _validateSigninPassword(String value) {
 }
 
 String? _validateSignupFirstName(String value) {
-  if (value.trim() == "" || value.isEmpty) {
+  if (value.isEmpty) {
     return "required";
   } else if (value.length < 2) {
     return "at_least_3_chars";
@@ -77,7 +77,7 @@ String? _validateSignupFirstName(String value) {
 }
 
 String? _validateSignupLastName(String value) {
-  if (value.trim() == ""|| value.isEmpty) {
+  if (value.isEmpty) {
     return "required";
   } else if (value.length < 2) {
     return "at_least_3_chars";
@@ -87,45 +87,71 @@ String? _validateSignupLastName(String value) {
 }
 
 String? _validateSignupPhoneNumber(String value) {
-  if (value.trim() == ""|| value.isEmpty) {
+  if (value.isEmpty) {
     return "required";
-  } else if (value.length < 10) {
-    return "at_least_11_chars";
+  } else if (value.isEmpty || !_isValidPhoneNumber(value)) {
+    return "invalid_phone_number";
   } else {
     return "";
   }
 }
 
 String? _validateSignupDayBirthday(String value) {
-  if (value.trim() == ""|| value.isEmpty) {
-    return "required";
-  } else if (value.length > 31 ) {
-    return "at_least_31_Day";
+  if (value.isEmpty) {
+    return "invalid_birth_day";
+  } else if (_isValidNumber(value)) {
+    int? day = int.tryParse(value) ?? 0;
+    if (day > 31 || day < 1 || value.length != 2) {
+      return "invalid_birth_day";
+    } else {
+      return "";
+    }
   } else {
-    return "";
+    return "invalid_birth_day";
   }
 }
 
 String? _validateSignupMonthBirthday(String value) {
-  if (value.trim() == ""|| value.isEmpty) {
-    return "required";
-  } else if (value.length > 12 ) {
-    return "at_least_12_Month";
+  if (value.isEmpty) {
+    return "invalid_birth_month";
+  } else if (_isValidNumber(value)) {
+    int? month = int.tryParse(value) ?? 0;
+    if (month > 12 || month < 1 || value.length != 2) {
+      return "invalid_birth_month";
+    } else {
+      return "";
+    }
   } else {
-    return "";
+    return "invalid_birth_month";
   }
 }
 
 String? _validateSignupYearBirthday(String value) {
-  if (value.trim() == ""|| value.isEmpty) {
-    return "required";
+  var date = DateTime.now();
+  var minYear = DateTime(date.year - 5).year;
+  var maxYear = 1950;
+  if (value.isEmpty) {
+    return "invalid_birth_year";
+  } else if (_isValidNumber(value)) {
+    int? year = int.tryParse(value) ?? 0;
+    if (year > minYear || year < maxYear || value.length != 4) {
+      return "invalid_birth_year";
+    } else {
+      return "";
+    }
   } else {
-    return "";
+    return "invalid_birth_year";
   }
 }
 
 bool _isValidEmail(String value) {
-  return RegExp(
-          r"^[a-zA-Z0-9.a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-      .hasMatch(value);
+  return RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value);
+}
+
+bool _isValidPhoneNumber(String value) {
+  return RegExp(r"^01[0125][0-9]{8}$").hasMatch(value);
+}
+
+bool _isValidNumber(String value) {
+  return RegExp(r"^[0-9]*$").hasMatch(value);
 }
