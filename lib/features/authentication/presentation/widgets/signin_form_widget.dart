@@ -10,7 +10,6 @@ import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 import '../../../../config/locale/app_localizations.dart';
 import '../../../../config/routes/app_routes.dart';
-import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/constants.dart';
 import '../../../../core/widgets/buttons/button_form_widget.dart';
 
@@ -47,6 +46,7 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
                     borderColor: AppColors.border,
                     errorBorderColor: AppColors.error,
                     validateType: ValidationTypes.signinEmail,
+                    textAlign: TextAlign.start,
                     secureText: false,
                     onSave: (value) {
                       email = value;
@@ -62,6 +62,7 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
                     borderColor: AppColors.border,
                     errorBorderColor: AppColors.error,
                     validateType: ValidationTypes.signinPassword,
+                    textAlign: TextAlign.start,
                     secureText: true,
                     onSave: (value) {
                       password = value;
@@ -117,17 +118,16 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
                           if (email.isEmpty) {
                             Constants.showErrorDialog(
                                 context: context,
-                                message: AppStrings.emptyEmailError);
+                                message: AppLocalizations.of(context)!.translate('blank_email')!);
                             return;
                           }
                           if (password.isEmpty) {
                             Constants.showErrorDialog(
                                 context: context,
-                                message: AppStrings.emptyPasswordError);
+                                message: AppLocalizations.of(context)!.translate('blank_password')!);
                             return;
                           }
-                          BlocProvider.of<SigninCubit>(context)
-                              .signin(email, password, rememberme);
+                          BlocProvider.of<SigninCubit>(context).signin(email, password, rememberme);
                         }
                       },
                       child: Text(
