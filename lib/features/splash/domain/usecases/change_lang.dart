@@ -2,10 +2,10 @@ import 'package:dartz/dartz.dart';
 
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/usecases/usecase.dart';
-import '../repositories/lang_repository.dart';
+import '../../../../data/repositories/localization/localization_repository.dart';
 
 class ChangeLangUseCase implements UseCase<bool, String> {
-  final LangRepository langRepository;
+  final LocalizationRepository langRepository;
 
   ChangeLangUseCase({required this.langRepository});
 

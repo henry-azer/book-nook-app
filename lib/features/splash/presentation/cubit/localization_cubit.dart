@@ -6,12 +6,13 @@ import '../../../../core/usecases/usecase.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../domain/usecases/change_lang.dart';
 import '../../domain/usecases/get_saved_lang.dart';
-part 'locale_state.dart';
+part 'localization_state.dart';
 
-class LocaleCubit extends Cubit<LocaleState> {
+class LocalizationCubit extends Cubit<LocalizationState> {
   final GetSavedLangUseCase getSavedLangUseCase;
   final ChangeLangUseCase changeLangUseCase;
-  LocaleCubit(
+
+  LocalizationCubit(
       {required this.getSavedLangUseCase, required this.changeLangUseCase})
       : super(const ChangeLocaleState(Locale(AppStrings.englishCode)));
 

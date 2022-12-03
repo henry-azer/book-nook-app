@@ -1,10 +1,9 @@
-import 'package:book_nook_app/features/profile/domain/entities/user.dart';
+import 'package:book_nook_app/data/entities/user/signup.dart';
 
-class UserModel extends User {
-  const UserModel(
+class SignupModel extends Signup {
+  const SignupModel(
       {required firstName,
       required lastName,
-      required id,
       required email,
       required password,
       required birthdate,
@@ -12,14 +11,12 @@ class UserModel extends User {
       : super(
             firstName: firstName,
             lastName: lastName,
-            id: id,
             email: email,
             password: password,
             birthdate: birthdate,
             phoneNumber: phoneNumber);
 
-  factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
-        id: json["id"],
+  factory SignupModel.fromJson(Map<String, dynamic> json) => SignupModel(
         email: json["email"] ?? "Empty",
         password: json["password"] ?? "Empty",
         firstName: json["firstName"] ?? "Empty",

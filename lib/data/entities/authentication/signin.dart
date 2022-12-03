@@ -5,8 +5,7 @@ class Signin extends Equatable {
   final String password;
   final bool rememberme;
 
-  const Signin(
-      {required this.email, required this.password, required this.rememberme});
+  const Signin({required this.email, required this.password, required this.rememberme});
 
   @override
   List<Object?> get props => [email, password];

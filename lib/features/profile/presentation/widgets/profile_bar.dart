@@ -4,7 +4,7 @@ import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/assets_manager.dart';
-import '../../domain/entities/user.dart';
+import '../../../../data/entities/user/user.dart';
 
 class ProfileBar extends StatefulWidget {
   final User? user;

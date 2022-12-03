@@ -1,10 +1,10 @@
 import 'package:book_nook_app/core/error/exceptions.dart';
 import 'package:dartz/dartz.dart';
 import '../../../../core/usecases/usecase.dart';
-import '../repositories/lang_repository.dart';
+import '../../../../data/repositories/localization/localization_repository.dart';
 
 class GetSavedLangUseCase implements UseCase<String, NoParams> {
-  final LangRepository langRepository;
+  final LocalizationRepository langRepository;
 
   GetSavedLangUseCase({required this.langRepository});
 

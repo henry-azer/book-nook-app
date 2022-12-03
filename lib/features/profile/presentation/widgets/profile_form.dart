@@ -6,7 +6,7 @@ import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_text_style.dart';
 import '../../../../core/utils/app_values.dart';
 import '../../../../core/validation/validation_types.dart';
-import '../../domain/entities/user.dart';
+import '../../../../data/entities/user/user.dart';
 
 class ProfileForm extends StatefulWidget {
   final User user;

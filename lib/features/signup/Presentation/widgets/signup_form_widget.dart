@@ -8,6 +8,7 @@ import '../../../../config/locale/app_localizations.dart';
 import '../../../../config/routes/app_routes.dart';
 import '../../../../core/utils/constants.dart';
 import '../../../../core/widgets/buttons/button_form_widget.dart';
+import '../../domain/entities/signup_request.dart';
 
 class SignupFormWidget extends StatefulWidget {
   const SignupFormWidget({Key? key}) : super(key: key);
@@ -18,12 +19,7 @@ class SignupFormWidget extends StatefulWidget {
 
 class _SignupFormWidgetState extends State<SignupFormWidget> {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
-  late String firstname;
-  late String lastname;
-  late String birthDay;
-  late String birthMonth;
-  late String birthYear;
-  late String phoneNumber;
+  late SignupRequest signupRequest;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +45,7 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
                     textAlign: TextAlign.start,
                     secureText: false,
                     onSave: (value) {
-                      firstname = value;
+                      signupRequest.firstname = value;
                     })),
             Padding(
                 padding: const EdgeInsets.fromLTRB(22, 22, 22, 0),
@@ -65,7 +61,7 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
                     textAlign: TextAlign.start,
                     secureText: false,
                     onSave: (value) {
-                      lastname = value;
+                      signupRequest.lastname = value;
                     })),
             Padding(
               padding: const EdgeInsets.fromLTRB(30, 25, 22, 0),
@@ -94,7 +90,7 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
                         secureText: false,
                         textAlign: TextAlign.center,
                         onSave: (value) {
-                          birthDay = value;
+                          signupRequest.birthDay = value;
                         }),
                   ),
                   const SizedBox(
@@ -114,7 +110,7 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
                         secureText: false,
                         textAlign: TextAlign.center,
                         onSave: (value) {
-                          birthMonth = value;
+                          signupRequest.birthMonth = value;
                         }),
                   ),
                   const SizedBox(
@@ -134,7 +130,7 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
                         validateType: ValidationTypes.signupBirthYear,
                         secureText: false,
                         onSave: (value) {
-                          birthYear = value;
+                          signupRequest.birthYear = value;
                         }),
                   ),
                 ],
@@ -154,7 +150,7 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
                     textAlign: TextAlign.start,
                     secureText: false,
                     onSave: (value) {
-                      phoneNumber = value;
+                      signupRequest.phoneNumber = value;
                     })),
             Padding(
               padding: const EdgeInsets.only(top: 35.0),
@@ -172,40 +168,37 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
                   onPress: () {
                     if (_formkey.currentState!.validate()) {
                       _formkey.currentState?.save();
-                      if (firstname.isEmpty) {
+                      if (signupRequest.firstname.isEmpty) {
                         Constants.showErrorDialog(
                             context: context, message: AppLocalizations.of(context)!.translate("blank_first_name")!);
                         return;
                       }
-                      if (lastname.isEmpty) {
+                      if (signupRequest.lastname.isEmpty) {
                         Constants.showErrorDialog(
                             context: context, message: AppLocalizations.of(context)!.translate("blank_last_name")!);
                         return;
                       }
-                      if (birthDay.isEmpty) {
+                      if (signupRequest.birthDay.isEmpty) {
                         Constants.showErrorDialog(
                             context: context, message: AppLocalizations.of(context)!.translate("blank_birth_day")!);
                         return;
                       }
-                      if (birthMonth.isEmpty) {
+                      if (signupRequest.birthMonth.isEmpty) {
                         Constants.showErrorDialog(
                             context: context, message: AppLocalizations.of(context)!.translate("blank_birth_month")!);
                         return;
                       }
-                      if (birthYear.isEmpty) {
+                      if (signupRequest.birthYear.isEmpty) {
                         Constants.showErrorDialog(
                             context: context, message: AppLocalizations.of(context)!.translate("blank_birth_year")!);
                         return;
                       }
-                      if (phoneNumber.isEmpty) {
+                      if (signupRequest.phoneNumber.isEmpty) {
                         Constants.showErrorDialog(
                             context: context, message: AppLocalizations.of(context)!.translate("blank_phone_number")!);
                         return;
                       }
-                      Navigator.pushNamed(context, Routes.signup2, arguments: {
-                        "firstname": firstname, "lastname" : lastname, "phoneNumber" : phoneNumber,
-                        "birthDay" : birthDay, "birthMonth" : birthMonth, "birthYear" : birthYear
-                      });
+                      Navigator.pushNamed(context, Routes.signup2, arguments: signupRequest);
                     }
                   }),
             ),
@@ -214,8 +207,7 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
                 onPressed: () {
                   Navigator.pushReplacementNamed(context, Routes.signin);
                 },
-                child: Text(
-                    AppLocalizations.of(context)!.translate("have_already_account")!,
+                child: Text(AppLocalizations.of(context)!.translate("have_already_account")!,
                     style: AppTextStyle.textDecoration),
               ),
             ),

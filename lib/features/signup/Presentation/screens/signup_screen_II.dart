@@ -1,3 +1,4 @@
+// ignore_for_file: file_names
 import 'package:book_nook_app/features/signup/Presentation/widgets/signup_form_II_widget.dart';
 import 'package:book_nook_app/features/signup/Presentation/widgets/signup_widget.dart';
 import 'package:flutter/material.dart';

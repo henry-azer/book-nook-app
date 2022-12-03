@@ -3,16 +3,16 @@ import 'package:dartz/dartz.dart';
 
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/models/response_model.dart';
-import '../entities/signin.dart';
-import '../entities/signin_claims.dart';
-import '../repositories/signin_repository.dart';
+import '../../../../data/entities/authentication/signin.dart';
+import '../../../../data/entities/authentication/signin_claims.dart';
+import '../../../../data/repositories/authentication/authentication_repository.dart';
 
 class SigninUseCase implements UseCase<ResponseModel<SigninClaims>, Signin> {
-  final SigninRepository signinRepository;
+  final AuthenticationRepository signinRepository;
 
   SigninUseCase({required this.signinRepository});
 
   @override
-  Future<Either<GenericException, ResponseModel<SigninClaims>>> call(
-          Signin signin) => signinRepository.signin(signin);
+  Future<Either<GenericException, ResponseModel<SigninClaims>>> call(Signin signin) async =>
+      await signinRepository.signin(signin);
 }

@@ -1,13 +1,12 @@
 import 'package:book_nook_app/core/api/app_authentication.dart';
-import 'package:book_nook_app/features/signin/data/datasources/signin_local_datasource.dart';
-import 'package:book_nook_app/features/signin/data/datasources/signin_remote_datasource.dart';
-import 'package:book_nook_app/features/signin/domain/repositories/signin_repository.dart';
+import 'package:book_nook_app/data/datasources/authentication/authentication_local_datasource.dart';
+import 'package:book_nook_app/data/datasources/authentication/authentication_remote_datasource.dart';
+import 'package:book_nook_app/data/datasources/user/user_local_datasource.dart';
+import 'package:book_nook_app/data/datasources/user/user_remote_datasource.dart';
+import 'package:book_nook_app/data/repositories/user/user_repository.dart';
+import 'package:book_nook_app/data/repositories/user/user_repository_impl.dart';
 import 'package:book_nook_app/features/signin/domain/usecases/signin_usecase.dart';
 import 'package:book_nook_app/features/signin/presentation/cubit/signin_cubit.dart';
-import 'package:book_nook_app/features/profile/data/datasources/profile_local_datasource.dart';
-import 'package:book_nook_app/features/profile/data/datasources/profile_remote_datasource.dart';
-import 'package:book_nook_app/features/profile/data/repositories/profile_repository_impl.dart';
-import 'package:book_nook_app/features/profile/domain/repositories/profile_repository.dart';
 import 'package:book_nook_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
@@ -17,61 +16,76 @@ import 'core/api/api_consumer.dart';
 import 'core/api/app_interceptors.dart';
 import 'core/api/dio_consumer.dart';
 import 'core/network/network_info.dart';
-import 'features/signin/data/repositories/signin_repository_impl.dart';
+import 'data/repositories/authentication/authentication_repository.dart';
+import 'data/repositories/authentication/authentication_repository_impl.dart';
 import 'features/profile/domain/usecases/current_user_usecase.dart';
-import 'features/splash/data/datasources/lang_local_data_source.dart';
-import 'features/splash/data/repositories/lang_repository_impl.dart';
-import 'features/splash/domain/repositories/lang_repository.dart';
+import 'data/datasources/localization/localization_local_data_source.dart';
+import 'data/repositories/localization/localization_repository_impl.dart';
+import 'data/repositories/localization/localization_repository.dart';
+import 'features/signup/domain/usecases/signup_usecase.dart';
 import 'features/splash/domain/usecases/change_lang.dart';
 import 'features/splash/domain/usecases/get_saved_lang.dart';
-import 'features/splash/presentation/cubit/locale_cubit.dart';
+import 'features/splash/presentation/cubit/localization_cubit.dart';
 
 final sl = GetIt.instance;
 
 Future<void> init() async {
-  //! Features
 
-  // Blocs
+  // !---- Cubits ----!
+  // signin
   sl.registerFactory<SigninCubit>(() => SigninCubit(signinUseCase: sl()));
+  // profile
   sl.registerFactory<ProfileCubit>(() => ProfileCubit(profileUserCase: sl()));
+  // splash
+  sl.registerFactory<LocalizationCubit>(() => LocalizationCubit(getSavedLangUseCase: sl(), changeLangUseCase: sl()));
 
-  sl.registerFactory<LocaleCubit>(() => LocaleCubit(getSavedLangUseCase: sl(), changeLangUseCase: sl()));
-
-  // Use cases
+  // !---- Use cases ----!
+  // signin
   sl.registerLazySingleton<SigninUseCase>(() => SigninUseCase(signinRepository: sl()));
-  sl.registerLazySingleton<CurrentUserUseCase>(() => CurrentUserUseCase(profileRepository: sl()));
-
+  // profile
+  sl.registerLazySingleton<CurrentUserUseCase>(() => CurrentUserUseCase(authenticationRepository: sl()));
+  // signup
+  sl.registerLazySingleton<SignupUseCase>(() => SignupUseCase(userRepository: sl()));
+  // splash
   sl.registerLazySingleton<GetSavedLangUseCase>(() => GetSavedLangUseCase(langRepository: sl()));
   sl.registerLazySingleton<ChangeLangUseCase>(() => ChangeLangUseCase(langRepository: sl()));
 
-  // Repository
-  sl.registerLazySingleton<SigninRepository>(() => SigninRepositoryImpl(
+
+  // !---- Repository ----!
+  // authentication
+  sl.registerLazySingleton<AuthenticationRepository>(() => AuthenticationRepositoryImpl(
         networkInfo: sl(),
-        signinLocalDataSource: sl(),
-        signinRemoteDataSource: sl(),
+        authenticationLocalDataSource: sl(),
+        authenticationRemoteDataSource: sl(),
       ));
-  sl.registerLazySingleton<ProfileRepository>(() => ProfileRepositoryImpl(
-    networkInfo: sl(),
-    profileLocalDataSource: sl(),
-    profileRemoteDataSource: sl(),
-  ));
+  // user
+  sl.registerLazySingleton<UserRepository>(() => UserRepositoryImpl(
+        networkInfo: sl(),
+        userLocalDataSource: sl(),
+        userRemoteDataSource: sl(),
+      ));
+  // localization
+  sl.registerLazySingleton<LocalizationRepository>(() => LocalizationRepositoryImpl(localizationLocalDataSource: sl()));
 
-  sl.registerLazySingleton<LangRepository>(() => LangRepositoryImpl(langLocalDataSource: sl()));
 
-  // Data Sources
-  sl.registerLazySingleton<SigninLocalDataSource>(() => SigninLocalDataSourceImpl(sharedPreferences: sl()));
-  sl.registerLazySingleton<SigninRemoteDataSource>(() => SigninRemoteDataSourceImpl(apiConsumer: sl()));
-  sl.registerLazySingleton<ProfileLocalDataSource>(() => ProfileLocalDataSourceImpl(sharedPreferences: sl()));
-  sl.registerLazySingleton<ProfileRemoteDataSource>(() => ProfileRemoteDataSourceImpl(apiConsumer: sl()));
+  // !---- Data Sources ----!
+  // authentication
+  sl.registerLazySingleton<AuthenticationLocalDataSource>(() => AuthenticationLocalDataSourceImpl(sharedPreferences: sl()));
+  sl.registerLazySingleton<AuthenticationRemoteDataSource>(() => AuthenticationRemoteDataSourceImpl(apiConsumer: sl()));
+  // user
+  sl.registerLazySingleton<UserLocalDataSource>(() => UserLocalDataSourceImpl(sharedPreferences: sl()));
+  sl.registerLazySingleton<UserRemoteDataSource>(() => UserRemoteDataSourceImpl(apiConsumer: sl()));
+  // localization
+  sl.registerLazySingleton<LocalizationLocalDataSource>(() => LocalizationLocalDataSourceImpl(sharedPreferences: sl()));
 
-  sl.registerLazySingleton<LangLocalDataSource>(() => LangLocalDataSourceImpl(sharedPreferences: sl()));
 
-  //! Core
+  // !---- Core ----!
   sl.registerLazySingleton<AppAuthentication>(() => AppAuthenticationImpl(sharedPreferences: sl()));
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(connectionChecker: sl()));
   sl.registerLazySingleton<ApiConsumer>(() => DioConsumer(client: sl()));
 
-  //! External
+
+  // !---- External ----!
   final sharedPreferences = await SharedPreferences.getInstance();
   sl.registerLazySingleton(() => sharedPreferences);
   sl.registerLazySingleton(() => AppInterceptors(sl()));

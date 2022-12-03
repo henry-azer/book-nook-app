@@ -1,4 +1,4 @@
-import 'package:book_nook_app/features/signin/domain/entities/signin.dart';
+import '../../entities/authentication/signin.dart';
 
 class SigninModel extends Signin {
   const SigninModel({

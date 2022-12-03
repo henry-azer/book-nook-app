@@ -2,6 +2,7 @@ import 'package:book_nook_app/features/signin/presentation/cubit/signin_cubit.da
 import 'package:book_nook_app/features/signin/presentation/screens/signin_screen.dart';
 import 'package:book_nook_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:book_nook_app/features/profile/presentation/screens/profile_screen.dart';
+import 'package:book_nook_app/features/signup/Presentation/cubit/signup_cubit.dart';
 import 'package:book_nook_app/features/signup/Presentation/screens/signup_screen_II.dart';
 import 'package:book_nook_app/features/signup/Presentation/screens/signup_screen.dart';
 import 'package:book_nook_app/features/splash/presentation/screens/splash_screen.dart';
@@ -45,16 +46,13 @@ class AppRoutes {
 
       case Routes.signup1:
         return MaterialPageRoute(builder: (context) {
-          return BlocProvider(
-            create: ((context) => di.sl<SigninCubit>()),
-            child: const SignupScreen(),
-          );
+          return const SignupScreen();
         }, settings: routeSettings);
 
       case Routes.signup2:
         return MaterialPageRoute(builder: (context) {
           return BlocProvider(
-            create: ((context) => di.sl<SigninCubit>()),
+            create: ((context) => di.sl<SignupCubit>()),
             child: const SignupScreenII(),
           );
         }, settings: routeSettings);

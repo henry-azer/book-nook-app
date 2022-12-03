@@ -4,7 +4,7 @@ import 'config/locale/app_localizations_setup.dart';
 import 'config/routes/app_routes.dart';
 import 'config/themes/app_theme.dart';
 import 'core/utils/app_strings.dart';
-import 'features/splash/presentation/cubit/locale_cubit.dart';
+import 'features/splash/presentation/cubit/localization_cubit.dart';
 import 'injection_container.dart' as di;
 
 class BookNookApp extends StatelessWidget {
@@ -14,9 +14,9 @@ class BookNookApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
         providers: [
-          BlocProvider(create: (context) => di.sl<LocaleCubit>()),
+          BlocProvider(create: (context) => di.sl<LocalizationCubit>()),
         ],
-        child: BlocBuilder<LocaleCubit, LocaleState>(
+        child: BlocBuilder<LocalizationCubit, LocalizationState>(
           buildWhen: (previousState, currentState) {
             return previousState != currentState;
           },

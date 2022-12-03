@@ -18,7 +18,7 @@ class SigninSuccess extends SigninState {
   const SigninSuccess({required this.signinClaims, required this.signinClaimsResponse});
 
   @override
-  List<Object> get props => [signinClaims];
+  List<Object> get props => [signinClaims, signinClaimsResponse];
 }
 
 class SigninError extends SigninState {

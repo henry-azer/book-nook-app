@@ -17,8 +17,7 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-  _navigateToSigninRoute() =>
-      Navigator.pushReplacementNamed(context, Routes.signin);
+  _navigateToSigninRoute() => Navigator.pushReplacementNamed(context, Routes.signin);
 
   @override
   Widget build(BuildContext context) {
@@ -59,8 +58,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     text: TextSpan(
                       children: [
                         TextSpan(
-                            text: AppLocalizations.of(context)!
-                                .translate('welcome_title')!,
+                            text: AppLocalizations.of(context)!.translate('welcome_title')!,
                             style: AppTextStyle.welcomeTitle),
                         const WidgetSpan(
                           child: Padding(
@@ -68,8 +66,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           ),
                         ),
                         TextSpan(
-                            text: AppLocalizations.of(context)!
-                                .translate('welcome_description')!,
+                            text: AppLocalizations.of(context)!.translate('welcome_description')!,
                             style: AppTextStyle.welcomeTitleDescription),
                       ],
                     ),
@@ -92,8 +89,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   ButtonFormWidget(
                       onPress: _navigateToSigninRoute,
                       child: Text(
-                          AppLocalizations.of(context)!
-                              .translate('welcome_start')!,
+                          AppLocalizations.of(context)!.translate('welcome_start')!,
                           style: AppTextStyle.button)),
                 ],
               ),

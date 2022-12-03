@@ -12,6 +12,7 @@ import '../../../../config/locale/app_localizations.dart';
 import '../../../../config/routes/app_routes.dart';
 import '../../../../core/utils/constants.dart';
 import '../../../../core/widgets/buttons/button_form_widget.dart';
+import '../../domain/entities/signin_request.dart';
 
 class SigninFormWidget extends StatefulWidget {
   const SigninFormWidget({Key? key}) : super(key: key);
@@ -22,9 +23,7 @@ class SigninFormWidget extends StatefulWidget {
 
 class _SigninFormWidgetState extends State<SigninFormWidget> {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
-  late String email;
-  late String password;
-  late bool rememberme = false;
+  late SigninRequest signinRequest = SigninRequest();
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +48,7 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
                     textAlign: TextAlign.start,
                     secureText: false,
                     onSave: (value) {
-                      email = value;
+                      signinRequest.email = value;
                     })),
             Padding(
                 padding: const EdgeInsets.fromLTRB(22, 20, 22, 0),
@@ -65,7 +64,7 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
                     textAlign: TextAlign.start,
                     secureText: true,
                     onSave: (value) {
-                      password = value;
+                      signinRequest.password = value;
                     })),
             Padding(
               padding: const EdgeInsets.only(
@@ -73,7 +72,7 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
               child: GestureDetector(
                 onTap: () {
                   setState(() {
-                    rememberme = !rememberme;
+                    signinRequest.rememberme = !signinRequest.rememberme;
                   });
                 },
                 child: Row(
@@ -82,15 +81,14 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
                       checkColor: AppColors.primary,
                       activeColor: AppColors.fontPrimary,
                       autofocus: false,
-                      value: rememberme,
+                      value: signinRequest.rememberme,
                       onChanged: (value) {
                         setState(() {
-                          rememberme = value!;
+                          signinRequest.rememberme = value!;
                         });
                       },
                     ),
-                    Text(AppLocalizations.of(context)!.translate('rememberme')!,
-                        style: AppTextStyle.rememberme)
+                    Text(AppLocalizations.of(context)!.translate('rememberme')!, style: AppTextStyle.rememberme)
                   ],
                 ),
               ),
@@ -115,19 +113,15 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
                       onPress: () {
                         if (_formkey.currentState!.validate()) {
                           _formkey.currentState?.save();
-                          if (email.isEmpty) {
-                            Constants.showErrorDialog(
-                                context: context,
-                                message: AppLocalizations.of(context)!.translate('blank_email')!);
+                          if (signinRequest.email.isEmpty) {
+                            Constants.showErrorDialog(context: context, message: AppLocalizations.of(context)!.translate('blank_email')!);
                             return;
                           }
-                          if (password.isEmpty) {
-                            Constants.showErrorDialog(
-                                context: context,
-                                message: AppLocalizations.of(context)!.translate('blank_password')!);
+                          if (signinRequest.password.isEmpty) {
+                            Constants.showErrorDialog(context: context, message: AppLocalizations.of(context)!.translate('blank_password')!);
                             return;
                           }
-                          BlocProvider.of<SigninCubit>(context).signin(email, password, rememberme);
+                          BlocProvider.of<SigninCubit>(context).signin(signinRequest);
                         }
                       },
                       child: Text(
@@ -139,8 +133,7 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
                 }),
                 listener: ((context, state) {
                   if (state is SigninError) {
-                    Constants.showErrorDialog(
-                        context: context, message: state.message);
+                    Constants.showErrorDialog(context: context, message: state.message);
                   } else if (state is SigninSuccess) {
                     Constants.showSnackBar(context: context, message: state.signinClaimsResponse.message);
                     Navigator.pushReplacementNamed(context, Routes.profile);
