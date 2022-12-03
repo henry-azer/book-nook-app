@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:book_nook_app/features/authentication/domain/entities/signin_claims.dart';
+import 'package:book_nook_app/features/signin/domain/entities/signin_claims.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 

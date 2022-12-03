@@ -1,4 +1,4 @@
-import 'package:book_nook_app/features/authentication/presentation/widgets/signin_form_widget.dart';
+import 'package:book_nook_app/features/signin/presentation/widgets/signin_form_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../config/locale/app_localizations.dart';

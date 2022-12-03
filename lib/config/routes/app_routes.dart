@@ -1,5 +1,5 @@
-import 'package:book_nook_app/features/authentication/presentation/cubit/signin_cubit.dart';
-import 'package:book_nook_app/features/authentication/presentation/screens/signin_screen.dart';
+import 'package:book_nook_app/features/signin/presentation/cubit/signin_cubit.dart';
+import 'package:book_nook_app/features/signin/presentation/screens/signin_screen.dart';
 import 'package:book_nook_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:book_nook_app/features/profile/presentation/screens/profile_screen.dart';
 import 'package:book_nook_app/features/signup/Presentation/screens/signup_screen_II.dart';

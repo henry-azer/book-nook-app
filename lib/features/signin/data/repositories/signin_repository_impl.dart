@@ -1,5 +1,5 @@
-import 'package:book_nook_app/features/authentication/data/datasources/signin_local_datasource.dart';
-import 'package:book_nook_app/features/authentication/domain/repositories/signin_repository.dart';
+import 'package:book_nook_app/features/signin/data/datasources/signin_local_datasource.dart';
+import 'package:book_nook_app/features/signin/domain/repositories/signin_repository.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/error/exceptions.dart';

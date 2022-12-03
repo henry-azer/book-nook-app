@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:book_nook_app/core/models/response_model.dart';
 import 'package:book_nook_app/core/utils/app_strings.dart';
-import 'package:book_nook_app/features/authentication/data/models/signin_claims_model.dart';
+import 'package:book_nook_app/features/signin/data/models/signin_claims_model.dart';
 
 import '../../../../core/api/api_consumer.dart';
 import '../../../../core/api/end_points.dart';
