@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../config/locale/app_localizations.dart';
 import '../../../../core/utils/app_text_style.dart';
 import '../../../../core/widgets/logo_widget.dart';
 
@@ -22,8 +23,7 @@ class _SignupWidgetState extends State<SignupWidget> {
               children: [
                 const LogoWidget(width: 220, height: 220),
                 Text(
-                  //AppLocalizations.of(context)!.translate('signup')!,
-                  "Sign up",
+                  AppLocalizations.of(context)!.translate('signup')!,
                   style: AppTextStyle.title,
                 ),
               ],

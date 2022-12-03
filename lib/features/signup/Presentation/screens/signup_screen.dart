@@ -19,7 +19,7 @@ class _SignupScreenState extends State<SignupScreen> {
         child: Column(
           children: const <Widget>[
             SignupWidget(),
-            SignupFormIWidget(),
+            SignupFormWidget(),
           ],
         ),
       ),
