@@ -2,9 +2,8 @@ import 'package:book_nook_app/features/authentication/presentation/cubit/signin_
 import 'package:book_nook_app/features/authentication/presentation/screens/signin_screen.dart';
 import 'package:book_nook_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:book_nook_app/features/profile/presentation/screens/profile_screen.dart';
-import 'package:book_nook_app/features/beforehome/presentation/screens/beforehomepage_screen.dart';
-import 'package:book_nook_app/features/signup/Presentation/screens/signupII_screen.dart';
-import 'package:book_nook_app/features/signup/Presentation/screens/signupI_screen.dart';
+import 'package:book_nook_app/features/signup/Presentation/screens/signup_screen_II.dart';
+import 'package:book_nook_app/features/signup/Presentation/screens/signup_screen.dart';
 import 'package:book_nook_app/features/splash/presentation/screens/splash_screen.dart';
 import 'package:book_nook_app/injection_container.dart' as di;
 import 'package:flutter/material.dart';
@@ -19,7 +18,7 @@ class Routes {
   static const String signin = '/signin';
   static const String signup1 = '/signup1';
   static const String signup2 = '/signup2';
-  static const String beforehomepage = '/beforehomepage';
+  // static const String beforehomepage = '/beforehomepage';
   static const String profile = '/profile';
 }
 
@@ -27,14 +26,14 @@ class AppRoutes {
   static Route? onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case Routes.initial:
-        return MaterialPageRoute(builder: (context) {
+        return MaterialPageRoute(builder: (context,) {
           return const SplashScreen();
-        });
+        }, settings: routeSettings);
 
       case Routes.welcome:
         return MaterialPageRoute(builder: (context) {
           return const WelcomeScreen();
-        });
+        }, settings: routeSettings);
 
       case Routes.signin:
         return MaterialPageRoute(builder: (context) {
@@ -42,7 +41,7 @@ class AppRoutes {
             create: ((context) => di.sl<SigninCubit>()),
             child: const SigninScreen(),
           );
-        });
+        }, settings: routeSettings);
 
       case Routes.signup1:
         return MaterialPageRoute(builder: (context) {
@@ -50,23 +49,23 @@ class AppRoutes {
             create: ((context) => di.sl<SigninCubit>()),
             child: const SignupScreen(),
           );
-        });
+        }, settings: routeSettings);
 
       case Routes.signup2:
         return MaterialPageRoute(builder: (context) {
           return BlocProvider(
             create: ((context) => di.sl<SigninCubit>()),
-            child: const SignupIIScreen(),
+            child: const SignupScreenII(),
           );
-        });
+        }, settings: routeSettings);
 
-      case Routes.beforehomepage:
-        return MaterialPageRoute(builder: (context) {
-          return BlocProvider(
-            create: ((context) => di.sl<SigninCubit>()),
-            child: const BeforeHomePageScreen(),
-          );
-        });
+      // case Routes.beforehomepage:
+      //   return MaterialPageRoute(builder: (context) {
+      //     return BlocProvider(
+      //       create: ((context) => di.sl<SigninCubit>()),
+      //       child: const BeforeHomePageScreen(),
+      //     );
+      //   }, settings: routeSettings);
 
       case Routes.profile:
         return MaterialPageRoute(builder: (context) {
@@ -74,7 +73,7 @@ class AppRoutes {
             create: ((context) => di.sl<ProfileCubit>()),
             child: const ProfileScreen(),
           );
-        });
+        }, settings: routeSettings);
 
       default:
         return undefinedRoute();
