@@ -17,7 +17,7 @@ class SignupCubit extends Cubit<SignupState> {
 
   SignupCubit({required this.signupUseCase}) : super(SignupInitial());
 
-  Future<void> signin(SignupRequest signupRequest) async {
+  Future<void> signup(SignupRequest signupRequest) async {
     emit(SignupInitial());
     emit(SignupLoading());
     Either<GenericException, ResponseModel<User>> response =

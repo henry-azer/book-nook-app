@@ -21,7 +21,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
 
   @override
   Future<ResponseModel<User>> signup(Signup signup) async {
-    final response = await apiConsumer.post(EndPoints.signin, body: signup.toJson());
+    final response = await apiConsumer.post(EndPoints.signup, body: signup.toJson());
     if (response[AppStrings.success].toString() == AppStrings.boolFalse) {
       throw GenericException(message: response[AppStrings.message]);
     } else {

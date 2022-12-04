@@ -40,7 +40,7 @@ class Constants {
   static void showSnackBar(
       {required BuildContext context, required String message}) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      backgroundColor: AppColors.snackbar,
+      backgroundColor: AppColors.snackbar.withOpacity(0.4),
       behavior: SnackBarBehavior.floating,
       dismissDirection: DismissDirection.none,
       content: Text(message, style: AppTextStyle.snackbar,),

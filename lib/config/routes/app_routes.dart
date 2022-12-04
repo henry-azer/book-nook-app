@@ -1,3 +1,4 @@
+import 'package:book_nook_app/features/profile/presentation/cubit/signout_cubit.dart';
 import 'package:book_nook_app/features/signin/presentation/cubit/signin_cubit.dart';
 import 'package:book_nook_app/features/signin/presentation/screens/signin_screen.dart';
 import 'package:book_nook_app/features/profile/presentation/cubit/profile_cubit.dart';
@@ -19,6 +20,7 @@ class Routes {
   static const String signin = '/signin';
   static const String signup1 = '/signup1';
   static const String signup2 = '/signup2';
+
   // static const String beforehomepage = '/beforehomepage';
   static const String profile = '/profile';
 }
@@ -57,18 +59,21 @@ class AppRoutes {
           );
         }, settings: routeSettings);
 
-      // case Routes.beforehomepage:
-      //   return MaterialPageRoute(builder: (context) {
-      //     return BlocProvider(
-      //       create: ((context) => di.sl<SigninCubit>()),
-      //       child: const BeforeHomePageScreen(),
-      //     );
-      //   }, settings: routeSettings);
+    // case Routes.beforehomepage:
+    //   return MaterialPageRoute(builder: (context) {
+    //     return BlocProvider(
+    //       create: ((context) => di.sl<SigninCubit>()),
+    //       child: const BeforeHomePageScreen(),
+    //     );
+    //   }, settings: routeSettings);
 
       case Routes.profile:
         return MaterialPageRoute(builder: (context) {
-          return BlocProvider(
-            create: ((context) => di.sl<ProfileCubit>()),
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(create: ((context) => di.sl<ProfileCubit>()),),
+              BlocProvider(create: ((context) => di.sl<SignoutCubit>()),)
+            ],
             child: const ProfileScreen(),
           );
         }, settings: routeSettings);
@@ -80,10 +85,11 @@ class AppRoutes {
 
   static Route<dynamic> undefinedRoute() {
     return MaterialPageRoute(
-        builder: ((context) => const Scaffold(
-              body: Center(
-                child: Text(AppStrings.noRouteFound),
-              ),
-            )));
+        builder: ((context) =>
+        const Scaffold(
+          body: Center(
+            child: Text(AppStrings.noRouteFound),
+          ),
+        )));
   }
 }

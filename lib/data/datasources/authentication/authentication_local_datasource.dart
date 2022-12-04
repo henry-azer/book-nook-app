@@ -17,6 +17,8 @@ abstract class AuthenticationLocalDataSource {
   Future<void> cacheIsUserLogging();
 
   Future<void> cacheCurrentUser(User user);
+
+  Future<void> clearCache();
 }
 
 class AuthenticationLocalDataSourceImpl implements AuthenticationLocalDataSource {
@@ -26,7 +28,6 @@ class AuthenticationLocalDataSourceImpl implements AuthenticationLocalDataSource
 
   @override
   Future<void> cacheSigninClaims(Signin signin, SigninClaims signinClaims) async {
-    sharedPreferences.clear();
     sharedPreferences.setBool(AppStrings.cachedIsAuthenticated, true);
     sharedPreferences.setBool(AppStrings.cachedRememberMe, signin.rememberme);
     sharedPreferences.setString(AppStrings.cachedSignin, json.encode(signin));
@@ -41,8 +42,7 @@ class AuthenticationLocalDataSourceImpl implements AuthenticationLocalDataSource
 
   @override
   Future<User> getCurrentUser() async {
-    final jsonString =
-    sharedPreferences.getString(AppStrings.cachedCurrentUser);
+    final jsonString = sharedPreferences.getString(AppStrings.cachedCurrentUser);
     if (jsonString != null) {
       final cachedCurrentUser = Future.value(UserModel.fromJson(json.decode(jsonString)));
       return cachedCurrentUser;
@@ -53,6 +53,12 @@ class AuthenticationLocalDataSourceImpl implements AuthenticationLocalDataSource
 
   @override
   Future<void> cacheCurrentUser(User user) async {
+    sharedPreferences.remove(AppStrings.cachedCurrentUser);
     sharedPreferences.setString(AppStrings.cachedCurrentUser, json.encode(user));
+  }
+
+  @override
+  Future<void> clearCache() async {
+    sharedPreferences.clear();
   }
 }

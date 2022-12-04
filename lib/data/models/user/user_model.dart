@@ -1,3 +1,5 @@
+import 'package:book_nook_app/core/utils/app_strings.dart';
+
 import '../../entities/user/user.dart';
 
 class UserModel extends User {
@@ -20,11 +22,11 @@ class UserModel extends User {
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
         id: json["id"],
-        email: json["email"] ?? "Empty",
-        password: json["password"] ?? "Empty",
-        firstName: json["firstName"] ?? "Empty",
-        lastName: json["lastName"] ?? "Empty",
-        birthdate: json["birthdate"] ?? "Empty",
-        phoneNumber: json["phoneNumber"] ?? "Empty",
+        email: json["email"] ?? AppStrings.undefined,
+        password: json["password"] ?? AppStrings.undefined,
+        firstName: json["firstName"] ?? AppStrings.undefined,
+        lastName: json["lastName"] ?? AppStrings.undefined,
+        birthdate: json["birthdate"] ?? AppStrings.undefined,
+        phoneNumber: json["phoneNumber"] ?? AppStrings.undefined,
       );
 }

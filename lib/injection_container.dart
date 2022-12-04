@@ -5,9 +5,12 @@ import 'package:book_nook_app/data/datasources/user/user_local_datasource.dart';
 import 'package:book_nook_app/data/datasources/user/user_remote_datasource.dart';
 import 'package:book_nook_app/data/repositories/user/user_repository.dart';
 import 'package:book_nook_app/data/repositories/user/user_repository_impl.dart';
+import 'package:book_nook_app/features/profile/domain/usecases/signout_usecase.dart';
+import 'package:book_nook_app/features/profile/presentation/cubit/signout_cubit.dart';
 import 'package:book_nook_app/features/signin/domain/usecases/signin_usecase.dart';
 import 'package:book_nook_app/features/signin/presentation/cubit/signin_cubit.dart';
 import 'package:book_nook_app/features/profile/presentation/cubit/profile_cubit.dart';
+import 'package:book_nook_app/features/signup/Presentation/cubit/signup_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -34,18 +37,22 @@ Future<void> init() async {
   // !---- Cubits ----!
   // signin
   sl.registerFactory<SigninCubit>(() => SigninCubit(signinUseCase: sl()));
+  // signup
+  sl.registerFactory<SignupCubit>(() => SignupCubit(signupUseCase: sl()));
   // profile
   sl.registerFactory<ProfileCubit>(() => ProfileCubit(profileUserCase: sl()));
+  sl.registerFactory<SignoutCubit>(() => SignoutCubit(signoutUseCase: sl()));
   // splash
   sl.registerFactory<LocalizationCubit>(() => LocalizationCubit(getSavedLangUseCase: sl(), changeLangUseCase: sl()));
 
   // !---- Use cases ----!
   // signin
-  sl.registerLazySingleton<SigninUseCase>(() => SigninUseCase(signinRepository: sl()));
-  // profile
-  sl.registerLazySingleton<CurrentUserUseCase>(() => CurrentUserUseCase(authenticationRepository: sl()));
+  sl.registerLazySingleton<SigninUseCase>(() => SigninUseCase(authenticationRepository: sl()));
   // signup
   sl.registerLazySingleton<SignupUseCase>(() => SignupUseCase(userRepository: sl()));
+  // profile
+  sl.registerLazySingleton<CurrentUserUseCase>(() => CurrentUserUseCase(authenticationRepository: sl()));
+  sl.registerLazySingleton<SignoutUseCase>(() => SignoutUseCase(authenticationRepository: sl()));
   // splash
   sl.registerLazySingleton<GetSavedLangUseCase>(() => GetSavedLangUseCase(langRepository: sl()));
   sl.registerLazySingleton<ChangeLangUseCase>(() => ChangeLangUseCase(langRepository: sl()));

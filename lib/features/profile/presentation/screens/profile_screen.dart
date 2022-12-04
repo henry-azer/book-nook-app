@@ -10,6 +10,8 @@ import '../../../../config/locale/app_localizations.dart';
 import '../../../../config/routes/app_routes.dart';
 import '../../../../core/utils/app_text_style.dart';
 import '../../../../core/utils/constants.dart';
+import '../cubit/signout_cubit.dart';
+import '../cubit/signout_state.dart';
 import '../widgets/profile_form.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -51,14 +53,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                         ),
                         Padding(
-                          padding:
-                              const EdgeInsets.only(top: 20.0, bottom: 30.0),
+                          padding: const EdgeInsets.only(top: 20.0, bottom: 30.0),
                           child: SizedBox(
                             height: 419,
-                            child: LoadingAnimationWidget.threeArchedCircle(
-                              color: Colors.white,
-                              size: 80,
-                            ),
+                            child: LoadingAnimationWidget.threeArchedCircle(color: Colors.white, size: 80,),
                           ),
                         ),
                       ],
@@ -71,19 +69,33 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           child: ProfileBar(user: state.user, loading: false),
                         ),
                         Padding(
-                          padding:
-                              const EdgeInsets.only(bottom: 30.0),
+                          padding: const EdgeInsets.only(bottom: 30.0),
                           child: ProfileForm(user: state.user),
                         ),
-                        ButtonFormWidget(
-                            child: Text(
-                              AppLocalizations.of(context)!.translate('logout')!,
-                              style: AppTextStyle.button,
-                            ),
-                            onPress: () {
-                              Constants.showSnackBar(context: context, message: state.userResponse.message);
+                        BlocConsumer<SignoutCubit, SignoutState>(
+                          builder: ((context, state) {
+                            if (state is SignoutLoading) {
+                              return ButtonFormWidget(
+                                  child: LoadingAnimationWidget.staggeredDotsWave(color: Colors.white, size: 40,),
+                                  onPress: () {});
+                            } else {
+                              return ButtonFormWidget(
+                                  child: Text(AppLocalizations.of(context)!.translate('logout')!,
+                                    style: AppTextStyle.button,
+                                  ),
+                                  onPress: () { BlocProvider.of<SignoutCubit>(context).signout(); });
+                            }
+                          }),
+                          listener: ((context, state) {
+                            if (state is SignoutSuccess) {
+                              Constants.showSnackBar(context: context, message: state.signoutResponse.message);
                               Navigator.pushReplacementNamed(context, Routes.signin);
-                            }),
+                            }
+                            if (state is SignoutError) {
+                              Constants.showSnackBar(context: context, message: state.message);
+                            }
+                          }),
+                        ),
                       ],
                     );
                   } else {
@@ -92,10 +104,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 }),
                 listener: ((context, state) {
                   if (state is ProfileError) {
-                    Constants.showSnackBar(
-                        context: context,
-                        message: AppLocalizations.of(context)!
-                            .translate('something_wrong')!);
+                    Constants.showSnackBar(context: context, message: AppLocalizations.of(context)!.translate('something_wrong')!);
                     Navigator.pushReplacementNamed(context, Routes.signin);
                   }
                 }),

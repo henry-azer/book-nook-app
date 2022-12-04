@@ -4,13 +4,12 @@ import 'package:dartz/dartz.dart';
 
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/models/response_model.dart';
-import '../../../../data/entities/user/user.dart';
 
-class CurrentUserUseCase implements UseCase<ResponseModel<User>, NoParams> {
+class SignoutUseCase implements UseCase<ResponseModel<NoParams>, NoParams> {
   final AuthenticationRepository authenticationRepository;
 
-  CurrentUserUseCase({required this.authenticationRepository});
+  SignoutUseCase({required this.authenticationRepository});
 
   @override
-  Future<Either<GenericException, ResponseModel<User>>> call(noParams) async => await authenticationRepository.getCurrentUser();
+  Future<Either<GenericException, ResponseModel<NoParams>>> call(noParams) async => await authenticationRepository.signout();
 }

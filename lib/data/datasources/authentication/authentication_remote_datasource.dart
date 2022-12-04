@@ -51,8 +51,13 @@ class AuthenticationRemoteDataSourceImpl implements AuthenticationRemoteDataSour
   }
 
   @override
-  Future<ResponseModel<NoParams>> signout() {
-    // TODO: implement signout
-    throw UnimplementedError();
+  Future<ResponseModel<NoParams>> signout() async {
+    final response = await apiConsumer.get(EndPoints.signout);
+    if (response[AppStrings.success].toString() == AppStrings.boolFalse) {
+      throw GenericException(message: response[AppStrings.message]);
+    } else {
+      return ResponseModel(success: response[AppStrings.success],
+          message: response[AppStrings.message], model: NoParams());
+    }
   }
 }

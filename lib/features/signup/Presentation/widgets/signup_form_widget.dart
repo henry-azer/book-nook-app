@@ -19,7 +19,9 @@ class SignupFormWidget extends StatefulWidget {
 
 class _SignupFormWidgetState extends State<SignupFormWidget> {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
-  late SignupRequest signupRequest;
+  late SignupRequest signupRequest = SignupRequest(firstname: "", lastname: "",
+      birthDay: "", birthMonth: "", birthYear: "", phoneNumber: "",
+      email: "", password: "", confirmPassword: "");
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,8 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
             Padding(
                 padding: const EdgeInsets.fromLTRB(22, 20, 22, 0),
                 child: TextFieldWidget(
-                    label: AppLocalizations.of(context)!.translate("first_name")!,
+                    label:
+                        AppLocalizations.of(context)!.translate("first_name")!,
                     keyboardType: TextInputType.text,
                     labelStyle: AppTextStyle.fieldLabel,
                     errorStyle: AppTextStyle.fieldError,
@@ -50,7 +53,8 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
             Padding(
                 padding: const EdgeInsets.fromLTRB(22, 22, 22, 0),
                 child: TextFieldWidget(
-                    label: AppLocalizations.of(context)!.translate("last_name")!,
+                    label:
+                        AppLocalizations.of(context)!.translate("last_name")!,
                     keyboardType: TextInputType.text,
                     labelStyle: AppTextStyle.fieldLabel,
                     errorStyle: AppTextStyle.fieldError,
@@ -79,7 +83,8 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
                   SizedBox(
                     width: 100,
                     child: TextFieldWidget(
-                        label: AppLocalizations.of(context)!.translate("birth_dd")!,
+                        label: AppLocalizations.of(context)!
+                            .translate("birth_dd")!,
                         keyboardType: TextInputType.number,
                         labelStyle: AppTextStyle.fieldLabel,
                         errorStyle: AppTextStyle.fieldError,
@@ -99,7 +104,8 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
                   SizedBox(
                     width: 100,
                     child: TextFieldWidget(
-                        label: AppLocalizations.of(context)!.translate("birth_mm")!,
+                        label: AppLocalizations.of(context)!
+                            .translate("birth_mm")!,
                         keyboardType: TextInputType.number,
                         labelStyle: AppTextStyle.fieldLabel,
                         errorStyle: AppTextStyle.fieldError,
@@ -119,7 +125,8 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
                   SizedBox(
                     width: 100,
                     child: TextFieldWidget(
-                        label: AppLocalizations.of(context)!.translate("birth_yyyy")!,
+                        label: AppLocalizations.of(context)!
+                            .translate("birth_yyyy")!,
                         keyboardType: TextInputType.number,
                         textAlign: TextAlign.center,
                         labelStyle: AppTextStyle.fieldLabel,
@@ -139,7 +146,8 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
             Padding(
                 padding: const EdgeInsets.fromLTRB(22, 24, 22, 0),
                 child: TextFieldWidget(
-                    label: AppLocalizations.of(context)!.translate("phone_number")!,
+                    label: AppLocalizations.of(context)!
+                        .translate("phone_number")!,
                     keyboardType: TextInputType.number,
                     labelStyle: AppTextStyle.fieldLabel,
                     errorStyle: AppTextStyle.fieldError,
@@ -170,35 +178,48 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
                       _formkey.currentState?.save();
                       if (signupRequest.firstname.isEmpty) {
                         Constants.showErrorDialog(
-                            context: context, message: AppLocalizations.of(context)!.translate("blank_first_name")!);
+                            context: context,
+                            message: AppLocalizations.of(context)!
+                                .translate("blank_first_name")!);
                         return;
                       }
                       if (signupRequest.lastname.isEmpty) {
                         Constants.showErrorDialog(
-                            context: context, message: AppLocalizations.of(context)!.translate("blank_last_name")!);
+                            context: context,
+                            message: AppLocalizations.of(context)!
+                                .translate("blank_last_name")!);
                         return;
                       }
                       if (signupRequest.birthDay.isEmpty) {
                         Constants.showErrorDialog(
-                            context: context, message: AppLocalizations.of(context)!.translate("blank_birth_day")!);
+                            context: context,
+                            message: AppLocalizations.of(context)!
+                                .translate("blank_birth_day")!);
                         return;
                       }
                       if (signupRequest.birthMonth.isEmpty) {
                         Constants.showErrorDialog(
-                            context: context, message: AppLocalizations.of(context)!.translate("blank_birth_month")!);
+                            context: context,
+                            message: AppLocalizations.of(context)!
+                                .translate("blank_birth_month")!);
                         return;
                       }
                       if (signupRequest.birthYear.isEmpty) {
                         Constants.showErrorDialog(
-                            context: context, message: AppLocalizations.of(context)!.translate("blank_birth_year")!);
+                            context: context,
+                            message: AppLocalizations.of(context)!
+                                .translate("blank_birth_year")!);
                         return;
                       }
                       if (signupRequest.phoneNumber.isEmpty) {
                         Constants.showErrorDialog(
-                            context: context, message: AppLocalizations.of(context)!.translate("blank_phone_number")!);
+                            context: context,
+                            message: AppLocalizations.of(context)!
+                                .translate("blank_phone_number")!);
                         return;
                       }
-                      Navigator.pushNamed(context, Routes.signup2, arguments: signupRequest);
+                      Navigator.pushNamed(context, Routes.signup2,
+                          arguments: signupRequest);
                     }
                   }),
             ),
@@ -207,7 +228,9 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
                 onPressed: () {
                   Navigator.pushReplacementNamed(context, Routes.signin);
                 },
-                child: Text(AppLocalizations.of(context)!.translate("have_already_account")!,
+                child: Text(
+                    AppLocalizations.of(context)!
+                        .translate("have_already_account")!,
                     style: AppTextStyle.textDecoration),
               ),
             ),

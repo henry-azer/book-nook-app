@@ -5,6 +5,7 @@ import '../../../../config/locale/app_localizations.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_text_style.dart';
 import '../../../../core/utils/app_values.dart';
+import '../../../../core/utils/date_util.dart';
 import '../../../../core/validation/validation_types.dart';
 import '../../../../data/entities/user/user.dart';
 
@@ -43,9 +44,7 @@ class _ProfileFormState extends State<ProfileForm> {
                     errorBorderColor: AppColors.error,
                     validateType: ValidationTypes.signinEmail,
                     secureText: false,
-                    onSave: (value) {
-                      // password = value;
-                    }),
+                    onSave: (value) {}),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40.0),
@@ -59,7 +58,7 @@ class _ProfileFormState extends State<ProfileForm> {
                 padding: const EdgeInsets.only(top: 20.0),
                 child: ProfileTextField(
                     enabled: false,
-                    value: widget.user.password.substring(0, 20),
+                    value: widget.user.password.substring(0, 16),
                     label: AppLocalizations.of(context)!.translate('password')!,
                     valueStyle: AppTextStyle.field,
                     keyboardType: TextInputType.visiblePassword,
@@ -69,9 +68,7 @@ class _ProfileFormState extends State<ProfileForm> {
                     errorBorderColor: AppColors.error,
                     validateType: ValidationTypes.signinEmail,
                     secureText: true,
-                    onSave: (value) {
-                      // password = value;
-                    }),
+                    onSave: (value) {}),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40.0),
@@ -86,8 +83,7 @@ class _ProfileFormState extends State<ProfileForm> {
                 child: ProfileTextField(
                     enabled: false,
                     value: widget.user.firstName,
-                    label:
-                        AppLocalizations.of(context)!.translate('first_name')!,
+                    label: AppLocalizations.of(context)!.translate('first_name')!,
                     valueStyle: AppTextStyle.field,
                     keyboardType: TextInputType.visiblePassword,
                     errorStyle: AppTextStyle.fieldError,
@@ -96,9 +92,7 @@ class _ProfileFormState extends State<ProfileForm> {
                     errorBorderColor: AppColors.error,
                     validateType: ValidationTypes.signinEmail,
                     secureText: false,
-                    onSave: (value) {
-                      // password = value;
-                    }),
+                    onSave: (value) {}),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40.0),
@@ -113,8 +107,7 @@ class _ProfileFormState extends State<ProfileForm> {
                 child: ProfileTextField(
                     enabled: false,
                     value: widget.user.lastName,
-                    label:
-                        AppLocalizations.of(context)!.translate('last_name')!,
+                    label: AppLocalizations.of(context)!.translate('last_name')!,
                     valueStyle: AppTextStyle.field,
                     keyboardType: TextInputType.visiblePassword,
                     errorStyle: AppTextStyle.fieldError,
@@ -123,9 +116,7 @@ class _ProfileFormState extends State<ProfileForm> {
                     errorBorderColor: AppColors.error,
                     validateType: ValidationTypes.signinEmail,
                     secureText: false,
-                    onSave: (value) {
-                      // password = value;
-                    }),
+                    onSave: (value) {}),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40.0),
@@ -139,9 +130,8 @@ class _ProfileFormState extends State<ProfileForm> {
                 padding: const EdgeInsets.only(top: 20.0),
                 child: ProfileTextField(
                     enabled: false,
-                    value: widget.user.birthdate,
-                    label:
-                        AppLocalizations.of(context)!.translate('birth_date')!,
+                    value: DateUtil.convertStringDateTimeToStringDate(widget.user.birthdate) ?? widget.user.birthdate,
+                    label: AppLocalizations.of(context)!.translate('birth_date')!,
                     valueStyle: AppTextStyle.field,
                     keyboardType: TextInputType.visiblePassword,
                     errorStyle: AppTextStyle.fieldError,
@@ -150,9 +140,7 @@ class _ProfileFormState extends State<ProfileForm> {
                     errorBorderColor: AppColors.error,
                     validateType: ValidationTypes.signinEmail,
                     secureText: false,
-                    onSave: (value) {
-                      // password = value;
-                    }),
+                    onSave: (value) {}),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40.0),
@@ -167,8 +155,7 @@ class _ProfileFormState extends State<ProfileForm> {
                 child: ProfileTextField(
                     enabled: false,
                     value: widget.user.phoneNumber,
-                    label: AppLocalizations.of(context)!
-                        .translate('phone_number')!,
+                    label: AppLocalizations.of(context)!.translate('phone_number')!,
                     valueStyle: AppTextStyle.field,
                     keyboardType: TextInputType.visiblePassword,
                     errorStyle: AppTextStyle.fieldError,
@@ -177,9 +164,7 @@ class _ProfileFormState extends State<ProfileForm> {
                     errorBorderColor: AppColors.error,
                     validateType: ValidationTypes.signinEmail,
                     secureText: false,
-                    onSave: (value) {
-                      // password = value;
-                    }),
+                    onSave: (value) {}),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40.0),

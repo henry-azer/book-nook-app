@@ -27,7 +27,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
     if (await networkInfo.isConnected) {
       try {
         final responseCurrentUser = await authenticationRemoteDataSource.findCurrentUser();
-        authenticationLocalDataSource.cacheCurrentUser(responseCurrentUser.model);
+        await authenticationLocalDataSource.cacheCurrentUser(responseCurrentUser.model);
         return Right(responseCurrentUser);
       } on GenericException catch (exception) {
         return Left(exception);
@@ -35,8 +35,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
     } else {
       try {
         final cachedCurrentUser = await authenticationLocalDataSource.getCurrentUser();
-        return Right(ResponseModel(
-            success: true, message: AppStrings.cachedUserFetchSuccess, model: cachedCurrentUser));
+        return Right(ResponseModel(success: true, message: AppStrings.cachedUserFetchSuccess, model: cachedCurrentUser));
       } on CacheException {
         return const Left(CacheException());
       }
@@ -47,9 +46,10 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   Future<Either<GenericException, ResponseModel<SigninClaims>>> signin(Signin signin) async {
     if (await networkInfo.isConnected) {
       try {
-        authenticationLocalDataSource.cacheIsUserLogging();
+        await authenticationLocalDataSource.clearCache();
+        await authenticationLocalDataSource.cacheIsUserLogging();
         final responseSigninClaims = await authenticationRemoteDataSource.signin(signin);
-        authenticationLocalDataSource.cacheSigninClaims(signin, responseSigninClaims.model);
+        await authenticationLocalDataSource.cacheSigninClaims(signin, responseSigninClaims.model);
         return Right(responseSigninClaims);
       } on GenericException catch (exception) {
         return Left(exception);
@@ -60,8 +60,17 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   }
 
   @override
-  Future<Either<GenericException, ResponseModel<NoParams>>> signout() {
-    // TODO: implement signout
-    throw UnimplementedError();
+  Future<Either<GenericException, ResponseModel<NoParams>>> signout() async {
+    if (await networkInfo.isConnected) {
+      try {
+        final signoutResponse = await authenticationRemoteDataSource.signout();
+        await authenticationLocalDataSource.clearCache();
+        return Right(signoutResponse);
+      } on GenericException catch (exception) {
+        return Left(exception);
+      }
+    } else {
+      return const Left(CacheException());
+    }
   }
 }

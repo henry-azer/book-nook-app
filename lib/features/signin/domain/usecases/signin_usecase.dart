@@ -8,11 +8,11 @@ import '../../../../data/entities/authentication/signin_claims.dart';
 import '../../../../data/repositories/authentication/authentication_repository.dart';
 
 class SigninUseCase implements UseCase<ResponseModel<SigninClaims>, Signin> {
-  final AuthenticationRepository signinRepository;
+  final AuthenticationRepository authenticationRepository;
 
-  SigninUseCase({required this.signinRepository});
+  SigninUseCase({required this.authenticationRepository});
 
   @override
   Future<Either<GenericException, ResponseModel<SigninClaims>>> call(Signin signin) async =>
-      await signinRepository.signin(signin);
+      await authenticationRepository.signin(signin);
 }

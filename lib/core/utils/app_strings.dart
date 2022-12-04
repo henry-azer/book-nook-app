@@ -9,6 +9,7 @@ class AppStrings {
   static const String authorization = "Authorization";
   static const String accessToken = "accessToken";
 
+  static const String undefined = 'undefined';
   static const String noRouteFound = 'No Route Found';
   static const String serverFailure = 'Server Failure';
   static const String cacheFailure = 'Cache Failure';
@@ -50,4 +51,5 @@ class AppStrings {
   static const String fetchDataException = "Fetch Date Error";
   static const String internalServerErrorException = "Internal Server Error";
   static const String noNetworkConnectionException = "No Internet Connection";
+
 }
