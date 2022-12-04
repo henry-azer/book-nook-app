@@ -5,8 +5,10 @@ import 'package:book_nook_app/core/utils/app_colors.dart';
 import 'package:book_nook_app/core/utils/media_query_values.dart';
 import 'package:book_nook_app/core/widgets/circle/beats_positioned_circle_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../config/routes/app_routes.dart';
+import '../../../../core/utils/app_strings.dart';
 import '../../../../core/widgets/logo_widget.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -16,20 +18,18 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMixin {
+class _SplashScreenState extends State<SplashScreen>
+    with TickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
   late Timer _timer;
-
-  _goNext() => Navigator.pushReplacementNamed(context, Routes.welcome);
-
-  _startDelay() {
-    _timer = Timer(const Duration(milliseconds: 8000), () => _goNext());
-  }
+  bool _isUserAuthenticated = false;
+  bool _isUserWelcomedBefore = false;
 
   @override
   void initState() {
     super.initState();
+    _isUserLoggedInCache();
     _startDelay();
     _controller = AnimationController(
         duration: const Duration(milliseconds: 5000),
@@ -47,6 +47,25 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
     _controller.dispose();
     _timer.cancel();
     super.dispose();
+  }
+
+  _startDelay() {
+    _timer = Timer(const Duration(milliseconds: 8000), () => _goNext());
+  }
+
+  _goNext() => {
+        if (_isUserAuthenticated)
+          {Navigator.pushReplacementNamed(context, Routes.userProfile)}
+        else if (_isUserWelcomedBefore)
+          {Navigator.pushReplacementNamed(context, Routes.signin)}
+        else
+          {Navigator.pushReplacementNamed(context, Routes.appWelcome)}
+      };
+
+  Future _isUserLoggedInCache() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    _isUserAuthenticated = sharedPreferences.getBool(AppStrings.cachedIsAuthenticated) ?? false;
+    _isUserWelcomedBefore = sharedPreferences.getBool(AppStrings.cachedIsAppWelcomedUser) ?? false;
   }
 
   @override

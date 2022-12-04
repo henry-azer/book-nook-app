@@ -4,7 +4,7 @@ import '../../../../config/locale/app_localizations.dart';
 import '../../../../core/utils/app_text_style.dart';
 import '../../../../core/validation/text_field_validation.dart';
 
-class ProfileTextField extends StatefulWidget {
+class UserProfileTextField extends StatefulWidget {
   final String value;
   final String label;
   final TextStyle? valueStyle;
@@ -18,7 +18,7 @@ class ProfileTextField extends StatefulWidget {
   final TextInputType keyboardType;
   final FormFieldSetter onSave;
 
-  const ProfileTextField({
+  const UserProfileTextField({
     Key? key,
     this.errorStyle,
     required this.borderWidth,
@@ -35,10 +35,10 @@ class ProfileTextField extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<ProfileTextField> createState() => _ProfileTextFieldState();
+  State<UserProfileTextField> createState() => _UserProfileTextFieldState();
 }
 
-class _ProfileTextFieldState extends State<ProfileTextField> {
+class _UserProfileTextFieldState extends State<UserProfileTextField> {
   @override
   Widget build(BuildContext context) {
     String validation = "";

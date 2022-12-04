@@ -1,7 +1,7 @@
 import 'package:book_nook_app/core/widgets/buttons/button_form_widget.dart';
 import 'package:book_nook_app/core/widgets/navigation_bar_widget.dart';
-import 'package:book_nook_app/features/profile/presentation/cubit/profile_cubit.dart';
-import 'package:book_nook_app/features/profile/presentation/widgets/profile_bar.dart';
+import 'package:book_nook_app/features/user-profile/presentation/cubit/user_profile_cubit.dart';
+import 'package:book_nook_app/features/user-profile/presentation/widgets/user_profile_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
@@ -12,23 +12,23 @@ import '../../../../core/utils/app_text_style.dart';
 import '../../../../core/utils/constants.dart';
 import '../cubit/signout_cubit.dart';
 import '../cubit/signout_state.dart';
-import '../widgets/profile_form.dart';
+import '../widgets/user_profile_form.dart';
 
-class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+class UserProfileScreen extends StatefulWidget {
+  const UserProfileScreen({Key? key}) : super(key: key);
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
+  State<UserProfileScreen> createState() => _UserProfileScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _UserProfileScreenState extends State<UserProfileScreen> {
   @override
   void initState() {
     super.initState();
     _getCurrentUser();
   }
 
-  _getCurrentUser() => BlocProvider.of<ProfileCubit>(context).findCurrentUser();
+  _getCurrentUser() => BlocProvider.of<UserProfileCubit>(context).findCurrentUser();
 
   @override
   Widget build(BuildContext context) {
@@ -36,18 +36,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: Scaffold(
         extendBody: true,
         resizeToAvoidBottomInset: true,
-        bottomNavigationBar: const NavigationBarWidget(),
+        bottomNavigationBar: NavigationBarWidget(path: ModalRoute.of(context)?.settings.name),
         body: SingleChildScrollView(
           child: Column(
             children: [
-              BlocConsumer<ProfileCubit, ProfileState>(
+              BlocConsumer<UserProfileCubit, UserProfileState>(
                 builder: ((context, state) {
-                  if (state is ProfileLoading) {
+                  if (state is UserProfileLoading) {
                     return Column(
                       children: [
                         const Padding(
                           padding: EdgeInsets.only(top: 50),
-                          child: ProfileBar(
+                          child: UserProfileBar(
                             user: null,
                             loading: true,
                           ),
@@ -61,16 +61,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                       ],
                     );
-                  } else if (state is ProfileSuccess) {
+                  } else if (state is UserProfileSuccess) {
                     return Column(
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(top: 50),
-                          child: ProfileBar(user: state.user, loading: false),
+                          child: UserProfileBar(user: state.user, loading: false),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(bottom: 30.0),
-                          child: ProfileForm(user: state.user),
+                          child: UserProfileForm(user: state.user),
                         ),
                         BlocConsumer<SignoutCubit, SignoutState>(
                           builder: ((context, state) {
@@ -103,7 +103,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   }
                 }),
                 listener: ((context, state) {
-                  if (state is ProfileError) {
+                  if (state is UserProfileError) {
                     Constants.showSnackBar(context: context, message: AppLocalizations.of(context)!.translate('something_wrong')!);
                     Navigator.pushReplacementNamed(context, Routes.signin);
                   }

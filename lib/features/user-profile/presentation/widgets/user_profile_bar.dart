@@ -6,18 +6,18 @@ import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/assets_manager.dart';
 import '../../../../data/entities/user/user.dart';
 
-class ProfileBar extends StatefulWidget {
+class UserProfileBar extends StatefulWidget {
   final User? user;
   final bool loading;
 
-  const ProfileBar({Key? key, required this.user, required this.loading})
+  const UserProfileBar({Key? key, required this.user, required this.loading})
       : super(key: key);
 
   @override
-  State<ProfileBar> createState() => _ProfileBarState();
+  State<UserProfileBar> createState() => _UserProfileBarState();
 }
 
-class _ProfileBarState extends State<ProfileBar> {
+class _UserProfileBarState extends State<UserProfileBar> {
   @override
   Widget build(BuildContext context) {
     return Container(

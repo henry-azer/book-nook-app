@@ -10,14 +10,14 @@ import '../../../../core/utils/constants.dart';
 import '../../../../core/widgets/buttons/button_form_widget.dart';
 import '../../domain/entities/signup_request.dart';
 
-class SignupFormWidget extends StatefulWidget {
-  const SignupFormWidget({Key? key}) : super(key: key);
+class SignupUserFormWidget extends StatefulWidget {
+  const SignupUserFormWidget({Key? key}) : super(key: key);
 
   @override
-  State<SignupFormWidget> createState() => _SignupFormWidgetState();
+  State<SignupUserFormWidget> createState() => _SignupUserFormWidgetState();
 }
 
-class _SignupFormWidgetState extends State<SignupFormWidget> {
+class _SignupUserFormWidgetState extends State<SignupUserFormWidget> {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   late SignupRequest signupRequest = SignupRequest(firstname: "", lastname: "",
       birthDay: "", birthMonth: "", birthYear: "", phoneNumber: "",
@@ -218,7 +218,7 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
                                 .translate("blank_phone_number")!);
                         return;
                       }
-                      Navigator.pushNamed(context, Routes.signup2,
+                      Navigator.pushNamed(context, Routes.signupAccountInfo,
                           arguments: signupRequest);
                     }
                   }),

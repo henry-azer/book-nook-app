@@ -1,7 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 import 'package:book_nook_app/core/usecases/usecase.dart';
-import 'package:book_nook_app/features/profile/presentation/cubit/signout_state.dart';
+import 'package:book_nook_app/features/user-profile/presentation/cubit/signout_state.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/error/exceptions.dart';

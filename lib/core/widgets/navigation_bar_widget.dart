@@ -3,21 +3,26 @@ import 'package:book_nook_app/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 
+import '../../config/routes/app_routes.dart';
+
 class NavigationBarWidget extends StatefulWidget {
-  const NavigationBarWidget({Key? key}) : super(key: key);
+  final String? path;
+  const NavigationBarWidget({Key? key, this.path}) : super(key: key);
 
   @override
   NavigationBarWidgetState createState() => NavigationBarWidgetState();
 }
 
 class NavigationBarWidgetState extends State<NavigationBarWidget> {
-  int _selectedItemPosition = 0;
+  List<String> routes = [Routes.appHome, Routes.booksSearch, Routes.userRatedBooks, Routes.userProfile];
+  late int _selectedItemPosition = routes.indexOf(widget.path!);
   final double _selectedItemSize = 28.0;
   final double _defaultItemSize = 24.0;
   final double _navigationHeight = 42;
 
   @override
   Widget build(BuildContext context) {
+
     return SnakeNavigationBar.color(
       height: _navigationHeight,
       backgroundColor: AppColors.black,
@@ -34,7 +39,10 @@ class NavigationBarWidgetState extends State<NavigationBarWidget> {
       snakeViewColor: AppColors.primary.withOpacity(0.9),
 
       currentIndex: _selectedItemPosition,
-      onTap: (index) => setState(() => _selectedItemPosition = index),
+      onTap: (index) => {
+        setState(() => _selectedItemPosition = index),
+        if(widget.path != routes.elementAt(index)) Navigator.pushReplacementNamed(context, routes.elementAt(index)),
+      },
       items: [
         BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined,

@@ -9,18 +9,18 @@ import '../../../../core/models/response_model.dart';
 import '../../../../data/entities/user/user.dart';
 import '../../domain/usecases/current_user_usecase.dart';
 
-part 'profile_state.dart';
+part 'user_profile_state.dart';
 
-class ProfileCubit extends Cubit<ProfileState> {
+class UserProfileCubit extends Cubit<UserProfileState> {
   final CurrentUserUseCase profileUserCase;
 
-  ProfileCubit({required this.profileUserCase}) : super(ProfileInitial());
+  UserProfileCubit({required this.profileUserCase}) : super(UserProfileInitial());
 
   Future<void> findCurrentUser() async {
-    emit(ProfileInitial());
-    emit(ProfileLoading());
+    emit(UserProfileInitial());
+    emit(UserProfileLoading());
     Either<GenericException, ResponseModel<User>> response = await profileUserCase(NoParams());
-    emit(response.fold((exception) => ProfileError(message: exception.message),
-        (userResponse) => ProfileSuccess(user: userResponse.model, userResponse: userResponse)));
+    emit(response.fold((exception) => UserProfileError(message: exception.message),
+        (userResponse) => UserProfileSuccess(user: userResponse.model, userResponse: userResponse)));
   }
 }

@@ -1,4 +1,4 @@
-import 'package:book_nook_app/features/profile/presentation/widgets/profile_text_field.dart';
+import 'package:book_nook_app/features/user-profile/presentation/widgets/user_profile_text_field.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../config/locale/app_localizations.dart';
@@ -9,16 +9,16 @@ import '../../../../core/utils/date_util.dart';
 import '../../../../core/validation/validation_types.dart';
 import '../../../../data/entities/user/user.dart';
 
-class ProfileForm extends StatefulWidget {
+class UserProfileForm extends StatefulWidget {
   final User user;
 
-  const ProfileForm({Key? key, required this.user}) : super(key: key);
+  const UserProfileForm({Key? key, required this.user}) : super(key: key);
 
   @override
-  State<ProfileForm> createState() => _ProfileFormState();
+  State<UserProfileForm> createState() => _UserProfileFormState();
 }
 
-class _ProfileFormState extends State<ProfileForm> {
+class _UserProfileFormState extends State<UserProfileForm> {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
   @override
@@ -32,7 +32,7 @@ class _ProfileFormState extends State<ProfileForm> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(top: 20.0),
-                child: ProfileTextField(
+                child: UserProfileTextField(
                     enabled: false,
                     value: widget.user.email,
                     label: AppLocalizations.of(context)!.translate('email')!,
@@ -56,7 +56,7 @@ class _ProfileFormState extends State<ProfileForm> {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 20.0),
-                child: ProfileTextField(
+                child: UserProfileTextField(
                     enabled: false,
                     value: widget.user.password.substring(0, 16),
                     label: AppLocalizations.of(context)!.translate('password')!,
@@ -80,7 +80,7 @@ class _ProfileFormState extends State<ProfileForm> {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 20.0),
-                child: ProfileTextField(
+                child: UserProfileTextField(
                     enabled: false,
                     value: widget.user.firstName,
                     label: AppLocalizations.of(context)!.translate('first_name')!,
@@ -104,7 +104,7 @@ class _ProfileFormState extends State<ProfileForm> {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 20.0),
-                child: ProfileTextField(
+                child: UserProfileTextField(
                     enabled: false,
                     value: widget.user.lastName,
                     label: AppLocalizations.of(context)!.translate('last_name')!,
@@ -128,7 +128,7 @@ class _ProfileFormState extends State<ProfileForm> {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 20.0),
-                child: ProfileTextField(
+                child: UserProfileTextField(
                     enabled: false,
                     value: DateUtil.convertStringDateTimeToStringDate(widget.user.birthdate) ?? widget.user.birthdate,
                     label: AppLocalizations.of(context)!.translate('birth_date')!,
@@ -152,7 +152,7 @@ class _ProfileFormState extends State<ProfileForm> {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 20.0),
-                child: ProfileTextField(
+                child: UserProfileTextField(
                     enabled: false,
                     value: widget.user.phoneNumber,
                     label: AppLocalizations.of(context)!.translate('phone_number')!,

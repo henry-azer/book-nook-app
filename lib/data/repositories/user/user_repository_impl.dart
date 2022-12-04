@@ -1,3 +1,4 @@
+import 'package:book_nook_app/core/usecases/usecase.dart';
 import 'package:book_nook_app/data/datasources/user/user_local_datasource.dart';
 import 'package:book_nook_app/data/datasources/user/user_remote_datasource.dart';
 import 'package:book_nook_app/data/entities/user/signup.dart';
@@ -20,7 +21,8 @@ class UserRepositoryImpl implements UserRepository {
       required this.userRemoteDataSource});
 
   @override
-  Future<Either<GenericException, ResponseModel<User>>> signup(Signup signup) async {
+  Future<Either<GenericException, ResponseModel<User>>> signup(
+      Signup signup) async {
     if (await networkInfo.isConnected) {
       try {
         final responseCurrentUser = await userRemoteDataSource.signup(signup);
@@ -30,6 +32,16 @@ class UserRepositoryImpl implements UserRepository {
       }
     } else {
       return const Left(CacheException());
+    }
+  }
+
+  @override
+  Future<Either<GenericException, NoParams>> setAppWelcomedUser() async {
+    try {
+      await userLocalDataSource.cacheIsAppWelcomedUser();
+      return Right(NoParams());
+    } on GenericException catch (exception) {
+      return Left(CacheException(exception));
     }
   }
 }

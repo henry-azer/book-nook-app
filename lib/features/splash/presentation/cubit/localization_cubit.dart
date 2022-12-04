@@ -4,8 +4,8 @@ import 'package:equatable/equatable.dart';
 
 import '../../../../core/usecases/usecase.dart';
 import '../../../../core/utils/app_strings.dart';
-import '../../domain/usecases/change_lang.dart';
-import '../../domain/usecases/get_saved_lang.dart';
+import '../../domain/usecases/change_lang_usecase.dart';
+import '../../domain/usecases/get_saved_lang_usecase.dart';
 part 'localization_state.dart';
 
 class LocalizationCubit extends Cubit<LocalizationState> {

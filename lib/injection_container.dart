@@ -5,11 +5,13 @@ import 'package:book_nook_app/data/datasources/user/user_local_datasource.dart';
 import 'package:book_nook_app/data/datasources/user/user_remote_datasource.dart';
 import 'package:book_nook_app/data/repositories/user/user_repository.dart';
 import 'package:book_nook_app/data/repositories/user/user_repository_impl.dart';
-import 'package:book_nook_app/features/profile/domain/usecases/signout_usecase.dart';
-import 'package:book_nook_app/features/profile/presentation/cubit/signout_cubit.dart';
+import 'package:book_nook_app/features/splash/domain/usecases/app_welcomed_user_usecase.dart';
+import 'package:book_nook_app/features/splash/presentation/cubit/app_welcome_cubit.dart';
+import 'package:book_nook_app/features/user-profile/domain/usecases/signout_usecase.dart';
+import 'package:book_nook_app/features/user-profile/presentation/cubit/signout_cubit.dart';
 import 'package:book_nook_app/features/signin/domain/usecases/signin_usecase.dart';
 import 'package:book_nook_app/features/signin/presentation/cubit/signin_cubit.dart';
-import 'package:book_nook_app/features/profile/presentation/cubit/profile_cubit.dart';
+import 'package:book_nook_app/features/user-profile/presentation/cubit/user_profile_cubit.dart';
 import 'package:book_nook_app/features/signup/Presentation/cubit/signup_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
@@ -21,13 +23,13 @@ import 'core/api/dio_consumer.dart';
 import 'core/network/network_info.dart';
 import 'data/repositories/authentication/authentication_repository.dart';
 import 'data/repositories/authentication/authentication_repository_impl.dart';
-import 'features/profile/domain/usecases/current_user_usecase.dart';
+import 'features/user-profile/domain/usecases/current_user_usecase.dart';
 import 'data/datasources/localization/localization_local_data_source.dart';
 import 'data/repositories/localization/localization_repository_impl.dart';
 import 'data/repositories/localization/localization_repository.dart';
 import 'features/signup/domain/usecases/signup_usecase.dart';
-import 'features/splash/domain/usecases/change_lang.dart';
-import 'features/splash/domain/usecases/get_saved_lang.dart';
+import 'features/splash/domain/usecases/change_lang_usecase.dart';
+import 'features/splash/domain/usecases/get_saved_lang_usecase.dart';
 import 'features/splash/presentation/cubit/localization_cubit.dart';
 
 final sl = GetIt.instance;
@@ -40,9 +42,10 @@ Future<void> init() async {
   // signup
   sl.registerFactory<SignupCubit>(() => SignupCubit(signupUseCase: sl()));
   // profile
-  sl.registerFactory<ProfileCubit>(() => ProfileCubit(profileUserCase: sl()));
+  sl.registerFactory<UserProfileCubit>(() => UserProfileCubit(profileUserCase: sl()));
   sl.registerFactory<SignoutCubit>(() => SignoutCubit(signoutUseCase: sl()));
   // splash
+  sl.registerFactory<AppWelcomeCubit>(() => AppWelcomeCubit(appWelcomedUserUserCase: sl()));
   sl.registerFactory<LocalizationCubit>(() => LocalizationCubit(getSavedLangUseCase: sl(), changeLangUseCase: sl()));
 
   // !---- Use cases ----!
@@ -54,8 +57,9 @@ Future<void> init() async {
   sl.registerLazySingleton<CurrentUserUseCase>(() => CurrentUserUseCase(authenticationRepository: sl()));
   sl.registerLazySingleton<SignoutUseCase>(() => SignoutUseCase(authenticationRepository: sl()));
   // splash
-  sl.registerLazySingleton<GetSavedLangUseCase>(() => GetSavedLangUseCase(langRepository: sl()));
+  sl.registerLazySingleton<AppWelcomedUserUseCase>(() => AppWelcomedUserUseCase(userRepository: sl()));
   sl.registerLazySingleton<ChangeLangUseCase>(() => ChangeLangUseCase(langRepository: sl()));
+  sl.registerLazySingleton<GetSavedLangUseCase>(() => GetSavedLangUseCase(langRepository: sl()));
 
 
   // !---- Repository ----!

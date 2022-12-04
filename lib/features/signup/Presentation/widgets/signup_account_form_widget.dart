@@ -14,14 +14,14 @@ import '../../../../core/utils/constants.dart';
 import '../../../../core/widgets/buttons/button_form_widget.dart';
 import '../cubit/signup_cubit.dart';
 
-class SignupFormIIWidget extends StatefulWidget {
-  const SignupFormIIWidget({super.key});
+class SignupAccountFormWidget extends StatefulWidget {
+  const SignupAccountFormWidget({super.key});
 
   @override
-  State<SignupFormIIWidget> createState() => _SignupFormIIWidgetState();
+  State<SignupAccountFormWidget> createState() => _SignupAccountFormWidgetState();
 }
 
-class _SignupFormIIWidgetState extends State<SignupFormIIWidget> {
+class _SignupAccountFormWidgetState extends State<SignupAccountFormWidget> {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
   @override

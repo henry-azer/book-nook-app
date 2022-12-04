@@ -1,16 +1,16 @@
 // ignore_for_file: file_names
-import 'package:book_nook_app/features/signup/Presentation/widgets/signup_form_II_widget.dart';
+import 'package:book_nook_app/features/signup/Presentation/widgets/signup_account_form_widget.dart';
 import 'package:book_nook_app/features/signup/Presentation/widgets/signup_widget.dart';
 import 'package:flutter/material.dart';
 
-class SignupScreenII extends StatefulWidget {
-  const SignupScreenII({Key? key}) : super(key: key);
+class SignupAccountInfoScreen extends StatefulWidget {
+  const SignupAccountInfoScreen({Key? key}) : super(key: key);
 
   @override
-  State<SignupScreenII> createState() => _SignupScreenIIState();
+  State<SignupAccountInfoScreen> createState() => _SignupAccountInfoScreenState();
 }
 
-class _SignupScreenIIState extends State<SignupScreenII> {
+class _SignupAccountInfoScreenState extends State<SignupAccountInfoScreen> {
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -29,7 +29,7 @@ class _SignupScreenIIState extends State<SignupScreenII> {
         child: Column(
           children: const [
             SignupWidget(),
-            SignupFormIIWidget(),
+            SignupAccountFormWidget(),
           ],
         ),
       ),
