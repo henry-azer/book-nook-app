@@ -24,7 +24,7 @@ class DioConsumer implements ApiConsumer {
     };
 
     client.options
-      ..baseUrl = EndPoints.baseUrl
+      ..baseUrl = EndPoints.baseProductionUrl
       ..responseType = ResponseType.plain
       ..followRedirects = false
       ..validateStatus = (status) {

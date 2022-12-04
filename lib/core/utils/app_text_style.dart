@@ -12,11 +12,32 @@ class AppTextStyle with Diagnosticable {
     fontFamily: AppStrings.fontFamilyComfortaa,
   );
 
+  static TextStyle? field = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w400,
+    color: AppColors.fontPrimary,
+    fontFamily: AppStrings.fontFamilyBarlow,
+  );
+
   static TextStyle? fieldLabel = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w400,
     color: AppColors.fontPrimary,
     fontFamily: AppStrings.fontFamilyBarlow,
+  );
+
+  static TextStyle? profileFieldLabel = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w400,
+    color: AppColors.fontPrimary,
+    fontFamily: AppStrings.fontFamilyBarlow,
+  );
+
+  static TextStyle? profileName = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.w700,
+    color: AppColors.fontPrimary,
+    fontFamily: AppStrings.fontFamilyComfortaa,
   );
 
   static TextStyle? fieldError = TextStyle(
@@ -69,4 +90,10 @@ class AppTextStyle with Diagnosticable {
     fontFamily: AppStrings.fontFamilyBarlow,
   );
 
+  static TextStyle? snackbar = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: AppColors.fontPrimary,
+    fontFamily: AppStrings.fontFamilyComfortaa,
+  );
 }

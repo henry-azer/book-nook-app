@@ -4,7 +4,9 @@ import 'package:book_nook_app/core/utils/app_colors.dart';
 import 'package:book_nook_app/core/utils/app_text_style.dart';
 import 'package:book_nook_app/core/widgets/buttons/button_form_widget.dart';
 import 'package:book_nook_app/core/widgets/circle/positioned_circle_widget.dart';
+import 'package:book_nook_app/features/splash/presentation/cubit/app_welcome_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../config/locale/app_localizations.dart';
 import '../../../../config/routes/app_routes.dart';
@@ -17,8 +19,14 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-  _navigateToSigninRoute() =>
-      Navigator.pushReplacementNamed(context, Routes.signin);
+
+  @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<AppWelcomeCubit>(context).setAppWelcomedUser();
+  }
+
+  _navigateToSigninRoute() => { Navigator.pushReplacementNamed(context, Routes.signin) };
 
   @override
   Widget build(BuildContext context) {

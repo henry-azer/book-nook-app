@@ -12,7 +12,8 @@ class AppInterceptors extends Interceptor {
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     debugPrint('REQUEST[${options.method}] => PATH: ${options.path}');
     options.headers[AppStrings.contentType] = AppStrings.applicationJson;
-    if (appAuthentication.isUserAuthenticated()) {
+    if (appAuthentication.isUserAuthenticated() &&
+        !appAuthentication.isUserLogging()) {
       options.headers[AppStrings.authorization] =
           'Bearer ${appAuthentication.getBearerToken()}';
     }

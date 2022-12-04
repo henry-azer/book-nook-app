@@ -1,3 +1,4 @@
+import 'package:book_nook_app/core/utils/app_text_style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -30,9 +31,19 @@ class Constants {
   static void showToast(
       {required String message, Color? color, ToastGravity? gravity}) {
     Fluttertoast.showToast(
-        toastLength: Toast.LENGTH_LONG,
         msg: message,
-        backgroundColor: color ?? AppColors.button,
-        gravity: gravity ?? ToastGravity.BOTTOM);
+        toastLength: Toast.LENGTH_LONG,
+        gravity: gravity ?? ToastGravity.BOTTOM,
+        backgroundColor: color ?? AppColors.snackbar);
+  }
+
+  static void showSnackBar(
+      {required BuildContext context, required String message}) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      backgroundColor: AppColors.snackbar.withOpacity(0.4),
+      behavior: SnackBarBehavior.floating,
+      dismissDirection: DismissDirection.none,
+      content: Text(message, style: AppTextStyle.snackbar,),
+    ));
   }
 }

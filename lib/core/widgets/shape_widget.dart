@@ -16,7 +16,7 @@ class _ShapeWidgetState extends State<ShapeWidget> {
   @override
   Widget build(BuildContext context) {
     return Image.asset(
-      ImgAssets.shape,
+      ImgAssets.user,
       width: widget.width,
       height: widget.height,
     );

@@ -15,8 +15,8 @@ class _BeforeHomeWidgetState extends State<BeforeHomeWidget> {
       Padding(
         padding: const EdgeInsets.only(top: 240),
         child: Column(
-          children: [
-            const ShapeWidget(
+          children: const [
+            ShapeWidget(
               width: 220,
               height: 220,
             ),

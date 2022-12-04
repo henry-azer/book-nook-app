@@ -6,6 +6,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 abstract class AppAuthentication {
   String getBearerToken();
 
+  bool isUserLogging();
+
   bool isUserAuthenticated();
 }
 
@@ -25,5 +27,10 @@ class AppAuthenticationImpl extends AppAuthentication {
   @override
   bool isUserAuthenticated() {
     return sharedPreferences.getBool(AppStrings.cachedIsAuthenticated) ?? false;
+  }
+
+  @override
+  bool isUserLogging() {
+    return sharedPreferences.getBool(AppStrings.cachedIsUserLogging) ?? false;
   }
 }
