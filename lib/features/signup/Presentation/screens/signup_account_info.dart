@@ -7,7 +7,8 @@ class SignupAccountInfoScreen extends StatefulWidget {
   const SignupAccountInfoScreen({Key? key}) : super(key: key);
 
   @override
-  State<SignupAccountInfoScreen> createState() => _SignupAccountInfoScreenState();
+  State<SignupAccountInfoScreen> createState() =>
+      _SignupAccountInfoScreenState();
 }
 
 class _SignupAccountInfoScreenState extends State<SignupAccountInfoScreen> {
