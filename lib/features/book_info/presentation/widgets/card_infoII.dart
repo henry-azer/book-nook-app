@@ -40,7 +40,7 @@ class _InfoCardIIState extends State<InfoCardII> {
           ],
         ),
         decoration: BoxDecoration(
-          color: AppColors.card,
+          color: AppColors.circlePrimary.withOpacity(0.3),
           borderRadius: BorderRadiusDirectional.circular(20),
         ),
       ),

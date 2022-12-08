@@ -28,11 +28,11 @@ class _InfoCardState extends State<InfoCard> {
         width: 110,
         child: Row(
           children: [
-            IconButton(
-              onPressed: () {},
-              icon: widget.icons,
+            Icon(
+              widget.icons.icon,
               color: AppColors.gold,
             ),
+            SizedBox(width: 20,),
             Column(
               children: [
                 Text(
@@ -51,7 +51,7 @@ class _InfoCardState extends State<InfoCard> {
           ],
         ),
         decoration: BoxDecoration(
-          color: AppColors.card,
+          color: AppColors.circlePrimary.withOpacity(0.3),
           borderRadius: BorderRadiusDirectional.circular(20),
         ),
       ),

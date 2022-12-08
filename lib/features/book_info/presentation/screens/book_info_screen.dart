@@ -1,3 +1,4 @@
+import 'package:book_nook_app/core/widgets/navigation_bar_widget.dart';
 import 'package:book_nook_app/features/book_info/presentation/widgets/bookinfo_widgetI.dart';
 import 'package:book_nook_app/features/book_info/presentation/widgets/bookinfo_widgetII.dart';
 import 'package:flutter/material.dart';
@@ -15,11 +16,12 @@ class _BookInfoScreenState extends State<BookInfoScreen> {
     return Material(
       child: Scaffold(
         extendBody: true,
-        extendBodyBehindAppBar: true,
+        resizeToAvoidBottomInset: true,
+        bottomNavigationBar: NavigationBarWidget(path: ModalRoute.of(context)?.settings.name),
         body: Column(
           children: const [
-            BookInfoWidgetI(),
-            BookInfoWidgetII(),
+            BookInfo(),
+            BookInfoWidget(),
           ],
         ),
       ),

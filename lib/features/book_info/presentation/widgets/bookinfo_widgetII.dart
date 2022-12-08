@@ -2,14 +2,14 @@ import 'package:book_nook_app/core/utils/app_text_style.dart';
 import 'package:book_nook_app/core/widgets/buttons/button_form_widget.dart';
 import 'package:flutter/material.dart';
 
-class BookInfoWidgetII extends StatefulWidget {
-  const BookInfoWidgetII({Key? key}) : super(key: key);
+class BookInfoWidget extends StatefulWidget {
+  const BookInfoWidget({Key? key}) : super(key: key);
 
   @override
-  State<BookInfoWidgetII> createState() => _BookInfoWidgetIIState();
+  State<BookInfoWidget> createState() => _BookInfoWidgetState();
 }
 
-class _BookInfoWidgetIIState extends State<BookInfoWidgetII> {
+class _BookInfoWidgetState extends State<BookInfoWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,7 +29,7 @@ class _BookInfoWidgetIIState extends State<BookInfoWidgetII> {
           typesetting, remaining essentially 
           unchanged.
           """,
-            style: AppTextStyle.text,
+            style: AppTextStyle.authorTitlePrimary,
           ),
           ButtonFormWidget(
             child: Text(

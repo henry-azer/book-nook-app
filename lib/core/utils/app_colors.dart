@@ -17,7 +17,6 @@ class AppColors {
 
   static Color border = HexColor('#2F2C79');
 
-  static Color card = Color.fromRGBO(47, 44, 121, 0.3);
   static Color button = HexColor('#2F2C79');
   static Color snackbar = HexColor('#2F2C79');
   static Color navigator = HexColor('#000020');

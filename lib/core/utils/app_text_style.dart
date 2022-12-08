@@ -111,14 +111,14 @@ class AppTextStyle with Diagnosticable {
     fontFamily: AppStrings.fontFamilyBarlow,
   );
 
-  static TextStyle? cardinfotext = TextStyle(
+  static TextStyle? cardinfotextprimary = TextStyle(
     fontSize: 24,
     fontWeight: FontWeight.w700,
     color: AppColors.gold,
     fontFamily: AppStrings.fontFamilyComfortaa,
   );
 
-  static TextStyle? cardinfotextii = TextStyle(
+  static TextStyle? cardinfotextsecondry = TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.w300,
     color: AppColors.white,
@@ -126,7 +126,7 @@ class AppTextStyle with Diagnosticable {
     fontFamily: AppStrings.fontFamilyComfortaa,
   );
 
-  static TextStyle? text = TextStyle(
+  static TextStyle? authorTitlePrimary = TextStyle(
     fontSize: 15,
     fontWeight: FontWeight.w300,
     color: AppColors.white,

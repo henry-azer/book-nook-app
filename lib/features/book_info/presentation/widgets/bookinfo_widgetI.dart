@@ -6,14 +6,14 @@ import 'package:book_nook_app/features/book_info/presentation/widgets/card_infoI
 import 'package:book_nook_app/features/book_info/presentation/widgets/selected_book.dart';
 import 'package:flutter/material.dart';
 
-class BookInfoWidgetI extends StatefulWidget {
-  const BookInfoWidgetI({Key? key}) : super(key: key);
+class BookInfo extends StatefulWidget {
+  const BookInfo({Key? key}) : super(key: key);
 
   @override
-  State<BookInfoWidgetI> createState() => _BookInfoWidgetIState();
+  State<BookInfo> createState() => _BookInfoState();
 }
 
-class _BookInfoWidgetIState extends State<BookInfoWidgetI> {
+class _BookInfoState extends State<BookInfo> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -79,15 +79,15 @@ class _BookInfoWidgetIState extends State<BookInfoWidgetI> {
                 children: [
                   Text(
                     "A Teaspoon of earth   and sea",
-                    style: AppTextStyle.cardinfotext,
+                    style: AppTextStyle.cardinfotextprimary,
                   ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Text(
-                    "DINA NAYERI",
-                    style: AppTextStyle.cardinfotextii,
-                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "DINA NAYERI",
+                      style: AppTextStyle.cardinfotextsecondry,
+                    ),
+                  )
                 ],
               ),
             ),
