@@ -17,6 +17,7 @@ class AppColors {
 
   static Color border = HexColor('#2F2C79');
 
+  static Color card = Color.fromRGBO(47, 44, 121, 0.3);
   static Color button = HexColor('#2F2C79');
   static Color snackbar = HexColor('#2F2C79');
   static Color navigator = HexColor('#000020');
@@ -24,6 +25,7 @@ class AppColors {
   static Color black = HexColor('#000000');
   static Color white = HexColor('#FFFFFF');
   static Color grey = HexColor('#808080');
+  static Color gold = HexColor('#E8C39E');
 
   static Color underlinePrimary = HexColor('#2F2C79');
 

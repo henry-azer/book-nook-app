@@ -42,6 +42,7 @@ flutter:
     - assets/images/logo.png
     - assets/images/bookmark-icon.png
     - assets/images/user.png
+    - assets/images/4x/book.png
 
   fonts:
     - family: Comfortaa
