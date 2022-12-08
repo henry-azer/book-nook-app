@@ -23,10 +23,11 @@ class _SelectedBookState extends State<SelectedBook> {
         decoration: BoxDecoration(
           borderRadius: BorderRadiusDirectional.circular(20),
         ),
-        child: Image.asset(
-          'assets/images/4x/book.png',
+        child: Image.network(
+          'https://res.cloudinary.com/bookbub/image/upload/t_ci_ar_6:9_padded,f_auto,q_auto,dpr_1/v1599443818/pro_pbid_4287670.jpg',
           height: widget.height,
           width: widget.width,
+          fit: BoxFit.fill,
         ),
       ),
     );
