@@ -17,8 +17,6 @@ class _BookInfoScreenState extends State<BookInfoScreen> {
       child: Scaffold(
         extendBody: true,
         resizeToAvoidBottomInset: true,
-        bottomNavigationBar:
-            NavigationBarWidget(path: ModalRoute.of(context)?.settings.name),
         body: Column(
           children: const [
             BookInfo(),
