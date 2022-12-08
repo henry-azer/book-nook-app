@@ -11,5 +11,7 @@ class SignoutUseCase implements UseCase<ResponseModel<NoParams>, NoParams> {
   SignoutUseCase({required this.authenticationRepository});
 
   @override
-  Future<Either<GenericException, ResponseModel<NoParams>>> call(noParams) async => await authenticationRepository.signout();
+  Future<Either<GenericException, ResponseModel<NoParams>>> call(
+          noParams) async =>
+      await authenticationRepository.signout();
 }

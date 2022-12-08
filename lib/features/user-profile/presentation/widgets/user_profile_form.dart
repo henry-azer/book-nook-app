@@ -83,7 +83,8 @@ class _UserProfileFormState extends State<UserProfileForm> {
                 child: UserProfileTextField(
                     enabled: false,
                     value: widget.user.firstName,
-                    label: AppLocalizations.of(context)!.translate('first_name')!,
+                    label:
+                        AppLocalizations.of(context)!.translate('first_name')!,
                     valueStyle: AppTextStyle.field,
                     keyboardType: TextInputType.visiblePassword,
                     errorStyle: AppTextStyle.fieldError,
@@ -107,7 +108,8 @@ class _UserProfileFormState extends State<UserProfileForm> {
                 child: UserProfileTextField(
                     enabled: false,
                     value: widget.user.lastName,
-                    label: AppLocalizations.of(context)!.translate('last_name')!,
+                    label:
+                        AppLocalizations.of(context)!.translate('last_name')!,
                     valueStyle: AppTextStyle.field,
                     keyboardType: TextInputType.visiblePassword,
                     errorStyle: AppTextStyle.fieldError,
@@ -130,8 +132,11 @@ class _UserProfileFormState extends State<UserProfileForm> {
                 padding: const EdgeInsets.only(top: 20.0),
                 child: UserProfileTextField(
                     enabled: false,
-                    value: DateUtil.convertStringDateTimeToStringDate(widget.user.birthdate) ?? widget.user.birthdate,
-                    label: AppLocalizations.of(context)!.translate('birth_date')!,
+                    value: DateUtil.convertStringDateTimeToStringDate(
+                            widget.user.birthdate) ??
+                        widget.user.birthdate,
+                    label:
+                        AppLocalizations.of(context)!.translate('birth_date')!,
                     valueStyle: AppTextStyle.field,
                     keyboardType: TextInputType.visiblePassword,
                     errorStyle: AppTextStyle.fieldError,
@@ -155,7 +160,8 @@ class _UserProfileFormState extends State<UserProfileForm> {
                 child: UserProfileTextField(
                     enabled: false,
                     value: widget.user.phoneNumber,
-                    label: AppLocalizations.of(context)!.translate('phone_number')!,
+                    label: AppLocalizations.of(context)!
+                        .translate('phone_number')!,
                     valueStyle: AppTextStyle.field,
                     keyboardType: TextInputType.visiblePassword,
                     errorStyle: AppTextStyle.fieldError,

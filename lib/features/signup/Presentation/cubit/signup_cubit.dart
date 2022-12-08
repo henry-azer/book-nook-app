@@ -21,9 +21,13 @@ class SignupCubit extends Cubit<SignupState> {
     emit(SignupInitial());
     emit(SignupLoading());
     Either<GenericException, ResponseModel<User>> response =
-        await signupUseCase(Signup(firstName: signupRequest.firstname,
-            lastName: signupRequest.lastname, email: signupRequest.email, password: signupRequest.password,
-            birthdate: getFormattedBirthdate(signupRequest), phoneNumber: signupRequest.phoneNumber));
+        await signupUseCase(Signup(
+            firstName: signupRequest.firstname,
+            lastName: signupRequest.lastname,
+            email: signupRequest.email,
+            password: signupRequest.password,
+            birthdate: getFormattedBirthdate(signupRequest),
+            phoneNumber: signupRequest.phoneNumber));
     emit(response.fold((exception) => SignupError(message: exception.message),
         (userResponse) => SignupSuccess(userResponse: userResponse)));
   }

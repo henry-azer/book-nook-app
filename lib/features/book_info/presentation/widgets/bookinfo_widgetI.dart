@@ -31,7 +31,9 @@ class _BookInfoState extends State<BookInfo> {
             children: [
               IconButton(
                   onPressed: () {},
-                  icon: Icon(Icons.arrow_back),
+                  icon: Icon(
+                    Icons.arrow_back,
+                  ),
                   color: AppColors.white),
               ShapeWidget(
                 width: 35,

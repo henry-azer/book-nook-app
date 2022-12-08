@@ -12,5 +12,6 @@ class CurrentUserUseCase implements UseCase<ResponseModel<User>, NoParams> {
   CurrentUserUseCase({required this.authenticationRepository});
 
   @override
-  Future<Either<GenericException, ResponseModel<User>>> call(noParams) async => await authenticationRepository.getCurrentUser();
+  Future<Either<GenericException, ResponseModel<User>>> call(noParams) async =>
+      await authenticationRepository.getCurrentUser();
 }

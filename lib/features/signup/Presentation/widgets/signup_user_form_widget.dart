@@ -19,9 +19,16 @@ class SignupUserFormWidget extends StatefulWidget {
 
 class _SignupUserFormWidgetState extends State<SignupUserFormWidget> {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
-  late SignupRequest signupRequest = SignupRequest(firstname: "", lastname: "",
-      birthDay: "", birthMonth: "", birthYear: "", phoneNumber: "",
-      email: "", password: "", confirmPassword: "");
+  late SignupRequest signupRequest = SignupRequest(
+      firstname: "",
+      lastname: "",
+      birthDay: "",
+      birthMonth: "",
+      birthYear: "",
+      phoneNumber: "",
+      email: "",
+      password: "",
+      confirmPassword: "");
 
   @override
   Widget build(BuildContext context) {

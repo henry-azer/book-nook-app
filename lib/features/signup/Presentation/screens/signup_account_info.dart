@@ -20,7 +20,9 @@ class _SignupAccountInfoScreenState extends State<SignupAccountInfoScreen> {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(
+            Icons.arrow_back,
+          ),
           onPressed: () {
             Navigator.pop(context);
           },

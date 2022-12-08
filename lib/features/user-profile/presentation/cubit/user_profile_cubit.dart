@@ -14,13 +14,17 @@ part 'user_profile_state.dart';
 class UserProfileCubit extends Cubit<UserProfileState> {
   final CurrentUserUseCase profileUserCase;
 
-  UserProfileCubit({required this.profileUserCase}) : super(UserProfileInitial());
+  UserProfileCubit({required this.profileUserCase})
+      : super(UserProfileInitial());
 
   Future<void> findCurrentUser() async {
     emit(UserProfileInitial());
     emit(UserProfileLoading());
-    Either<GenericException, ResponseModel<User>> response = await profileUserCase(NoParams());
-    emit(response.fold((exception) => UserProfileError(message: exception.message),
-        (userResponse) => UserProfileSuccess(user: userResponse.model, userResponse: userResponse)));
+    Either<GenericException, ResponseModel<User>> response =
+        await profileUserCase(NoParams());
+    emit(response.fold(
+        (exception) => UserProfileError(message: exception.message),
+        (userResponse) => UserProfileSuccess(
+            user: userResponse.model, userResponse: userResponse)));
   }
 }

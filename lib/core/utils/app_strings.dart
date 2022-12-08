@@ -27,7 +27,8 @@ class AppStrings {
   static const String cachedIsUserLogging = "CACHED_IS_USER_LOGGING";
   static const String cachedCurrentUser = "CACHED_CURRENT_USER";
 
-  static const String cachedUserFetchSuccess = "Cached user fetched successfully";
+  static const String cachedUserFetchSuccess =
+      "Cached user fetched successfully";
 
   static const String boolTrue = "true";
   static const String boolFalse = "false";
@@ -52,5 +53,4 @@ class AppStrings {
   static const String fetchDataException = "Fetch Date Error";
   static const String internalServerErrorException = "Internal Server Error";
   static const String noNetworkConnectionException = "No Internet Connection";
-
 }

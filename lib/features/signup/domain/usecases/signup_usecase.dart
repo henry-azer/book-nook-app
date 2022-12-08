@@ -13,6 +13,7 @@ class SignupUseCase implements UseCase<ResponseModel<User>, Signup> {
   SignupUseCase({required this.userRepository});
 
   @override
-  Future<Either<GenericException, ResponseModel<User>>> call(Signup signup) async =>
+  Future<Either<GenericException, ResponseModel<User>>> call(
+          Signup signup) async =>
       await userRepository.signup(signup);
 }
