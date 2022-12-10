@@ -2,6 +2,7 @@ import 'package:book_nook_app/core/utils/app_text_style.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../../../config/locale/app_localizations.dart';
+import '../../../../config/routes/app_routes.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../data/entities/book/book.dart';
 
@@ -61,23 +62,28 @@ class _BookOutlinedCardWidgetState extends State<BookOutlinedCardWidget> {
               ],
             ),
           ),
-          Container(
-            height: 145,
-            width: 110,
-            decoration: BoxDecoration(
-                color: AppColors.white,
-                borderRadius: BorderRadius.circular(30),
-                image: DecorationImage(
-                    image: Image.network(
-                      widget.book.imageUrl!,
-                    ).image,
-                    fit: BoxFit.fill),
-                boxShadow: [
-                  BoxShadow(
-                      offset: const Offset(0, 2),
-                      blurRadius: 2,
-                      color: AppColors.white)
-                ]),
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, Routes.bookInfo, arguments: widget.book);
+            },
+            child: Container(
+              height: 145,
+              width: 110,
+              decoration: BoxDecoration(
+                  color: AppColors.white,
+                  borderRadius: BorderRadius.circular(30),
+                  image: DecorationImage(
+                      image: Image.network(
+                        widget.book.imageUrl!,
+                      ).image,
+                      fit: BoxFit.fill),
+                  boxShadow: [
+                    BoxShadow(
+                        offset: const Offset(0, 2),
+                        blurRadius: 2,
+                        color: AppColors.white)
+                  ]),
+            ),
           ),
         ],
       ),

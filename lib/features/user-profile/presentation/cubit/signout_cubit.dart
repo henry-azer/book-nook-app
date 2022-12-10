@@ -8,7 +8,6 @@ import '../../../../core/error/exceptions.dart';
 import '../../../../core/models/response_model.dart';
 import '../../domain/usecases/signout_usecase.dart';
 
-
 class SignoutCubit extends Cubit<SignoutState> {
   final SignoutUseCase signoutUseCase;
 
@@ -17,7 +16,8 @@ class SignoutCubit extends Cubit<SignoutState> {
   Future<void> signout() async {
     emit(SignoutInitial());
     emit(SignoutLoading());
-    Either<GenericException, ResponseModel<NoParams>> response = await signoutUseCase(NoParams());
+    Either<GenericException, ResponseModel<NoParams>> response =
+        await signoutUseCase(NoParams());
     emit(response.fold((exception) => SignoutError(message: exception.message),
         (signoutResponse) => SignoutSuccess(signoutResponse: signoutResponse)));
   }

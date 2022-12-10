@@ -18,7 +18,8 @@ class SignupAccountFormWidget extends StatefulWidget {
   const SignupAccountFormWidget({super.key});
 
   @override
-  State<SignupAccountFormWidget> createState() => _SignupAccountFormWidgetState();
+  State<SignupAccountFormWidget> createState() =>
+      _SignupAccountFormWidgetState();
 }
 
 class _SignupAccountFormWidgetState extends State<SignupAccountFormWidget> {
@@ -26,7 +27,8 @@ class _SignupAccountFormWidgetState extends State<SignupAccountFormWidget> {
 
   @override
   Widget build(BuildContext context) {
-    SignupRequest signupRequest = ModalRoute.of(context)!.settings.arguments as SignupRequest;
+    SignupRequest signupRequest =
+        ModalRoute.of(context)!.settings.arguments as SignupRequest;
 
     return Material(
       color: Colors.transparent,
@@ -70,7 +72,8 @@ class _SignupAccountFormWidgetState extends State<SignupAccountFormWidget> {
             Padding(
                 padding: const EdgeInsets.fromLTRB(22, 35, 22, 0),
                 child: TextFieldWidget(
-                    label: AppLocalizations.of(context)!.translate('confirm_password')!,
+                    label: AppLocalizations.of(context)!
+                        .translate('confirm_password')!,
                     keyboardType: TextInputType.visiblePassword,
                     labelStyle: AppTextStyle.fieldLabel,
                     errorStyle: AppTextStyle.fieldError,
@@ -93,44 +96,63 @@ class _SignupAccountFormWidgetState extends State<SignupAccountFormWidget> {
                       child: Padding(
                         padding: const EdgeInsets.only(top: 5),
                         child: LoadingAnimationWidget.staggeredDotsWave(
-                          color: Colors.white, size: 40,
+                          color: Colors.white,
+                          size: 40,
                         ),
                       ),
                     );
                   } else {
                     return ButtonFormWidget(
-                        child: Text(AppLocalizations.of(context)!.translate('signup')!,
+                        child: Text(
+                          AppLocalizations.of(context)!.translate('signup')!,
                           style: AppTextStyle.button,
                         ),
                         onPress: () {
                           if (_formkey.currentState!.validate()) {
                             _formkey.currentState?.save();
                             if (signupRequest.email.isEmpty) {
-                              Constants.showErrorDialog(context: context, message: AppLocalizations.of(context)!.translate('blank_email')!);
+                              Constants.showErrorDialog(
+                                  context: context,
+                                  message: AppLocalizations.of(context)!
+                                      .translate('blank_email')!);
                               return;
                             }
                             if (signupRequest.password.isEmpty) {
-                              Constants.showErrorDialog(context: context, message: AppLocalizations.of(context)!.translate('blank_password')!);
+                              Constants.showErrorDialog(
+                                  context: context,
+                                  message: AppLocalizations.of(context)!
+                                      .translate('blank_password')!);
                               return;
                             }
                             if (signupRequest.confirmPassword.isEmpty) {
-                              Constants.showErrorDialog(context: context, message: AppLocalizations.of(context)!.translate('blank_confirm_password')!);
+                              Constants.showErrorDialog(
+                                  context: context,
+                                  message: AppLocalizations.of(context)!
+                                      .translate('blank_confirm_password')!);
                               return;
                             }
-                            if (signupRequest.password.compareTo(signupRequest.confirmPassword).isOdd) {
-                              Constants.showErrorDialog(context: context, message: AppLocalizations.of(context)!.translate('passwords_mismatch')!);
+                            if (signupRequest.password
+                                .compareTo(signupRequest.confirmPassword)
+                                .isOdd) {
+                              Constants.showErrorDialog(
+                                  context: context,
+                                  message: AppLocalizations.of(context)!
+                                      .translate('passwords_mismatch')!);
                               return;
                             }
-                            BlocProvider.of<SignupCubit>(context).signup(signupRequest);
+                            BlocProvider.of<SignupCubit>(context)
+                                .signup(signupRequest);
                           }
                         });
                   }
                 }),
                 listener: ((context, state) {
                   if (state is SignupError) {
-                    Constants.showErrorDialog(context: context, message: state.message);
+                    Constants.showErrorDialog(
+                        context: context, message: state.message);
                   } else if (state is SignupSuccess) {
-                    Constants.showSnackBar(context: context, message: state.userResponse.message);
+                    Constants.showSnackBar(
+                        context: context, message: state.userResponse.message);
                     Navigator.pushReplacementNamed(context, Routes.signin);
                   }
                 }),

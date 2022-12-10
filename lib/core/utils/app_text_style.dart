@@ -153,4 +153,40 @@ class AppTextStyle with Diagnosticable {
     color: AppColors.fontPrimary,
     fontFamily: AppStrings.fontFamilyComfortaa,
   );
+
+  static TextStyle? cardinfo = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w300,
+    color: AppColors.gold,
+    fontFamily: AppStrings.fontFamilyBarlow,
+  );
+
+  static TextStyle? cardvalue = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    color: AppColors.white,
+    fontFamily: AppStrings.fontFamilyBarlow,
+  );
+
+  static TextStyle? cardinfotextprimary = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.w700,
+    color: AppColors.gold,
+    fontFamily: AppStrings.fontFamilyComfortaa,
+  );
+
+  static TextStyle? cardinfotextsecondry = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w300,
+    color: AppColors.white,
+    decoration: TextDecoration.underline,
+    fontFamily: AppStrings.fontFamilyComfortaa,
+  );
+
+  static TextStyle? cardDescription = TextStyle(
+    fontSize: 17,
+    fontWeight: FontWeight.w400,
+    color: AppColors.white,
+    fontFamily: AppStrings.fontFamilyBarlow,
+  );
 }

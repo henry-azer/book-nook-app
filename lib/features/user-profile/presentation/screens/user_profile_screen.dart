@@ -28,7 +28,8 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
     _getCurrentUser();
   }
 
-  _getCurrentUser() => BlocProvider.of<UserProfileCubit>(context).findCurrentUser();
+  _getCurrentUser() =>
+      BlocProvider.of<UserProfileCubit>(context).findCurrentUser();
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +37,8 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
       child: Scaffold(
         extendBody: true,
         resizeToAvoidBottomInset: true,
-        bottomNavigationBar: NavigationBarWidget(path: ModalRoute.of(context)?.settings.name),
+        bottomNavigationBar:
+            NavigationBarWidget(path: ModalRoute.of(context)?.settings.name),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -53,10 +55,14 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 20.0, bottom: 30.0),
+                          padding:
+                              const EdgeInsets.only(top: 20.0, bottom: 30.0),
                           child: SizedBox(
                             height: 419,
-                            child: LoadingAnimationWidget.threeArchedCircle(color: Colors.white, size: 80,),
+                            child: LoadingAnimationWidget.threeArchedCircle(
+                              color: Colors.white,
+                              size: 80,
+                            ),
                           ),
                         ),
                       ],
@@ -66,7 +72,8 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(top: 50),
-                          child: UserProfileBar(user: state.user, loading: false),
+                          child:
+                              UserProfileBar(user: state.user, loading: false),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(bottom: 30.0),
@@ -76,23 +83,36 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                           builder: ((context, state) {
                             if (state is SignoutLoading) {
                               return ButtonFormWidget(
-                                  child: LoadingAnimationWidget.staggeredDotsWave(color: Colors.white, size: 40,),
+                                  child:
+                                      LoadingAnimationWidget.staggeredDotsWave(
+                                    color: Colors.white,
+                                    size: 40,
+                                  ),
                                   onPress: () {});
                             } else {
                               return ButtonFormWidget(
-                                  child: Text(AppLocalizations.of(context)!.translate('logout')!,
+                                  child: Text(
+                                    AppLocalizations.of(context)!
+                                        .translate('logout')!,
                                     style: AppTextStyle.button,
                                   ),
-                                  onPress: () { BlocProvider.of<SignoutCubit>(context).signout(); });
+                                  onPress: () {
+                                    BlocProvider.of<SignoutCubit>(context)
+                                        .signout();
+                                  });
                             }
                           }),
                           listener: ((context, state) {
                             if (state is SignoutSuccess) {
-                              Constants.showSnackBar(context: context, message: state.signoutResponse.message);
-                              Navigator.pushReplacementNamed(context, Routes.signin);
+                              Constants.showSnackBar(
+                                  context: context,
+                                  message: state.signoutResponse.message);
+                              Navigator.pushReplacementNamed(
+                                  context, Routes.signin);
                             }
                             if (state is SignoutError) {
-                              Constants.showSnackBar(context: context, message: state.message);
+                              Constants.showSnackBar(
+                                  context: context, message: state.message);
                             }
                           }),
                         ),
@@ -104,7 +124,10 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                 }),
                 listener: ((context, state) {
                   if (state is UserProfileError) {
-                    Constants.showSnackBar(context: context, message: AppLocalizations.of(context)!.translate('something_wrong')!);
+                    Constants.showSnackBar(
+                        context: context,
+                        message: AppLocalizations.of(context)!
+                            .translate('something_wrong')!);
                     Navigator.pushReplacementNamed(context, Routes.signin);
                   }
                 }),

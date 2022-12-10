@@ -59,6 +59,7 @@
   "book" : "Book",
   "of_the_day" : "Of the day",
   "books_for_you" : "Books for you",
+  "rate_book" : "Rate Book",
   "day_book_author" : "   Author\n      ",
   "day_book_category" : "   Category\n      ",
   "more" : "more"

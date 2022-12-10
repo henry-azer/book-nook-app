@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:book_nook_app/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../config/routes/app_routes.dart';
 import '../../../../data/entities/book/book.dart';
 
 class BookSliderWidget extends StatefulWidget {
@@ -73,8 +74,7 @@ class _BookSliderWidgetState extends State<BookSliderWidget> {
               tag: book.name!,
               child: GestureDetector(
                 onTap: () {
-                  // TODO : on tab open book details
-                  // Navigator.pushReplacementNamed(context, Routes.book, arguments: book);
+                  Navigator.pushNamed(context, Routes.bookInfo, arguments: book);
                 },
                 child: Container(
                   decoration: BoxDecoration(

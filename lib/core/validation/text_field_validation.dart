@@ -145,7 +145,9 @@ String? _validateSignupYearBirthday(String value) {
 }
 
 bool _isValidEmail(String value) {
-  return RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value);
+  return RegExp(
+          r"^[a-zA-Z0-9.a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+      .hasMatch(value);
 }
 
 bool _isValidPhoneNumber(String value) {
