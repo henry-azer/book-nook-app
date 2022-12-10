@@ -1,4 +1,5 @@
 import 'package:book_nook_app/features/book-info/presentation/screens/book_info_screen.dart';
+import 'package:book_nook_app/features/categories/presentation/screens/categories_screen.dart';
 import 'package:book_nook_app/features/signin/presentation/cubit/signin_cubit.dart';
 import 'package:book_nook_app/features/signin/presentation/screens/signin_screen.dart';
 import 'package:book_nook_app/features/signup/Presentation/cubit/signup_cubit.dart';
@@ -35,6 +36,7 @@ class Routes {
   static const String booksRecommended = '/books-recommended';
   static const String userRatedBooks = '/user-rated-books';
   static const String bookInfo = '/book-info';
+  static const String categories = '/categories';
 }
 
 class AppRoutes {
@@ -58,6 +60,14 @@ class AppRoutes {
           return BlocProvider(
             create: ((context) => di.sl<SigninCubit>()),
             child: const SigninScreen(),
+          );
+        }, settings: routeSettings);
+
+      case Routes.categories:
+        return MaterialPageRoute(builder: (context) {
+          return BlocProvider(
+            create: ((context) => di.sl<SigninCubit>()),
+            child: const CategoriesScreen(),
           );
         }, settings: routeSettings);
 

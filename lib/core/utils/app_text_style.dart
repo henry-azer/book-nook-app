@@ -189,4 +189,19 @@ class AppTextStyle with Diagnosticable {
     color: AppColors.white,
     fontFamily: AppStrings.fontFamilyBarlow,
   );
+
+  static TextStyle? categoriesSubtitle = TextStyle(
+    fontSize: 25,
+    fontWeight: FontWeight.w700,
+    color: AppColors.white,
+    fontFamily: AppStrings.fontFamilyComfortaa,
+  );
+
+  static TextStyle? categoriesTextButton = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w300,
+    color: AppColors.gold,
+    decoration: TextDecoration.underline,
+    fontFamily: AppStrings.fontFamilyBarlow,
+  );
 }
