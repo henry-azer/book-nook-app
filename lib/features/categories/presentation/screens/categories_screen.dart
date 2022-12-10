@@ -23,7 +23,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
           bottomNavigationBar:
               NavigationBarWidget(path: ModalRoute.of(context)?.settings.name),
           body: ListView(
-            children: [
+            children:const [
               AppBarWidget(),
               ListOfCategories(
                 url:
