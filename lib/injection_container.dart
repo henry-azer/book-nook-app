@@ -1,10 +1,16 @@
 import 'package:book_nook_app/core/api/app_authentication.dart';
 import 'package:book_nook_app/data/datasources/authentication/authentication_local_datasource.dart';
 import 'package:book_nook_app/data/datasources/authentication/authentication_remote_datasource.dart';
+import 'package:book_nook_app/data/datasources/book/book_local_datasource.dart';
+import 'package:book_nook_app/data/datasources/book/book_remote_datasource.dart';
 import 'package:book_nook_app/data/datasources/user/user_local_datasource.dart';
 import 'package:book_nook_app/data/datasources/user/user_remote_datasource.dart';
+import 'package:book_nook_app/data/repositories/book/book_repository.dart';
+import 'package:book_nook_app/data/repositories/book/book_repository_impl.dart';
 import 'package:book_nook_app/data/repositories/user/user_repository.dart';
 import 'package:book_nook_app/data/repositories/user/user_repository_impl.dart';
+import 'package:book_nook_app/features/home/domain/usecases/recommended_books_usecase.dart';
+import 'package:book_nook_app/features/home/presentation/cubit/recommended_books_cubit.dart';
 import 'package:book_nook_app/features/splash/domain/usecases/app_welcomed_user_usecase.dart';
 import 'package:book_nook_app/features/splash/presentation/cubit/app_welcome_cubit.dart';
 import 'package:book_nook_app/features/user-profile/domain/usecases/signout_usecase.dart';
@@ -47,6 +53,8 @@ Future<void> init() async {
   // splash
   sl.registerFactory<AppWelcomeCubit>(() => AppWelcomeCubit(appWelcomedUserUserCase: sl()));
   sl.registerFactory<LocalizationCubit>(() => LocalizationCubit(getSavedLangUseCase: sl(), changeLangUseCase: sl()));
+  // home
+  sl.registerFactory<RecommendedBooksCubit>(() => RecommendedBooksCubit(recommendedBooksUseCase: sl()));
 
   // !---- Use cases ----!
   // signin
@@ -60,6 +68,8 @@ Future<void> init() async {
   sl.registerLazySingleton<AppWelcomedUserUseCase>(() => AppWelcomedUserUseCase(userRepository: sl()));
   sl.registerLazySingleton<ChangeLangUseCase>(() => ChangeLangUseCase(langRepository: sl()));
   sl.registerLazySingleton<GetSavedLangUseCase>(() => GetSavedLangUseCase(langRepository: sl()));
+  // home
+  sl.registerLazySingleton<RecommendedBooksUseCase>(() => RecommendedBooksUseCase(bookRepository: sl()));
 
 
   // !---- Repository ----!
@@ -75,6 +85,12 @@ Future<void> init() async {
         userLocalDataSource: sl(),
         userRemoteDataSource: sl(),
       ));
+  // book
+  sl.registerLazySingleton<BookRepository>(() => BookRepositoryImpl(
+    networkInfo: sl(),
+    bookLocalDataSource: sl(),
+    bookRemoteDataSource: sl(),
+  ));
   // localization
   sl.registerLazySingleton<LocalizationRepository>(() => LocalizationRepositoryImpl(localizationLocalDataSource: sl()));
 
@@ -86,6 +102,9 @@ Future<void> init() async {
   // user
   sl.registerLazySingleton<UserLocalDataSource>(() => UserLocalDataSourceImpl(sharedPreferences: sl()));
   sl.registerLazySingleton<UserRemoteDataSource>(() => UserRemoteDataSourceImpl(apiConsumer: sl()));
+  // book
+  sl.registerLazySingleton<BookLocalDataSource>(() => BookLocalDataSourceImpl(sharedPreferences: sl()));
+  sl.registerLazySingleton<BookRemoteDataSource>(() => BookRemoteDataSourceImpl(apiConsumer: sl()));
   // localization
   sl.registerLazySingleton<LocalizationLocalDataSource>(() => LocalizationLocalDataSourceImpl(sharedPreferences: sl()));
 

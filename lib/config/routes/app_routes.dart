@@ -1,3 +1,4 @@
+import 'package:book_nook_app/features/home/presentation/cubit/recommended_books_cubit.dart';
 import 'package:book_nook_app/features/signin/presentation/cubit/signin_cubit.dart';
 import 'package:book_nook_app/features/signin/presentation/screens/signin_screen.dart';
 import 'package:book_nook_app/features/signup/Presentation/cubit/signup_cubit.dart';
@@ -10,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/utils/app_strings.dart';
+import '../../features/home/presentation/screens/home_screen.dart';
 import '../../features/splash/presentation/screens/welcome_screen.dart';
 import '../../features/user-profile/presentation/cubit/signout_cubit.dart';
 import '../../features/user-profile/presentation/cubit/user_profile_cubit.dart';
@@ -26,7 +28,7 @@ class Routes {
 
   static const String userProfile = '/user-profile';
 
-  static const String appHome = '/app-home';
+  static const String home = '/app-home';
   static const String booksSearch = '/books-search';
   static const String userRatedBooks = '/user-rated-books';
 }
@@ -75,6 +77,17 @@ class AppRoutes {
     //       child: const BeforeHomePageScreen(),
     //     );
     //   }, settings: routeSettings);
+
+      case Routes.home:
+        return MaterialPageRoute(builder: (context) {
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(create: ((context) => di.sl<UserProfileCubit>()),),
+              BlocProvider(create: ((context) => di.sl<RecommendedBooksCubit>()),)
+            ],
+            child: const HomeScreen(),
+          );
+        }, settings: routeSettings);
 
       case Routes.userProfile:
         return MaterialPageRoute(builder: (context) {

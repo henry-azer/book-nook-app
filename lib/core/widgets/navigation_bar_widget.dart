@@ -14,7 +14,7 @@ class NavigationBarWidget extends StatefulWidget {
 }
 
 class NavigationBarWidgetState extends State<NavigationBarWidget> {
-  List<String> routes = [Routes.appHome, Routes.booksSearch, Routes.userRatedBooks, Routes.userProfile];
+  List<String> routes = [Routes.home, Routes.booksSearch, Routes.userRatedBooks, Routes.userProfile];
   late int _selectedItemPosition = routes.indexOf(widget.path!);
   final double _selectedItemSize = 28.0;
   final double _defaultItemSize = 24.0;
