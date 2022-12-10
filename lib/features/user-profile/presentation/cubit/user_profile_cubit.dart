@@ -21,6 +21,6 @@ class UserProfileCubit extends Cubit<UserProfileState> {
     emit(UserProfileLoading());
     Either<GenericException, ResponseModel<User>> response = await profileUserCase(NoParams());
     emit(response.fold((exception) => UserProfileError(message: exception.message),
-        (userResponse) => UserProfileSuccess(user: userResponse.model, userResponse: userResponse)));
+        (userResponse) => UserProfileSuccess(user: userResponse.body, userResponse: userResponse)));
   }
 }
