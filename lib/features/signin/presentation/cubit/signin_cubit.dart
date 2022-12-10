@@ -24,7 +24,7 @@ class SigninCubit extends Cubit<SigninState> {
         await signinUseCase(Signin(email: signinRequest.email,
             password: signinRequest.password, rememberme: signinRequest.rememberme));
     emit(response.fold((exception) => SigninError(message: exception.message),
-        (signinClaimsResponse) => SigninSuccess(signinClaims: signinClaimsResponse.model,
+        (signinClaimsResponse) => SigninSuccess(signinClaims: signinClaimsResponse.body,
             signinClaimsResponse: signinClaimsResponse)));
   }
 }

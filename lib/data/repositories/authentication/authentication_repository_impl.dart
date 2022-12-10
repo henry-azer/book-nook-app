@@ -27,7 +27,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
     if (await networkInfo.isConnected) {
       try {
         final responseCurrentUser = await authenticationRemoteDataSource.findCurrentUser();
-        await authenticationLocalDataSource.cacheCurrentUser(responseCurrentUser.model);
+        await authenticationLocalDataSource.cacheCurrentUser(responseCurrentUser.body);
         return Right(responseCurrentUser);
       } on GenericException catch (exception) {
         return Left(exception);
@@ -35,7 +35,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
     } else {
       try {
         final cachedCurrentUser = await authenticationLocalDataSource.getCurrentUser();
-        return Right(ResponseModel(success: true, message: AppStrings.cachedUserFetchSuccess, model: cachedCurrentUser));
+        return Right(ResponseModel(success: true, message: AppStrings.cachedUserFetchSuccess, body: cachedCurrentUser));
       } on CacheException {
         return const Left(CacheException());
       }
@@ -49,7 +49,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
         await authenticationLocalDataSource.clearCache();
         await authenticationLocalDataSource.cacheIsUserLogging();
         final responseSigninClaims = await authenticationRemoteDataSource.signin(signin);
-        await authenticationLocalDataSource.cacheSigninClaims(signin, responseSigninClaims.model);
+        await authenticationLocalDataSource.cacheSigninClaims(signin, responseSigninClaims.body);
         return Right(responseSigninClaims);
       } on GenericException catch (exception) {
         return Left(exception);

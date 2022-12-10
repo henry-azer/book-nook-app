@@ -34,7 +34,7 @@ class AuthenticationRemoteDataSourceImpl implements AuthenticationRemoteDataSour
     } else {
       return ResponseModel(
           success: response[AppStrings.success], message: response[AppStrings.message],
-          model: UserModel.fromJson(response[AppStrings.body]));
+          body: UserModel.fromJson(response[AppStrings.body]));
     }
   }
 
@@ -46,7 +46,7 @@ class AuthenticationRemoteDataSourceImpl implements AuthenticationRemoteDataSour
     } else {
       return ResponseModel(
           success: response[AppStrings.success], message: response[AppStrings.message],
-          model: SigninClaimsModel.fromJson(response[AppStrings.body]));
+          body: SigninClaimsModel.fromJson(response[AppStrings.body]));
     }
   }
 
@@ -57,7 +57,7 @@ class AuthenticationRemoteDataSourceImpl implements AuthenticationRemoteDataSour
       throw GenericException(message: response[AppStrings.message]);
     } else {
       return ResponseModel(success: response[AppStrings.success],
-          message: response[AppStrings.message], model: NoParams());
+          message: response[AppStrings.message], body: NoParams());
     }
   }
 }

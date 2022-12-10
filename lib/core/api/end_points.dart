@@ -11,4 +11,7 @@ class EndPoints {
 
   // user
   static const String signup = '$baseProductionUrl/user';
+
+  // book
+  static const String recommendedBooks = '$baseProductionUrl/book/find-all-recommended';
 }

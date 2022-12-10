@@ -52,5 +52,14 @@
   "invalid_birth_month": " * Invalid",
   "invalid_birth_year": " * Invalid",
   "at_least_8_chars": " * At least 8 characters",
-  "at_least_3_chars": " * At least 3 characters"
+  "at_least_3_chars": " * At least 3 characters",
+
+  "hello" : "Hello",
+  "hello_guest" : "Hello, Guest",
+  "book" : "Book",
+  "of_the_day" : "Of the day",
+  "books_for_you" : "Books for you",
+  "day_book_author" : "   Author\n      ",
+  "day_book_category" : "   Category\n      ",
+  "more" : "more"
 }
