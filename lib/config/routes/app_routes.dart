@@ -1,3 +1,4 @@
+import 'package:book_nook_app/features/book-info/presentation/screens/book_info_screen.dart';
 import 'package:book_nook_app/features/signin/presentation/cubit/signin_cubit.dart';
 import 'package:book_nook_app/features/signin/presentation/screens/signin_screen.dart';
 import 'package:book_nook_app/features/signup/Presentation/cubit/signup_cubit.dart';
@@ -98,6 +99,11 @@ class AppRoutes {
             create: ((context) => di.sl<RecommendedBooksCubit>()),
             child: const RecommendedBooksScreen(),
           );
+        }, settings: routeSettings);
+
+      case Routes.bookInfo:
+        return MaterialPageRoute(builder: (context) {
+          return const BookInfoScreen();
         }, settings: routeSettings);
 
       case Routes.userProfile:

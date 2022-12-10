@@ -131,7 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     );
                   } else if (state is RecommendedBooksSuccess) {
-                    return BookOutlinedCardWidget(book: state.recommendedBooksResponse.body.elementAt(8));
+                    return BookOutlinedCardWidget(book: state.recommendedBooksResponse.body.elementAt(13));
                   } else {
                     return Container();
                   }
@@ -172,7 +172,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   } else if (state is RecommendedBooksSuccess) {
                     return BookSliderWidget(
                       books:
-                          state.recommendedBooksResponse.body.sublist(0, 7),
+                          state.recommendedBooksResponse.body.sublist(0, 9),
                     );
                   } else {
                     return Container();

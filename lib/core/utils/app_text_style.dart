@@ -183,9 +183,9 @@ class AppTextStyle with Diagnosticable {
     fontFamily: AppStrings.fontFamilyComfortaa,
   );
 
-  static TextStyle? authorTitlePrimary = TextStyle(
-    fontSize: 15,
-    fontWeight: FontWeight.w300,
+  static TextStyle? cardDescription = TextStyle(
+    fontSize: 17,
+    fontWeight: FontWeight.w400,
     color: AppColors.white,
     fontFamily: AppStrings.fontFamilyBarlow,
   );

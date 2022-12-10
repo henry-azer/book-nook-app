@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
-class SelectedBook extends StatefulWidget {
+class BookBanner extends StatefulWidget {
   final double height;
   final double width;
-  const SelectedBook({
-    Key? key,
-    required this.height,
-    required this.width,
-  }) : super(key: key);
+  final String url;
+
+  const BookBanner(
+      {Key? key, required this.height, required this.width, required this.url})
+      : super(key: key);
 
   @override
-  State<SelectedBook> createState() => _SelectedBookState();
+  State<BookBanner> createState() => _BookBannerState();
 }
 
-class _SelectedBookState extends State<SelectedBook> {
+class _BookBannerState extends State<BookBanner> {
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -24,7 +24,7 @@ class _SelectedBookState extends State<SelectedBook> {
           borderRadius: BorderRadiusDirectional.circular(20),
         ),
         child: Image.network(
-          'https://res.cloudinary.com/bookbub/image/upload/t_ci_ar_6:9_padded,f_auto,q_auto,dpr_1/v1599443818/pro_pbid_4287670.jpg',
+          widget.url,
           height: widget.height,
           width: widget.width,
           fit: BoxFit.fill,
