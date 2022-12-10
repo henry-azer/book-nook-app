@@ -1,4 +1,3 @@
-import 'package:book_nook_app/features/book_info/presentation/screens/book_info_screen.dart';
 import 'package:book_nook_app/features/signin/presentation/cubit/signin_cubit.dart';
 import 'package:book_nook_app/features/signin/presentation/screens/signin_screen.dart';
 import 'package:book_nook_app/features/signup/Presentation/cubit/signup_cubit.dart';
@@ -11,6 +10,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/utils/app_strings.dart';
+import '../../features/home/presentation/cubit/recommended_books_cubit.dart';
+import '../../features/home/presentation/screens/home_screen.dart';
+import '../../features/home/presentation/screens/recommedned_books_screen.dart';
 import '../../features/splash/presentation/screens/welcome_screen.dart';
 import '../../features/user-profile/presentation/cubit/signout_cubit.dart';
 import '../../features/user-profile/presentation/cubit/user_profile_cubit.dart';
@@ -27,8 +29,9 @@ class Routes {
 
   static const String userProfile = '/user-profile';
 
-  static const String appHome = '/app-home';
+  static const String home = '/app-home';
   static const String booksSearch = '/books-search';
+  static const String booksRecommended = '/books-recommended';
   static const String userRatedBooks = '/user-rated-books';
   static const String bookInfo = '/book-info';
 }
@@ -37,68 +40,65 @@ class AppRoutes {
   static Route? onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case Routes.initial:
-        return MaterialPageRoute(
-            builder: (
-              context,
-            ) {
-              return const BookInfoScreen();
-            },
-            settings: routeSettings);
+        return MaterialPageRoute(builder: (context,) {
+          return const SplashScreen();
+        }, settings: routeSettings);
 
       case Routes.appWelcome:
-        return MaterialPageRoute(
-            builder: (context) {
-              return BlocProvider(
-                create: ((context) => di.sl<AppWelcomeCubit>()),
-                child: const WelcomeScreen(),
-              );
-            },
-            settings: routeSettings);
+        return MaterialPageRoute(builder: (context) {
+          return BlocProvider(
+            create: ((context) => di.sl<AppWelcomeCubit>()),
+            child: const WelcomeScreen(),
+          );
+        }, settings: routeSettings);
 
       case Routes.signin:
-        return MaterialPageRoute(
-            builder: (context) {
-              return BlocProvider(
-                create: ((context) => di.sl<SigninCubit>()),
-                child: const SigninScreen(),
-              );
-            },
-            settings: routeSettings);
+        return MaterialPageRoute(builder: (context) {
+          return BlocProvider(
+            create: ((context) => di.sl<SigninCubit>()),
+            child: const SigninScreen(),
+          );
+        }, settings: routeSettings);
 
       case Routes.signupUserInfo:
-        return MaterialPageRoute(
-            builder: (context) {
-              return const SignupUserInfoScreen();
-            },
-            settings: routeSettings);
+        return MaterialPageRoute(builder: (context) {
+          return const SignupUserInfoScreen();
+        }, settings: routeSettings);
 
       case Routes.signupAccountInfo:
-        return MaterialPageRoute(
-            builder: (context) {
-              return BlocProvider(
-                create: ((context) => di.sl<SignupCubit>()),
-                child: const SignupAccountInfoScreen(),
-              );
-            },
-            settings: routeSettings);
+        return MaterialPageRoute(builder: (context) {
+          return BlocProvider(
+            create: ((context) => di.sl<SignupCubit>()),
+            child: const SignupAccountInfoScreen(),
+          );
+        }, settings: routeSettings);
 
-      case Routes.bookInfo:
-        return MaterialPageRoute(
-            builder: (context) {
-              return BlocProvider(
-                create: ((context) => di.sl<SignupCubit>()),
-                child: const BookInfoScreen(),
-              );
-            },
-            settings: routeSettings);
+    // case Routes.beforehomepage:
+    //   return MaterialPageRoute(builder: (context) {
+    //     return BlocProvider(
+    //       create: ((context) => di.sl<SigninCubit>()),
+    //       child: const BeforeHomePageScreen(),
+    //     );
+    //   }, settings: routeSettings);
 
-      // case Routes.beforehomepage:
-      //   return MaterialPageRoute(builder: (context) {
-      //     return BlocProvider(
-      //       create: ((context) => di.sl<SigninCubit>()),
-      //       child: const BeforeHomePageScreen(),
-      //     );
-      //   }, settings: routeSettings);
+      case Routes.home:
+        return MaterialPageRoute(builder: (context) {
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(create: ((context) => di.sl<UserProfileCubit>()),),
+              BlocProvider(create: ((context) => di.sl<RecommendedBooksCubit>()),)
+            ],
+            child: const HomeScreen(),
+          );
+        }, settings: routeSettings);
+
+      case Routes.booksRecommended:
+        return MaterialPageRoute(builder: (context) {
+          return BlocProvider(
+            create: ((context) => di.sl<RecommendedBooksCubit>()),
+            child: const RecommendedBooksScreen(),
+          );
+        }, settings: routeSettings);
 
       case Routes.userProfile:
         return MaterialPageRoute(
@@ -124,10 +124,11 @@ class AppRoutes {
 
   static Route<dynamic> undefinedRoute() {
     return MaterialPageRoute(
-        builder: ((context) => const Scaffold(
-              body: Center(
-                child: Text(AppStrings.noRouteFound),
-              ),
-            )));
+        builder: ((context) =>
+        const Scaffold(
+          body: Center(
+            child: Text(AppStrings.noRouteFound),
+          ),
+        )));
   }
 }

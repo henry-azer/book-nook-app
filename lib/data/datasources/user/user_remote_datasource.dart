@@ -27,7 +27,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
     } else {
       return ResponseModel(
           success: response[AppStrings.success], message: response[AppStrings.message],
-          model: UserModel.fromJson(response[AppStrings.body]));
+          body: UserModel.fromJson(response[AppStrings.body]));
     }
   }
 }

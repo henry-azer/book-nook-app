@@ -136,7 +136,7 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
                     Constants.showErrorDialog(context: context, message: state.message);
                   } else if (state is SigninSuccess) {
                     Constants.showSnackBar(context: context, message: state.signinClaimsResponse.message);
-                    Navigator.pushReplacementNamed(context, Routes.userProfile);
+                    Navigator.pushReplacementNamed(context, Routes.home);
                   }
                 }),
               ),
