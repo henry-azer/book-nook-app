@@ -120,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               // TODO : implement book of the day cubit
-              BlocConsumer<RecommendedBooksCubit, RecommendedBooksState>(
+              BlocBuilder<RecommendedBooksCubit, RecommendedBooksState>(
                 builder: ((context, state) {
                   if (state is RecommendedBooksLoading) {
                     return Padding(
@@ -136,11 +136,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     return Container();
                   }
                 }),
-                listener: ((context, state) {
-                  if (state is RecommendedBooksError) {
-                    Constants.showErrorDialog(context: context, message: state.message);
-                  }
-                }),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
@@ -154,7 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     TextButton(
                       onPressed: () {
-                        // TODO : navigate to all recommended books screen
+                        Navigator.pushNamed(context, Routes.booksRecommended);
                       },
                       child: Text(
                         AppLocalizations.of(context)!.translate('more')!,

@@ -1,4 +1,5 @@
 import 'package:book_nook_app/features/home/presentation/cubit/recommended_books_cubit.dart';
+import 'package:book_nook_app/features/home/presentation/screens/recommedned_books_screen.dart';
 import 'package:book_nook_app/features/signin/presentation/cubit/signin_cubit.dart';
 import 'package:book_nook_app/features/signin/presentation/screens/signin_screen.dart';
 import 'package:book_nook_app/features/signup/Presentation/cubit/signup_cubit.dart';
@@ -30,6 +31,7 @@ class Routes {
 
   static const String home = '/app-home';
   static const String booksSearch = '/books-search';
+  static const String booksRecommended = '/books-recommended';
   static const String userRatedBooks = '/user-rated-books';
 }
 
@@ -86,6 +88,14 @@ class AppRoutes {
               BlocProvider(create: ((context) => di.sl<RecommendedBooksCubit>()),)
             ],
             child: const HomeScreen(),
+          );
+        }, settings: routeSettings);
+
+      case Routes.booksRecommended:
+        return MaterialPageRoute(builder: (context) {
+          return BlocProvider(
+            create: ((context) => di.sl<RecommendedBooksCubit>()),
+            child: const RecommendedBooksScreen(),
           );
         }, settings: routeSettings);
 
