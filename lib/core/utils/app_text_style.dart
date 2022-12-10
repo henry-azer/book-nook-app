@@ -13,7 +13,7 @@ class AppTextStyle with Diagnosticable {
     fontFamily: AppStrings.fontFamilyComfortaa,
   );
   static TextStyle? title2 = TextStyle(
-    fontSize: 45,
+    fontSize: 40,
     fontWeight: FontWeight.w500,
     color: AppColors.fontSecondary,
     fontFamily: AppStrings.fontFamilyComfortaa,
@@ -48,6 +48,13 @@ class AppTextStyle with Diagnosticable {
     fontFamily: AppStrings.fontFamilyBarlow,
   );
 
+  static TextStyle? decorationSelectButton = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    color: AppColors.button,
+    fontFamily: AppStrings.fontFamilyBarlow,
+  );
+
 
   static TextStyle? textDecoration = TextStyle(
     fontSize: 16,
@@ -68,6 +75,12 @@ class AppTextStyle with Diagnosticable {
     fontSize: 35,
     fontWeight: FontWeight.w700,
     color: AppColors.fontSecondary,
+    fontFamily: AppStrings.fontFamilyComfortaa,
+  );
+  static TextStyle? recommendationTitle = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w700,
+    color: AppColors.white,
     fontFamily: AppStrings.fontFamilyComfortaa,
   );
 
