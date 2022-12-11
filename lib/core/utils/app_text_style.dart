@@ -168,6 +168,13 @@ class AppTextStyle with Diagnosticable {
     fontFamily: AppStrings.fontFamilyBarlow,
   );
 
+  static TextStyle? categoriesTextField = TextStyle(
+    fontSize: 15,
+    fontWeight: FontWeight.w300,
+    color: AppColors.white,
+    fontFamily: AppStrings.fontFamilyBarlow,
+  );
+
   static TextStyle? cardinfotextprimary = TextStyle(
     fontSize: 24,
     fontWeight: FontWeight.w700,
@@ -187,6 +194,21 @@ class AppTextStyle with Diagnosticable {
     fontSize: 17,
     fontWeight: FontWeight.w400,
     color: AppColors.white,
+    fontFamily: AppStrings.fontFamilyBarlow,
+  );
+
+  static TextStyle? categoriesSubtitle = TextStyle(
+    fontSize: 25,
+    fontWeight: FontWeight.w700,
+    color: AppColors.white,
+    fontFamily: AppStrings.fontFamilyComfortaa,
+  );
+
+  static TextStyle? categoriesTextButton = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w300,
+    color: AppColors.gold,
+    decoration: TextDecoration.underline,
     fontFamily: AppStrings.fontFamilyBarlow,
   );
 }

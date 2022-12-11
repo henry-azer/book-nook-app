@@ -87,7 +87,9 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
         validation = ValidateTextFiled.validate(value, widget.validateType)!;
       },
       validator: (value) {
-        return validation == "" ? null : AppLocalizations.of(context)!.translate(validation)!;
+        return validation == ""
+            ? null
+            : AppLocalizations.of(context)!.translate(validation)!;
       },
     );
   }
