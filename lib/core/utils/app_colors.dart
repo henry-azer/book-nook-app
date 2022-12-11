@@ -25,6 +25,9 @@ class AppColors {
   static Color white = HexColor('#FFFFFF');
   static Color grey = HexColor('#808080');
   static Color gold = HexColor('#E8C39E');
+  static Color transparent = HexColor('#82bc0000');
+
+
 
   static Color underlinePrimary = HexColor('#2F2C79');
 
