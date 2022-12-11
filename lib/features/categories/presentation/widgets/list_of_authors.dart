@@ -35,7 +35,7 @@ class _ListOfAuthorsState extends State<ListOfAuthors> {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.all(25.0),
+          padding: const EdgeInsets.only(left: 25.0),
           child: CategoryName(
             categoryName: "Authors",
             buttonName: "See All",

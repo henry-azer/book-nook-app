@@ -32,7 +32,7 @@ class _ListBooksState extends State<ListBooks> {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.all(25.0),
+          padding: const EdgeInsets.only(left: 25.0),
           child: CategoryName(
             categoryName: "Books for you",
             buttonName: "See All",
