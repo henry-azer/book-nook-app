@@ -35,6 +35,7 @@ class Routes {
   static const String booksRecommended = '/books-recommended';
   static const String userRatedBooks = '/user-rated-books';
   static const String bookInfo = '/book-info';
+  static const String readingLevel = '/reading_level';
 }
 
 class AppRoutes {
@@ -42,7 +43,7 @@ class AppRoutes {
     switch (routeSettings.name) {
       case Routes.initial:
         return MaterialPageRoute(builder: (context,) {
-          return const SplashScreen();
+          return const RecommendedBooksScreen();
         }, settings: routeSettings);
 
       case Routes.appWelcome:
@@ -67,6 +68,14 @@ class AppRoutes {
         }, settings: routeSettings);
 
       case Routes.signupAccountInfo:
+        return MaterialPageRoute(builder: (context) {
+          return BlocProvider(
+            create: ((context) => di.sl<SignupCubit>()),
+            child: const SignupAccountInfoScreen(),
+          );
+        }, settings: routeSettings);
+
+      case Routes.readingLevel:
         return MaterialPageRoute(builder: (context) {
           return BlocProvider(
             create: ((context) => di.sl<SignupCubit>()),
