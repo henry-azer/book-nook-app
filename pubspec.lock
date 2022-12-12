@@ -123,6 +123,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_multi_select_items:
+    dependency: "direct main"
+    description:
+      name: flutter_multi_select_items
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.2"
   flutter_snake_navigationbar:
     dependency: "direct main"
     description:
@@ -161,6 +168,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "7.2.0"
+  group_button:
+    dependency: "direct main"
+    description:
+      name: group_button
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.2.2"
   http:
     dependency: "direct main"
     description:

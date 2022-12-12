@@ -11,6 +11,8 @@ environment:
 dependencies:
   cupertino_icons: ^1.0.2
   carousel_slider: ^4.2.0
+  flutter_multi_select_items: ^0.4.2
+  group_button: ^5.2.2
   dartz: ^0.10.1
   dio: ^4.0.6
   equatable: ^2.0.3

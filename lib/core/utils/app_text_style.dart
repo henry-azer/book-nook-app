@@ -12,6 +12,20 @@ class AppTextStyle with Diagnosticable {
     fontFamily: AppStrings.fontFamilyComfortaa,
   );
 
+  static TextStyle? title1 = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w500,
+    color: AppColors.fontPrimary,
+    fontFamily: AppStrings.fontFamilyComfortaa,
+  );
+
+  static TextStyle? title2 = TextStyle(
+    fontSize: 45,
+    fontWeight: FontWeight.w500,
+    color: AppColors.fontSecondary,
+    fontFamily: AppStrings.fontFamilyComfortaa,
+  );
+
   static TextStyle? field = TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.w400,
@@ -25,6 +39,14 @@ class AppTextStyle with Diagnosticable {
     color: AppColors.fontPrimary,
     fontFamily: AppStrings.fontFamilyBarlow,
   );
+
+  static TextStyle? secondryFieldLabel = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: AppColors.circlePrimary,
+    fontFamily: AppStrings.fontFamilyBarlow,
+  );
+
   static TextStyle? containertext = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w400,
