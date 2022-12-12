@@ -23,6 +23,7 @@ class _RatedBooksState extends State<RatedBooks> {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
+        physics: ScrollPhysics(),
         itemCount: bookNames.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
@@ -30,7 +31,7 @@ class _RatedBooksState extends State<RatedBooks> {
           mainAxisSpacing: 20,
           childAspectRatio: 0.85,
         ),
-        scrollDirection: Axis.vertical,
+       // scrollDirection: Axis.vertical,
         shrinkWrap: true,
         itemBuilder: (BuildContext context, int index) {
           return Stack(
