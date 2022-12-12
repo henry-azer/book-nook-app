@@ -37,8 +37,7 @@ class _RatedBooksState extends State<RatedBooks> {
             children: [
               Container(
                 decoration: BoxDecoration(
-                  border:
-                      Border.all(width: 4, color: AppColors.circlePrimary),
+                  border: Border.all(width: 4, color: AppColors.circlePrimary),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Image.network(
