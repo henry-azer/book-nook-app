@@ -1,4 +1,5 @@
 import 'package:book_nook_app/features/book-info/presentation/screens/book_info_screen.dart';
+import 'package:book_nook_app/features/bookmark/presentation/screens/bookmark_screen.dart';
 import 'package:book_nook_app/features/categories/presentation/screens/categories_screen.dart';
 import 'package:book_nook_app/features/signin/presentation/cubit/signin_cubit.dart';
 import 'package:book_nook_app/features/signin/presentation/screens/signin_screen.dart';
@@ -37,6 +38,7 @@ class Routes {
   static const String userRatedBooks = '/user-rated-books';
   static const String bookInfo = '/book-info';
   static const String categories = '/categories';
+  static const String bookmark = '/bookmark';
 }
 
 class AppRoutes {
@@ -44,7 +46,7 @@ class AppRoutes {
     switch (routeSettings.name) {
       case Routes.initial:
         return MaterialPageRoute(builder: (context,) {
-          return const CategoriesScreen();
+          return const BookMarkScreen();
         }, settings: routeSettings);
 
       case Routes.appWelcome:
@@ -60,6 +62,14 @@ class AppRoutes {
           return BlocProvider(
             create: ((context) => di.sl<SigninCubit>()),
             child: const SigninScreen(),
+          );
+        }, settings: routeSettings);
+
+      case Routes.bookmark:
+        return MaterialPageRoute(builder: (context) {
+          return BlocProvider(
+            create: ((context) => di.sl<SigninCubit>()),
+            child: const BookMarkScreen(),
           );
         }, settings: routeSettings);
 

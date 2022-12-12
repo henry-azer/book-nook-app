@@ -21,10 +21,14 @@ class SigninCubit extends Cubit<SigninState> {
     emit(SigninInitial());
     emit(SigninLoading());
     Either<GenericException, ResponseModel<SigninClaims>> response =
-        await signinUseCase(Signin(email: signinRequest.email,
-            password: signinRequest.password, rememberme: signinRequest.rememberme));
-    emit(response.fold((exception) => SigninError(message: exception.message),
-        (signinClaimsResponse) => SigninSuccess(signinClaims: signinClaimsResponse.body,
+        await signinUseCase(Signin(
+            email: signinRequest.email,
+            password: signinRequest.password,
+            rememberme: signinRequest.rememberme));
+    emit(response.fold(
+        (exception) => SigninError(message: exception.message),
+        (signinClaimsResponse) => SigninSuccess(
+            signinClaims: signinClaimsResponse.body,
             signinClaimsResponse: signinClaimsResponse)));
   }
 }
