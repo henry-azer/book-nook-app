@@ -15,6 +15,7 @@ import '../../features/home/presentation/cubit/recommended_books_cubit.dart';
 import '../../features/home/presentation/screens/home_screen.dart';
 import '../../features/home/presentation/screens/recommedned_books_screen.dart';
 import '../../features/splash/presentation/screens/welcome_screen.dart';
+import '../../features/user-info/presentaion/screens/reading_level.dart';
 import '../../features/user-profile/presentation/cubit/signout_cubit.dart';
 import '../../features/user-profile/presentation/cubit/user_profile_cubit.dart';
 import '../../features/user-profile/presentation/screens/user_profile_screen.dart';
@@ -43,7 +44,7 @@ class AppRoutes {
     switch (routeSettings.name) {
       case Routes.initial:
         return MaterialPageRoute(builder: (context,) {
-          return const RecommendedBooksScreen();
+          return const ReadingLevel();
         }, settings: routeSettings);
 
       case Routes.appWelcome:
@@ -79,7 +80,7 @@ class AppRoutes {
         return MaterialPageRoute(builder: (context) {
           return BlocProvider(
             create: ((context) => di.sl<SignupCubit>()),
-            child: const SignupAccountInfoScreen(),
+            child: const ReadingLevel(),
           );
         }, settings: routeSettings);
 

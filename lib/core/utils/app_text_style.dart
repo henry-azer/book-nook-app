@@ -21,7 +21,7 @@ class AppTextStyle with Diagnosticable {
   );
 
   static TextStyle? title2 = TextStyle(
-    fontSize: 20,
+    fontSize: 45,
     fontWeight: FontWeight.w500,
     color: AppColors.fontSecondary,
     fontFamily: AppStrings.fontFamilyComfortaa,
@@ -40,6 +40,14 @@ class AppTextStyle with Diagnosticable {
     color: AppColors.fontPrimary,
     fontFamily: AppStrings.fontFamilyBarlow,
   );
+
+  static TextStyle? secondryFieldLabel = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: AppColors.fontPrimary,
+    fontFamily: AppStrings.fontFamilyBarlow,
+  );
+
 
   static TextStyle? profileFieldLabel = TextStyle(
     fontSize: 20,
@@ -129,10 +137,11 @@ class AppTextStyle with Diagnosticable {
   static TextStyle? categoryDecoratedTitle = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w300,
-    color: AppColors.fontSecondary,
-    decoration: TextDecoration.underline,
+    color: AppColors.fontPrimary,
     fontFamily: AppStrings.fontFamilyComfortaa,
   );
+
+
 
   static TextStyle? homeTitle = TextStyle(
     fontSize: 34,
@@ -202,6 +211,13 @@ class AppTextStyle with Diagnosticable {
     fontSize: 17,
     fontWeight: FontWeight.w400,
     color: AppColors.white,
+    fontFamily: AppStrings.fontFamilyBarlow,
+  );
+
+  static TextStyle? selectedCardDescription = TextStyle(
+    fontSize: 17,
+    fontWeight: FontWeight.w400,
+    color: AppColors.fontPrimary,
     fontFamily: AppStrings.fontFamilyBarlow,
   );
 }

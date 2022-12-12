@@ -84,7 +84,7 @@ class _ReadingLevelState extends State<ReadingLevel>
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 25.0, left: 45),
+                padding: const EdgeInsets.only(top: 25.0, left: 30),
                 child: RichText(
                   text: TextSpan(
                     children: [
@@ -121,9 +121,9 @@ class _ReadingLevelState extends State<ReadingLevel>
                           options: GroupButtonOptions(
                             groupRunAlignment: GroupRunAlignment.spaceBetween,
                             selectedColor: AppColors.white,
-                            unselectedColor: AppColors.transparent,
+                            unselectedColor: Colors.transparent,
                             unselectedBorderColor: AppColors.white,
-                            selectedTextStyle: AppTextStyle.cardDescription,
+                            selectedTextStyle: AppTextStyle.secondryFieldLabel,
                             unselectedTextStyle:AppTextStyle.fieldLabel,
                             runSpacing: 30,
                             spacing: 100,
