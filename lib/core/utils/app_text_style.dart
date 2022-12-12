@@ -25,6 +25,12 @@ class AppTextStyle with Diagnosticable {
     color: AppColors.fontPrimary,
     fontFamily: AppStrings.fontFamilyBarlow,
   );
+  static TextStyle? containertext = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: AppColors.gold,
+    fontFamily: AppStrings.fontFamilyBarlow,
+  );
 
   static TextStyle? profileFieldLabel = TextStyle(
     fontSize: 20,
@@ -38,6 +44,13 @@ class AppTextStyle with Diagnosticable {
     fontWeight: FontWeight.w700,
     color: AppColors.fontPrimary,
     fontFamily: AppStrings.fontFamilyComfortaa,
+  );
+
+  static TextStyle? textbutbookmark = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.w700,
+    color: AppColors.white,
+    fontFamily: AppStrings.fontFamilyBarlow,
   );
 
   static TextStyle? fieldError = TextStyle(
@@ -111,6 +124,13 @@ class AppTextStyle with Diagnosticable {
     fontFamily: AppStrings.fontFamilyComfortaa,
   );
 
+  static TextStyle? bookmarkTitle = TextStyle(
+    fontSize: 25,
+    fontWeight: FontWeight.w700,
+    color: AppColors.white,
+    fontFamily: AppStrings.fontFamilyComfortaa,
+  );
+
   static TextStyle? categoryDecoratedTitle = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w300,
@@ -144,6 +164,13 @@ class AppTextStyle with Diagnosticable {
     fontSize: 18,
     fontWeight: FontWeight.w700,
     color: AppColors.fontSecondary,
+    fontFamily: AppStrings.fontFamilyComfortaa,
+  );
+
+  static TextStyle? bookmarkcard = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w700,
+    color: AppColors.white,
     fontFamily: AppStrings.fontFamilyComfortaa,
   );
 
