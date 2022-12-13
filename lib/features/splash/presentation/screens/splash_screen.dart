@@ -55,7 +55,7 @@ class _SplashScreenState extends State<SplashScreen>
 
   _goNext() => {
         if (_isUserAuthenticated)
-          {Navigator.pushReplacementNamed(context, Routes.home)}
+          {Navigator.pushReplacementNamed(context, Routes.userWelcome)}
         else if (_isUserWelcomedBefore)
           {Navigator.pushReplacementNamed(context, Routes.signin)}
         else
