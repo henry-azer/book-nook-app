@@ -20,7 +20,7 @@ class _BookInfoState extends State<BookInfo> {
     Book book = ModalRoute.of(context)!.settings.arguments as Book;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 10.0),
+      padding: const EdgeInsets.symmetric(horizontal: 35.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -32,7 +32,7 @@ class _BookInfoState extends State<BookInfo> {
                 url: book.imageUrl!,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 15.0),
+                padding: const EdgeInsets.only(left: 10.0),
                 child: Column(
                   children: [
                     InfoCard(
