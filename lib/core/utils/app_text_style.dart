@@ -12,6 +12,20 @@ class AppTextStyle with Diagnosticable {
     fontFamily: AppStrings.fontFamilyComfortaa,
   );
 
+  static TextStyle? helloTitle = TextStyle(
+    fontSize: 35,
+    fontWeight: FontWeight.w500,
+    color: AppColors.fontPrimary,
+    fontFamily: AppStrings.fontFamilyComfortaa,
+  );
+
+  static TextStyle?helloTitleSecondary = TextStyle(
+    fontSize: 35,
+    fontWeight: FontWeight.w500,
+    color: AppColors.fontSecondary,
+    fontFamily: AppStrings.fontFamilyComfortaa,
+  );
+
   static TextStyle? field = TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.w400,
@@ -23,12 +37,6 @@ class AppTextStyle with Diagnosticable {
     fontSize: 16,
     fontWeight: FontWeight.w400,
     color: AppColors.fontPrimary,
-    fontFamily: AppStrings.fontFamilyBarlow,
-  );
-  static TextStyle? containertext = TextStyle(
-    fontSize: 16,
-    fontWeight: FontWeight.w400,
-    color: AppColors.gold,
     fontFamily: AppStrings.fontFamilyBarlow,
   );
 
@@ -44,13 +52,6 @@ class AppTextStyle with Diagnosticable {
     fontWeight: FontWeight.w700,
     color: AppColors.fontPrimary,
     fontFamily: AppStrings.fontFamilyComfortaa,
-  );
-
-  static TextStyle? textbutbookmark = TextStyle(
-    fontSize: 24,
-    fontWeight: FontWeight.w700,
-    color: AppColors.white,
-    fontFamily: AppStrings.fontFamilyBarlow,
   );
 
   static TextStyle? fieldError = TextStyle(
@@ -167,17 +168,31 @@ class AppTextStyle with Diagnosticable {
     fontFamily: AppStrings.fontFamilyComfortaa,
   );
 
-  static TextStyle? bookmarkcard = TextStyle(
-    fontSize: 16,
-    fontWeight: FontWeight.w700,
-    color: AppColors.white,
-    fontFamily: AppStrings.fontFamilyComfortaa,
-  );
-
   static TextStyle? bookHighlightSubtitle = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w700,
     color: AppColors.fontPrimary,
+    fontFamily: AppStrings.fontFamilyComfortaa,
+  );
+
+  static TextStyle? containertext = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: AppColors.gold,
+    fontFamily: AppStrings.fontFamilyBarlow,
+  );
+
+  static TextStyle? textbutbookmark = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.w700,
+    color: AppColors.white,
+    fontFamily: AppStrings.fontFamilyBarlow,
+  );
+
+  static TextStyle? bookmarkcard = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w700,
+    color: AppColors.white,
     fontFamily: AppStrings.fontFamilyComfortaa,
   );
 

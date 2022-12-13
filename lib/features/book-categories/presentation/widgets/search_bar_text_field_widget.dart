@@ -2,15 +2,18 @@ import 'package:book_nook_app/core/utils/app_colors.dart';
 import 'package:book_nook_app/core/utils/app_text_style.dart';
 import 'package:flutter/material.dart';
 
-class CategoriesTextField extends StatefulWidget {
+class SearchBarTextFieldWidget extends StatefulWidget {
   final String label;
-  const CategoriesTextField({Key? key, required this.label}) : super(key: key);
+
+  const SearchBarTextFieldWidget({Key? key, required this.label})
+      : super(key: key);
 
   @override
-  State<CategoriesTextField> createState() => _CategoriesTextFieldState();
+  State<SearchBarTextFieldWidget> createState() =>
+      _SearchBarTextFieldWidgetState();
 }
 
-class _CategoriesTextFieldState extends State<CategoriesTextField> {
+class _SearchBarTextFieldWidgetState extends State<SearchBarTextFieldWidget> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -29,23 +32,23 @@ class _CategoriesTextFieldState extends State<CategoriesTextField> {
             color: AppColors.white,
           ),
           floatingLabelStyle: TextStyle(color: AppColors.fontPrimary),
-          contentPadding: const EdgeInsets.only(left: 50, right: 50),
+          contentPadding: const EdgeInsets.only(left: 20, right: 20),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(20.0),
+            borderRadius: BorderRadius.circular(25.0),
             borderSide: BorderSide(
               color: AppColors.circlePrimary,
               width: 1,
             ),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(20.0),
+            borderRadius: BorderRadius.circular(25.0),
             borderSide: BorderSide(
               color: AppColors.circlePrimary,
               width: 1,
             ),
           ),
           focusedErrorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(20.0),
+            borderRadius: BorderRadius.circular(25.0),
             borderSide: BorderSide(
               color: AppColors.error,
               width: 1,

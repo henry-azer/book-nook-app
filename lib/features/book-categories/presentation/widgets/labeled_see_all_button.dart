@@ -1,20 +1,21 @@
 import 'package:book_nook_app/core/utils/app_text_style.dart';
 import 'package:flutter/material.dart';
 
-class CategoryName extends StatefulWidget {
+class LabeledSeeAllButton extends StatefulWidget {
   final String categoryName;
   final String buttonName;
-  const CategoryName({
+
+  const LabeledSeeAllButton({
     Key? key,
     required this.categoryName,
     required this.buttonName,
   }) : super(key: key);
 
   @override
-  State<CategoryName> createState() => _CategoryNameState();
+  State<LabeledSeeAllButton> createState() => _LabeledSeeAllButtonState();
 }
 
-class _CategoryNameState extends State<CategoryName> {
+class _LabeledSeeAllButtonState extends State<LabeledSeeAllButton> {
   @override
   Widget build(BuildContext context) {
     return Row(

@@ -9,8 +9,6 @@ import 'package:book_nook_app/data/repositories/book/book_repository.dart';
 import 'package:book_nook_app/data/repositories/book/book_repository_impl.dart';
 import 'package:book_nook_app/data/repositories/user/user_repository.dart';
 import 'package:book_nook_app/data/repositories/user/user_repository_impl.dart';
-import 'package:book_nook_app/features/home/domain/usecases/recommended_books_usecase.dart';
-import 'package:book_nook_app/features/home/presentation/cubit/recommended_books_cubit.dart';
 import 'package:book_nook_app/features/splash/domain/usecases/app_welcomed_user_usecase.dart';
 import 'package:book_nook_app/features/splash/presentation/cubit/app_welcome_cubit.dart';
 import 'package:book_nook_app/features/user-profile/domain/usecases/signout_usecase.dart';
@@ -37,6 +35,8 @@ import 'features/signup/domain/usecases/signup_usecase.dart';
 import 'features/splash/domain/usecases/change_lang_usecase.dart';
 import 'features/splash/domain/usecases/get_saved_lang_usecase.dart';
 import 'features/splash/presentation/cubit/localization_cubit.dart';
+import 'features/user-recommended-books/domain/usecases/recommended_books_usecase.dart';
+import 'features/user-recommended-books/presentation/cubit/recommended_books_cubit.dart';
 
 final sl = GetIt.instance;
 

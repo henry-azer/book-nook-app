@@ -1,51 +1,51 @@
 import 'package:book_nook_app/core/utils/app_colors.dart';
 import 'package:book_nook_app/core/utils/app_text_style.dart';
 import 'package:book_nook_app/features/book-info/presentation/widgets/book_banner.dart';
-import 'package:book_nook_app/features/categories/presentation/widgets/category_name.dart';
+import 'package:book_nook_app/features/book-categories/presentation/widgets/labeled_see_all_button.dart';
 import 'package:flutter/material.dart';
 
-class ListOfAuthors extends StatefulWidget {
+class CategoriesListWidget extends StatefulWidget {
   final double height;
   final double width;
   final String url;
   final String text;
-  const ListOfAuthors(
-      {Key? key,
-      required this.height,
-      required this.width,
-      required this.url,
-      required this.text})
-      : super(key: key);
+
+  const CategoriesListWidget({
+    Key? key,
+    required this.height,
+    required this.width,
+    required this.url,
+    required this.text,
+  }) : super(key: key);
 
   @override
-  State<ListOfAuthors> createState() => _ListOfAuthorsState();
+  State<CategoriesListWidget> createState() => _CategoriesListWidgetState();
 }
 
-class _ListOfAuthorsState extends State<ListOfAuthors> {
-  List<String> authorsName = [
-    "Mohamed",
-    "Ahmed",
-    "Hassan",
-    "Anwar",
-    "Sayed",
-    "Amr",
+class _CategoriesListWidgetState extends State<CategoriesListWidget> {
+  List<String> categoriesName = [
+    "Flutter",
+    "The King",
+    "Clean Code",
+    "Java EE",
+    "Harry Potter",
+    "The Ring",
   ];
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 25.0),
-          child: CategoryName(
-            categoryName: "Authors",
-            buttonName: "See All",
-          ),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 35.0, vertical: 10.0),
+          child:
+              LabeledSeeAllButton(categoryName: "Categories", buttonName: "See All"),
         ),
-        Container(
-          height: 208.5,
+        SizedBox(
+          height: 208,
           width: 380,
           child: ListView.builder(
-              itemCount: authorsName.length,
+              itemCount: categoriesName.length,
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               itemBuilder: (BuildContext context, int index) {
@@ -66,7 +66,7 @@ class _ListOfAuthorsState extends State<ListOfAuthors> {
                             color: AppColors.circlePrimary.withOpacity(0.9),
                             child: Center(
                               child: Text(
-                                authorsName[index],
+                                categoriesName[index],
                                 style: AppTextStyle.cardvalue,
                               ),
                             ),

@@ -1,7 +1,5 @@
 import 'package:book_nook_app/core/utils/app_text_style.dart';
 import 'package:book_nook_app/core/widgets/navigation_bar_widget.dart';
-import 'package:book_nook_app/features/home/presentation/cubit/recommended_books_cubit.dart';
-import 'package:book_nook_app/features/home/presentation/cubit/recommended_books_state.dart';
 import 'package:book_nook_app/features/home/presentation/widgets/book_slider_widget.dart';
 import 'package:book_nook_app/features/user-profile/presentation/cubit/user_profile_cubit.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +10,8 @@ import '../../../../config/locale/app_localizations.dart';
 import '../../../../config/routes/app_routes.dart';
 import '../../../../core/utils/assets_manager.dart';
 import '../../../../core/utils/constants.dart';
+import '../../../user-recommended-books/presentation/cubit/recommended_books_cubit.dart';
+import '../../../user-recommended-books/presentation/cubit/recommended_books_state.dart';
 import '../widgets/book_outlined_card_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -149,7 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     TextButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, Routes.booksRecommended);
+                        Navigator.pushNamed(context, Routes.userRecommendedBooks);
                       },
                       child: Text(
                         AppLocalizations.of(context)!.translate('more')!,

@@ -56,6 +56,7 @@
 
   "hello" : "Hello",
   "hello_guest" : "Hello, Guest",
+  "guest" : "Guest",
   "book" : "Book",
   "of_the_day" : "Of the day",
   "books_for_you" : "Books for you",

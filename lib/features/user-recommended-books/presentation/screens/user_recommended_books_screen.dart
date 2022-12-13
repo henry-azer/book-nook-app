@@ -5,14 +5,14 @@ import '../../../../config/routes/app_routes.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/assets_manager.dart';
 
-class RecommendedBooksScreen extends StatefulWidget {
-  const RecommendedBooksScreen({Key? key}) : super(key: key);
+class UserRecommendedBooksScreen extends StatefulWidget {
+  const UserRecommendedBooksScreen({Key? key}) : super(key: key);
 
   @override
-  State<RecommendedBooksScreen> createState() => _RecommendedBooksScreenState();
+  State<UserRecommendedBooksScreen> createState() => _UserRecommendedBooksScreenState();
 }
 
-class _RecommendedBooksScreenState extends State<RecommendedBooksScreen> {
+class _UserRecommendedBooksScreenState extends State<UserRecommendedBooksScreen> {
 
     @override
     Widget build(BuildContext context) {
