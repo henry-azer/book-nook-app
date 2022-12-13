@@ -3,7 +3,7 @@ import 'package:book_nook_app/features/signin/presentation/screens/signin_screen
 import 'package:book_nook_app/features/signup/Presentation/screens/signup_account_info.dart';
 import 'package:book_nook_app/features/signup/Presentation/screens/signup_user_info.dart';
 import 'package:book_nook_app/features/splash/presentation/screens/splash_screen.dart';
-import 'package:book_nook_app/features/user-rated-book/presentation/screens/user_rated_books_screen.dart';
+import 'package:book_nook_app/features/user-rated-books/presentation/screens/user_rated_books_screen.dart';
 import 'package:book_nook_app/features/user-welcome/presentation/screens/user_welcome_screen.dart';
 import 'package:flutter/material.dart';
 
