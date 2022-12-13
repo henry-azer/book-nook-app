@@ -1,13 +1,14 @@
 import 'package:book_nook_app/core/utils/app_text_style.dart';
 import 'package:book_nook_app/features/book-info/presentation/widgets/book_banner.dart';
-import 'package:book_nook_app/features/categories/presentation/widgets/category_name.dart';
+import 'package:book_nook_app/features/book-categories/presentation/widgets/labeled_see_all_button.dart';
 import 'package:flutter/material.dart';
 
-class ListBooks extends StatefulWidget {
+class BooksListWidget extends StatefulWidget {
   final double height;
   final double width;
   final String url;
-  const ListBooks({
+
+  const BooksListWidget({
     Key? key,
     required this.height,
     required this.width,
@@ -15,30 +16,31 @@ class ListBooks extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<ListBooks> createState() => _ListBooksState();
+  State<BooksListWidget> createState() => _BooksListWidgetState();
 }
 
-class _ListBooksState extends State<ListBooks> {
+class _BooksListWidgetState extends State<BooksListWidget> {
   List<String> booksName = [
-    "Mohamed",
-    "Ahmed",
-    "Hassan",
-    "Anwar",
-    "Sayed",
-    "Amr",
+    "Flutter",
+    "The King",
+    "Clean Code",
+    "Java EE",
+    "Harry Potter",
+    "The Ring",
   ];
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 25.0),
-          child: CategoryName(
-            categoryName: "Books for you",
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 35.0, vertical: 10.0),
+          child: LabeledSeeAllButton(
+            categoryName: "Books",
             buttonName: "See All",
           ),
         ),
-        Container(
+        SizedBox(
           height: 208.5,
           width: 380,
           child: ListView.builder(
