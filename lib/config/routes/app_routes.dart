@@ -10,6 +10,7 @@ import '../../features/splash/presentation/screens/splash_screen.dart';
 class Routes {
   static const String initial = '/';
   static const String signin = '/signin';
+  static const String categories = '/signin';
 }
 
 class AppRoutes {
